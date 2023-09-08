@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="forms.css">
 </head>
 <body>
-    
+    <form class="formato-form">
+        <h2>Iniciar Sesión</h2>
+        <span class="line"></span>
+        <div class="contenido-form">
+            <label for="emailR">Email</label>
+            <input type="email" name="email" placeholder="Email" id="emailR">
+            
+            <label for="passR">Contraseña</label>
+            <input type="password" name="passR" placeholder="contraseña" id="passR">
+            
+            <input class="btn" type="submit" value="Iniciar Sesión">
+        </div>
+        <div class="registrar-iniciar">
+            <span>¿No tienes una cuenta? <a href="#"> Crea una aquí</a></span>      
+        </div>
+    </form>
 </body>
 </html>

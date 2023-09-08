@@ -7,15 +7,28 @@
     <link rel="stylesheet" href="forms.css">
 </head>
 <body>
-    <form>
+    <form class="formato-form">
         <h2>Registro</h2>
         <span class="line"></span>
-        <div>
+        <div class="contenido-form">
             <label for="emailR">Email</label>
             <input type="email" name="email" placeholder="Email" id="emailR">
+            
+            <label for="nameR">Nombre de Usuario</label>
+            <input type="text" name="nameuR" placeholder="Usuario" id="nameuR">
+
             <label for="passR">Contraseña</label>
             <input type="password" name="passR" placeholder="contraseña" id="passR">
-            <input class="btn" type="submit" value="sendR">
+
+            <label for="rolR">Rol de Usuario</label>
+            <select></select>
+
+            
+            
+            <input class="btn" type="submit" value="Registrarse">
+        </div>
+        <div class="registrar-iniciar">
+            <span>¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a></span>      
         </div>
     </form>
 </body>
