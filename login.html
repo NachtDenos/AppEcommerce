@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="forms.css">
+    <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <form class="formato-form">
-        <h2>Iniciar Sesión</h2>
+        <h2 class="titulo">Iniciar Sesión</h2>
         <span class="line"></span>
         <div class="contenido-form">
             <label for="emailR">Email</label>
@@ -18,10 +19,22 @@
             <input type="password" name="passR" placeholder="contraseña" id="passR">
             
             <input class="btn" type="submit" value="Iniciar Sesión">
+            <label for="rememberUser">
+                <input type="checkbox" id="rememberUser" name="rememberUser" value="rememberUser">
+                Recordarme
+            </label>
+        </div>
+        <div class="registrar-iniciar">
+            <span>Inicia sesión con...</span>  
+        </div>
+        <div class="other-register">
+            <button type="submit" class="button-red"><i class="fa-brands fa-google" style="color: #ffffff; margin-right: 5px;"></i> Google</button>
+            <button type="submit" class="button-red"> <i class="fa-brands fa-facebook" style="color: #ffffff; margin-right: 5px;"></i>Facebook</button>
         </div>
         <div class="registrar-iniciar">
             <span>¿No tienes una cuenta? <a href="#"> Crea una aquí</a></span>      
         </div>
     </form>
+
 </body>
 </html>
