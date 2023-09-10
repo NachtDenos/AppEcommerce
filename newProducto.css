@@ -75,14 +75,17 @@ background-color: #A99985 !important;
 .margen {
     margin-left: 0;
     margin-right: 0;
-    padding-left: 4.5rem;
+    
 }
 
 .row-right-product{
+    overflow-x: scroll;
+    grid-auto-columns: 16%;
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 10px;
     max-width: max-content;
+    grid-auto-columns: auto;
 }
 
 .product-name {
@@ -108,6 +111,8 @@ h1 {
     font-weight: bold;
 }
 
-footer {
-   margin-top: auto;
+.prod-ventana {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #F5F1ED;
 }
