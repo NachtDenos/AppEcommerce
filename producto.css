@@ -147,10 +147,17 @@ h3 {
 }
 
 input {
-    padding: 17px 10px;
     border-radius: 10px;
     margin-bottom: 10px;
     border: 2px solid #ededed;
     color: #1b1b1b;
-    outline: none;
+}
+
+.btn-compra {
+    background-color: #252323;
+    color: #F5F1ED;
+}
+
+.btn-compra:hover {
+    background-color: #A99985;
 }
