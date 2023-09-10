@@ -1,7 +1,13 @@
-body {
-    overflow: hidden;
-    font-weight: 300;
-    color: #DAD2BC;
+body{
+    background-color: #DAD2BC;
+}
+
+.navColor{
+    background-color: #A99985 !important;
+}
+
+.mybtn {
+    text-align: end;
 }
 
 .static{
@@ -65,4 +71,3 @@ background-color: #A99985 !important;
     margin-bottom: 30px;
     font-size: 100px;
 }
-
