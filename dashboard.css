@@ -71,3 +71,42 @@ background-color: #A99985 !important;
     margin-bottom: 30px;
     font-size: 100px;
 }
+
+.margen {
+    margin-left: 0;
+    margin-right: 0;
+    
+}
+
+.row-right-product{
+    overflow-x: scroll;
+    grid-auto-columns: 16%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    max-width: max-content;
+    grid-auto-columns: auto;
+}
+
+.product-name {
+    text-decoration: none;
+    color: #252323;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-name:hover {
+    color: #A99985;
+}
+
+.estilo-card {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #F5F1ED;
+}
+
+h1 {
+    color: #1b1b1b;
+    font-size: 35px;
+    margin-left: 2rem;
+    font-weight: bold;
+}
