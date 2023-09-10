@@ -115,4 +115,42 @@ h1 {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     background-color: #F5F1ED;
+    text-align: center;
 }
+
+.contenido-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.input-form {
+    padding: 10px 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ededed;
+    color: #1b1b1b;
+    outline: none;
+}
+
+.btn {
+    font-size: 16px;
+    color: #ffcfff;
+    border: 0;
+    border-radius: 25px;
+    background: #252323;
+    box-shadow: 0 0 10px #A99985;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #A99985;
+}
+
+h1 {
+    color: #1b1b1b;
+    font-size: 36px;
+    font-weight: bold;
+}
+
