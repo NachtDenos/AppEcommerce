@@ -199,3 +199,15 @@ input {
 .active {
     opacity: 1;
 }
+
+.img-coment {
+    max-width: 40px;
+}
+
+.conten-coment {
+    margin-left: 40px;
+}
+
+.footer-coment {
+    font-size: 12px;
+}
