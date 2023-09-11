@@ -130,3 +130,11 @@ h1 {
 .btn-compra:hover {
     background-color: #A99985;
 }
+
+.btn-delete-lista{
+    margin-left: 200px;
+}
+
+.btn-delete-lista:hover {
+    background-color: #A99985;
+}
