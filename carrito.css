@@ -111,46 +111,41 @@ h1 {
     font-weight: bold;
 }
 
-.prod-ventana {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+.cont {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.table {
+    --bs-table-bg: var(--light);
+}
+
+.imagen-celda {
+    width: 200px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #A99985;
     border-radius: 20px;
-    background-color: #F5F1ED;
-    text-align: center;
-}
+ }
 
-.contenido-form {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-bottom: 50px;
-}
+ .table tbody tr:hover {
+    background-color: #A99985;
+ }
 
-.input-form {
-    padding: 10px 5px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ededed;
-    color: #1b1b1b;
-    outline: none;
-}
+ .table-rounded {
+    border-collapse: separate;
+    border-spacing: 0;
+ }
 
-.btn {
-    font-size: 16px;
-    color: #ffcfff;
-    border: 0;
-    border-radius: 25px;
-    background: #252323;
-    box-shadow: 0 0 10px #A99985;
-    cursor: pointer;
-}
+ .table-rounded td,
+ .table-rounded th {
+    border-radius: 5px; 
+ }
 
-.btn:hover {
-    background: #A99985;
-}
-
-h1 {
-    color: #1b1b1b;
-    font-size: 36px;
-    font-weight: bold;
-}
-
+ .imagen-carrito {
+    max-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    min-width: 200px;
+ }
