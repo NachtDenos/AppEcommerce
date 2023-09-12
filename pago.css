@@ -111,6 +111,12 @@ h1 {
     font-weight: bold;
 }
 
+.prod-ventana {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #F5F1ED;
+}
+
 /*Modales*/
 
 .input-modal{
