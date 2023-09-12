@@ -46,7 +46,7 @@
         
     </div>
     <div class="text-start">
-        <input class="btn btn-compra" type="submit" value="Crear Lista">
+        <input class="btn btn-compra" type="submit" value="Crear Lista" data-bs-toggle="modal" data-bs-target="#exampleModal">
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
@@ -145,5 +145,44 @@
             <p>LMAD | UANL</p>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content fondo-modal">
+          <form>
+              <div class="modal-header">
+                  <h2 id="exampleModalLabel">Crear Lista</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="contenido-form">
+                        <label for="nameL">Nombre de la lista</label>
+                        <input class="input-modal" type="text" name="nameL" placeholder="Lista" id="nameL">
+                        
+                        <label for="descL">Descripción</label>
+                        <input class="input-modal" type="text" name="descL" placeholder="Descripción" id="descL">
+                        
+                        <label for="privL">Privacidad</label>
+                        <select id="privL" name="privL">
+                            <option value="" disabled selected>Selecciona la privacidad de la lista</option>
+                            <option value="pub">Publica</option>
+                            <option value="priv">Privada</option>
+                        </select>
+    
+                        <div class="imageinput">
+                            <label for="imagenL">Selecciona una imagen para la lista: (Opcional)</label>
+                            <input class="input-modal" type="file" id="imagenL" name="imagenL" accept="image/*">
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <input class="btn btn-modal" type="submit" value="Agregar">
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
