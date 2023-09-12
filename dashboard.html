@@ -14,7 +14,7 @@
                 <div class="col alingImage">
                     <a class="navbar-brand" href="#"><img src="Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
-                <button type="button" class="btn btn-dark"><a><img src="Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
@@ -228,5 +228,56 @@
             <p>LMAD | UANL</p>
         </div>
     </footer>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content fondo-modal">
+          <form>
+              <div class="modal-header">
+                  <h2 id="exampleModalLabel">Busqueda Avanzada</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="contenido-form">
+                        <input class="input-modal" type="text" name="searchA" placeholder="Buscar" id="searchA">
+                        
+                      <h4>Filtros:</h4>
+
+                        <label for="precioModal">Precio</label>
+                        <select id="precioModal" name="precioModal">
+                            <option value="">Ninguno</option>
+                            <option value="maxPre">Mayor Precio</option>
+                            <option value="minPre">Menor Precio</option>
+                        </select>
+
+                        <label for="califModal">Calificación</label>
+                        <select id="califModal" name="califModal">
+                            <option value="">Ninguno</option>
+                            <option value="maxCalif">Mejor Calificación</option>
+                            <option value="minCalif">Menor Calificación</option>
+                        </select>
+
+                        <label for="vendModal">Vendidos</label>
+                        <select id="vendModal" name="vendModal">
+                            <option value="">Ninguno</option>
+                            <option value="maxVend">Más Vendidos</option>
+                            <option value="minVend">Menos Vendidos</option>
+                        </select>
+    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <input class="btn btn-modal" type="submit" value="Buscar">
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
 </body>
 </html>

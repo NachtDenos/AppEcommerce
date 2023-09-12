@@ -52,33 +52,40 @@
           <div class="modal-content fondo-modal">
             <form>
                 <div class="modal-header">
-                    <h2 id="exampleModalLabel">Crear Lista</h2>
+                    <h2 id="exampleModalLabel">Busqueda Avanzada</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                       <div class="contenido-form">
-                          <label for="nameL">Nombre de la lista</label>
-                          <input class="input-modal" type="text" name="nameL" placeholder="Lista" id="nameL">
+                          <input class="input-modal" type="text" name="searchA" placeholder="Buscar" id="searchA">
                           
-                          <label for="descL">Descripción</label>
-                          <input class="input-modal" type="text" name="descL" placeholder="Descripción" id="descL">
-                          
-                          <label for="privL">Privacidad</label>
-                          <select id="privL" name="privL">
-                              <option value="" disabled selected>Selecciona la privacidad de la lista</option>
-                              <option value="pub">Publica</option>
-                              <option value="priv">Privada</option>
+                        <h4>Filtros:</h4>
+
+                          <label for="precioModal">Precio</label>
+                          <select id="precioModal" name="precioModal">
+                              <option value="">Ninguno</option>
+                              <option value="maxPre">Mayor Precio</option>
+                              <option value="minPre">Menor Precio</option>
                           </select>
-      
-                          <div class="imageinput">
-                              <label for="imagenL">Selecciona una imagen para la lista: (Opcional)</label>
-                              <input class="input-modal" type="file" id="imagenL" name="imagenL" accept="image/*">
-                          </div>
+
+                          <label for="califModal">Calificación</label>
+                          <select id="califModal" name="califModal">
+                              <option value="">Ninguno</option>
+                              <option value="maxCalif">Mejor Calificación</option>
+                              <option value="minCalif">Menor Calificación</option>
+                          </select>
+
+                          <label for="vendModal">Vendidos</label>
+                          <select id="vendModal" name="vendModal">
+                              <option value="">Ninguno</option>
+                              <option value="maxVend">Más Vendidos</option>
+                              <option value="minVend">Menos Vendidos</option>
+                          </select>
       
                       </div>
                   </div>
                   <div class="modal-footer">
-                    <input class="btn btn-modal" type="submit" value="Agregar">
+                    <input class="btn btn-modal" type="submit" value="Buscar">
                   </div>
             </form>
           </div>
