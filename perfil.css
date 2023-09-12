@@ -75,17 +75,14 @@ background-color: #A99985 !important;
 .margen {
     margin-left: 0;
     margin-right: 0;
-    
+    padding-left: 4.5rem;
 }
 
 .row-right-product{
-    overflow-x: scroll;
-    grid-auto-columns: 16%;
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 10px;
     max-width: max-content;
-    grid-auto-columns: auto;
 }
 
 .product-name {
@@ -111,6 +108,10 @@ h1 {
     font-weight: bold;
 }
 
+footer {
+   margin-top: auto;
+}
+
 
 .prod-ventana {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -120,4 +121,93 @@ h1 {
 
 .aling-image-perfil {
     margin-left: 30px;
+}
+
+.top-perfil{
+    margin-top: 30px;
+}
+
+.texto-perfil {
+    margin: none !important;
+    padding: none;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    height: 9rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
+    margin-right: 1rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #F5F1ED;
+    background-color: #F5F1ED;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #A99985;
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 90px);
+    z-index: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 100%;
+    position: relative;
+    max-width: 850px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    width: 100%;
+    font-size: 1.75em;
+    color:#252323;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px #A99985;
+    background-color: #F5F1ED;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
 }
