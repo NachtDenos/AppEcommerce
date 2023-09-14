@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Ventas | El Negocios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="carrito.css">
+
+</head>
+<body>
+<div>
+        <nav class="navbar navbar-expand-lg navColor static">
+                <div class="col alingImage">
+                    <a class="navbar-brand" href="#"><img src="Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                </div>
+                <button type="button" class="btn btn-dark"><a><img src="Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                <div class="col alingFlex">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                        <button class="btn  btn-dark" type="submit"><a><img src="Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                      </form>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a><img src="Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Mis Listas</a></li>
+                      <li><a class="dropdown-item" href="#">Vender</a></li>
+                      <li><a class="dropdown-item" href="#">Consulta de Ventas</a></li>
+                      <li><a class="dropdown-item" href="#">Pedidos</a></li>
+                      <li><a class="dropdown-item" href="#">Stock</a></li>
+                      <li><a class="dropdown-item" href="#">Aceptar Productos</a></li>
+                    </ul>
+                  </div>
+                <div class="col alingFlex">
+                  <button type="button" class="btn btn-dark"><a><img src="Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
+                  <a class="navbar-brand" href="#"><img src="Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                </div> 
+        </nav>
+</div>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+
+<div class="centrar">
+    <label for="Fecha1">Fecha Inicial</label>
+    
+    <input type="date" name="Fecha1Inpu" id="Fecha1">
+    <label for="Fecha2">Fecha Final</label>
+    <input type="date" name="Fecha2Inpu" id="Fecha2">
+    <label for="CategProd">Categoria</label>
+    <select id="CategProd">
+        <option>Comida</option>
+        <option>Bebida</option>
+        <option>Cosmeticas</option>
+    </select>
+</div>
+<form style="justify-content: center; display: flex;">
+    <div class="formato-form">
+<div class="">
+    <br>
+    <table class="tablapractica">
+     <tr>
+         <th scope="row">Id</th>
+         <th>Producto</th>
+         <th>Precio</th>
+         <th>Unidades Vendidas</th>
+         <th>Total de Venta</th>
+     </tr>
+     <tr>
+        <th>1</th>
+        <td>Agua</td>
+        <td>155.55</td>
+        <td>35</td>
+         <td>5444.25</td>
+     </tr>
+     <tr>
+        <th>2</th>
+        <td>Peluca para pelon</td>
+        <td>580</td>
+        <td>2</td>
+        <td>1160</td>
+     </tr>
+     <tr>
+        <th>33</th>
+        <td>Xbox Series X</td>
+        <td>15000</td>
+        <td>102</td>
+        <td>1530000</td>
+     </tr>
+    </table>
+    <div>
+    <button class="btn btn-reporte">Buscar</button>
+    </div>
+</div>
+
+
+
+</form>
+</div>
+
+<form style="justify-content: center; display: flex;">
+    <div class="formato-form2">
+        <div> <!-- Hay un div de mas te la pelas acomodanlo tqm-->
+    <br>
+    <table class="tablapractica">
+     <tr>
+         <th scope="row">Id</th>
+         <th>Foto</th>
+         <th>Producto</th>
+       <th>Unidades Vendidas</th>
+         <th>Provedor</th>
+         <th>Fecha publicacion</th>    
+     </tr>
+     <tr>
+        <th>1</th>
+        <td>Agua</td>
+        <td>155.55</td>
+        <td>35</td>
+        <td>Aguas Jovenes por el Futuro</td>
+        <td>27/07/23</td>
+     </tr>
+    
+    </table>
+   <div>
+    <button class="btn btn-reporte">Buscar</button>
+    </div>
+    </div>
+</div>
+   
+</form>
+<br>
+<footer class="text-white">
+        <div class="text-center p-2" style="background-color: #252323" >
+            <p>Pagina creada por:</p>
+            <p>Edson Eduardo Arguello Tienda & Isaac Espinoza Morales</p>
+            <p>LMAD | UANL</p>
+        </div>
+    </footer>
+   
+ </body>
