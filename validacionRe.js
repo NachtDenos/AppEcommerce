@@ -2,10 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("formRegister");
   
     form.addEventListener("submit", function (event) {
-      // Reiniciar los mensajes de validación
       resetValidationMessages();
-  
-      // Realizar las validaciones
       const emailInput = document.getElementById("emailR");
       const nameuInput = document.getElementById("nameuR");
       const passInput = document.getElementById("passR");
@@ -63,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     function isValidEmail(email) {
-      // Aquí puedes agregar una validación más robusta para direcciones de correo electrónico
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
   
