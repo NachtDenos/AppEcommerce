@@ -161,3 +161,78 @@ display: flex;
   align-items: center;
   height: 70vh;
 }
+
+
+/*Modales*/
+
+.input-modal{
+    padding: 17px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ededed;
+    color: #1b1b1b;
+    outline: none;
+}
+
+select {
+    padding: 17px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ededed;
+    color: #1b1b1b;
+    outline: none;
+}
+
+h2 {
+    color: #1b1b1b;
+    font-size: 35px;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contenido-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-weight: bold;
+}
+
+.imageimput {
+    padding: 17px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ededed;
+    color: #1b1b1b;
+    outline: none;
+}
+
+.fondo-modal {
+    background-color: #F5F1ED;
+}
+
+.btn-modal {
+    font-size: 16px;
+    color: #ffcfff;
+    border: 0;
+    border-radius: 25px;
+    background: #252323;
+    box-shadow: 0 0 10px #A99985;
+    cursor: pointer;
+}
+
+.btn-modal:hover {
+    background: #A99985;
+}
+
+.modal-content {
+    border-radius: 20px;
+}
+
+.modal-header {
+    border-bottom: solid 1px #A99985;
+}
+
+.modal-footer {
+    border-top: solid 1px #A99985;
+}

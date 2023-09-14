@@ -43,7 +43,7 @@
     <br> <br> <br> <br>
     <div class="centrar-metodo">
         <div class="container prod-ventana">
-            <form>
+           
                 <h1>Método de Pago</h1>
                 <div class="container">
                     <div class="row">
@@ -81,13 +81,13 @@
                                 <label for="codeCard">Código de Seguridad</label>
                                 <input type="number" name="codeCard" placeholder="Código" id="codeCard" class="input-form">
     
-                                <input class="btn btn-form" type="submit" value="Realizar compra">
+                                <input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                 
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            
         </div>
     </div>
     
@@ -145,5 +145,55 @@
         </div>
     </div>
     </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content fondo-modal">
+            <form>
+                <div class="modal-header">
+                    <h2 id="exampleModal2Label">Califica lo que compraste</h2>
+                    
+                  </div>
+                  <div class="modal-body">
+                      <div class="row">
+                        <div class="col">
+                          <img src="Imagenes/agua.png" style="max-width: 200px; min-width: 200px;">
+                        </div>
+                        <div class="col">
+                          <h2>Botella de Agua</h2>
+                          <p class="text-center">Categoría: Botellas</p>
+                          <h5 class="text-center">$200.00</h5>
+                        </div>
+                      </div>
+                        <div class="row">
+                         <hr>
+                          <h5>Califica el producto</h5>
+                          <label for="ptProd">Puntuación</label>
+                            <select id="ptProd" name="ptProd">
+                                <option value="" disabled selected>Selecciona una puntuación para el producto</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                          <label for="comentaProd">Comentarios</label>
+                          <input type="text" class="input-modal" name="comentaProd" placeholder="Comentarios" id="comentaProd">
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input class="btn btn-modal" type="submit" value="Confirmar">
+                  </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
