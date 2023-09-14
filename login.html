@@ -8,15 +8,15 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form">
+    <form class="formato-form" id="formLogin">
         <h2 class="titulo">Iniciar Sesión</h2>
         <span class="line"></span>
         <div class="contenido-form">
-            <label for="emailR">Email</label>
-            <input type="email" name="email" placeholder="Email" id="emailR">
+            <label for="emailLog">Email</label>
+            <input type="email" name="emailLog" placeholder="Email" id="emailLog">
             
-            <label for="passR">Contraseña</label>
-            <input type="password" name="passR" placeholder="contraseña" id="passR">
+            <label for="passLog">Contraseña</label>
+            <input type="password" name="passLog" placeholder="contraseña" id="passLog">
             
             <input class="btn" type="submit" value="Iniciar Sesión">
             <label for="rememberUser">
@@ -33,8 +33,9 @@
         </div>
         <div class="registrar-iniciar">
             <span>¿No tienes una cuenta? <a href="#"> Crea una aquí</a></span>      
+            <p class="warnings" id="warnings"></p>
         </div>
     </form>
-
+    <script src="validacion.js"></script>
 </body>
 </html>

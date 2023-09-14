@@ -194,3 +194,11 @@ span a:hover{
         padding: 15px 10px;
     }
 }
+
+.warnings {
+    text-align: center;
+    margin: auto;
+    color: red;
+    font: size 10px !important;
+    margin-bottom: 0 !important;
+}

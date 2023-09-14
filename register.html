@@ -8,18 +8,21 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form-registro">
+    <form class="formato-form-registro" id="formRegister">
         <div class="contenido-form-registro columna-izquierda">
             <h2 style="text-align: center;">Registro</h2>
             <br>
             <label for="emailR">Email</label>
             <input type="email" name="email" placeholder="Email" id="emailR">
+            <p id="warningsEmail" class="warnings alertas"></p>
             
             <label for="nameR">Nombre de Usuario</label>
             <input type="text" name="nameuR" placeholder="Usuario" id="nameuR">
+            <p id="warningsNameU" class="warnings alertas"></p>
 
             <label for="passR">Contraseña</label>
             <input type="password" name="passR" placeholder="Contraseña" id="passR">
+            <p id="warningsPass" class="warnings alertas"></p>
 
             <label for="rolR">Rol de Usuario</label>
             <select id="rolR" name="rolR">
@@ -27,12 +30,15 @@
                 <option value="pub">Publico</option>
                 <option value="priv">Privado</option>
             </select>
+            <p id="warningsRol" class="warnings alertas"></p>
 
             <label for="nameR">Nombre Completo</label>
             <input type="text" name="nameR" placeholder="Nombre" id="nameR">
+            <p id="warningsName" class="warnings alertas"></p>
 
             <label for="dateR">Fecha de Nacimiento</label>
             <input type="date" name="dateR" placeholder="Fecha" id="dateR">
+            <p id="warningsDate" class="warnings alertas"></p>
 
             <label for="genderR">Sexo</label>
             <select id="genderR" name="genderR">
@@ -41,6 +47,7 @@
                 <option value="femenino">Femenino</option>
                 <option value="otro">Otro</option>
             </select>
+            <p id="warningsGender" class="warnings alertas"></p>
 
         </div>
         <div class="contenido-form-registro columna-derecha">
@@ -51,6 +58,7 @@
             <div class="imageinput">
                 <label for="imagen">Selecciona una imagen de perfil:</label>
                 <input type="file" id="imagenR" name="imagenR" accept="image/*">
+                <p id="warningsImagen" class="warnings alertas"></p>
             </div>
 
             <input class="btn" type="submit" value="Registrarse">
@@ -73,6 +81,6 @@
         </div>
     </form>
 
-    <script src="bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="validacionRe.js"></script>
 </body>
 </html>
