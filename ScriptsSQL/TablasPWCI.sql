@@ -31,4 +31,67 @@ Alter table Usuarios
 ADD Constraint FK_RolId
 foreign key (Rol) references Roles(Id_Rol);
 
+create table if not exists Productos
+(
+	Id_Productos int primary key auto_increment,
+    Cant_Existencia int not null,
+    Nombre Varchar(35),
+    Descripcion Varchar(35),
+    Video	blob,
+    Tipo char(1),
+    Precio Decimal(10,2),
+    Valoracion Decimal(2,2),
+    UsuarioAdmin int null,
+    UsuarioVendedor int,
+    Visibilidad int
+);
+
+Alter table Productos
+ADD Constraint FK_AdminPermit
+foreign key (UsuarioAdmin) references Usuarios(Id_Usuario);
+
+
+Alter table Productos
+ADD Constraint FK_VendedorPublicador
+foreign key (UsuarioVendedor) references Usuarios(Id_Usuario);
+
+create table if not exists Listas(
+	Id_Lista int primary key auto_increment,
+    Nombre Varchar(20),
+    Descripcion varchar(100),
+    Id_Usuario int
+);
+
+Alter table Listas
+ADD Constraint FK_UsuarioOwner
+foreign key (Id_Usuario) references Usuarios(Id_Usuario);
+
+
+create table if not exists Img_Lista(
+Id_ImgList int primary key auto_increment,
+Lista int,
+Imagen blob
+);
+
+
+Alter table Img_Lista
+ADD Constraint FK_ListaImg
+foreign key (Lista) references Listas(Id_Lista);
+
+create table if not exists Objetos_Lista(
+Id_Objetos int primary key auto_increment,
+Lista int,
+Producto int
+
+);
+
+Alter table Objetos_Lista
+ADD Constraint FK_Lista
+foreign key (Lista) references Listas(Id_Lista);
+-- Esta va vinculada a productos, luego lo hago
+-- Alter table Objetos_Lista
+-- ADD Constraint FK_Lista
+-- foreign key (Lista) references Listas(Id_Lista);
+
+
 
