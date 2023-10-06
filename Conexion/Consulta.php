@@ -1,6 +1,6 @@
 <?php 
 
-	include_once 'Conexion/ConexionPDP.php';
+	include_once 'ConexionPDP.php';
 
 	class consulta extends DB{
 		function getNames(int $id){
