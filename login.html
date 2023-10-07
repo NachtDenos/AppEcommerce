@@ -8,7 +8,8 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form" id="formLogin">
+
+    <form class="formato-form" id="formLogin" action="Conexion/DemoraAPI.php" method="post">
         <h2 class="titulo">Iniciar Sesión</h2>
         <span class="line"></span>
         <div class="contenido-form">
@@ -22,7 +23,7 @@
             <p id="warningsPass" class="warnings alertas"></p>
 
 
-            <input class="btn" type="submit" value="Iniciar Sesión">
+            <input class="btn" type="submit" value="Iniciar Sesión" name="botonLog">
             <label for="rememberUser">
                 <input type="checkbox" id="rememberUser" name="rememberUser" value="rememberUser">
                 Recordarme
@@ -40,6 +41,7 @@
             <p class="warnings" id="warnings"></p>
         </div>
     </form>
+
     <script src="validacion.js"></script>
 </body>
 </html>

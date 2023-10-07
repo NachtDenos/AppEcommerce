@@ -6,7 +6,7 @@
     private $user;
     private $password;
     private $charset;
-
+    private $conn;
     public function __construct()
     {
       $this->host = '127.0.0.1:3307';
@@ -16,7 +16,7 @@
       $this->charset = 'utf8mb4';
     }
 
-    function connect(){
+    function connectDB(){
 
       try{
         $conn = "mysql:host=".$this->host.";dbname=".$this->db.";charset=".$this->charset;
@@ -29,6 +29,17 @@
         return $pdo;
 
       }catch(PDOException $e){
+        print_r('Error de conexion: ' . $e->getMessage());
+      }
+    }
+
+    function closeConnection()
+    {
+      try
+      {
+        $conn->close();
+      }
+      catch(PDOException $e){
         print_r('Error de conexion: ' . $e->getMessage());
       }
     }
