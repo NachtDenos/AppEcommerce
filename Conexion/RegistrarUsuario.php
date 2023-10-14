@@ -20,18 +20,25 @@ class RegisterAPI extends DB
 		$nombeComple = $_POST['nameR'];
 		$birthDate = $_POST['dateR'];
 		$gender = $_POST['genderR'];
-		//$ProfilePic = $_POST['imagenR'];
-		$imageName = mysqli_real_escape_string($conn, $_FILES["imagenR"]["name"]);
+		$ProfilePic = $_POST['imagenR'];
+		//$imageName = mysqli_real_escape_string($conn, $_FILES["imagenR"]["name"]);
 
-		$imageData = mysqli_real_escape_string($conn ,$_Files_get_contents($_FILES["imageR"]["tmp_name"]));
-		$imageType = mysqli_real_escape_string($conn, $_FILES["imageR"]["type"]);
+		//$imageData = mysqli_real_escape_string($conn , file_get_contents($_FILES[$ProfilePic]["tmp_name"]));
+		//$imageType = mysqli_real_escape_string($conn, $_FILES["image"]["type"]);
 
-		if(substr($imageType, 0 ,5) == "image")
-		{
+	//	if(substr($imageType, 0 ,5) == "image")
+	//	{
 			$sql = "INSERT INTO usuarios (Correo, Usuario, Contraseña, ImagenPerfil, Nombre,
 			Sexo, Visibilidad) VALUES (?, ?, ?, ?, ?, ?,?)";
 			$stmt = $conn->prepare($sql);
-			$stmt->bind_param($Email, $Username, $password, $imageData, $nombeComple, $gender, $visibilidad);
+		//	$stmt->bind_param($Email, $Username, $password, $ProfilePic, $nombeComple, $gender, $visibilidad);
+			$stmt->bindParam(1, $Email, PDO::PARAM_STR);
+    		$stmt->bindParam(2, $Username, PDO::PARAM_STR);
+    		$stmt->bindParam(3, $password, PDO::PARAM_STR);
+   		    $stmt->bindParam(4, $ProfilePic, PDO::PARAM_LOB);
+    		$stmt->bindParam(5, $nombeComple, PDO::PARAM_STR);
+   			$stmt->bindParam(6, $gender, PDO::PARAM_STR);
+   			$stmt->bindParam(7, $visibilidad, PDO::PARAM_STR);
 			if($stmt->execute())
 			{
 				echo "Working Code";
@@ -44,11 +51,11 @@ class RegisterAPI extends DB
 			}
 			
 		
-		}
-		else
-		{
+	//	}
+	//	else
+	//	{
 			echo "Only Images allowed";
-		}
+	//	}
 
 		$conn->closeConnection();
 		
