@@ -38,6 +38,10 @@
       try
       {
         $conn->close();
+        $conn->die();
+        if (isset($_SESSION['usuario'])) {
+                 unset($_SESSION['usuario']); // Esto vaciará la variable de sesión 'usuario'
+              }
       }
       catch(PDOException $e){
         print_r('Error de conexion: ' . $e->getMessage());

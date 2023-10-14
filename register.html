@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form-registro" id="formRegister">
+    <form class="formato-form-registro" id="formRegister" action="Conexion/RegistrarUsuario.php" method="post">
         <div class="contenido-form-registro columna-izquierda">
             <h2 style="text-align: center;">Registro</h2>
             <br>
@@ -27,8 +27,8 @@
             <label for="rolR">Rol de Usuario</label>
             <select id="rolR" name="rolR">
                 <option value="" disabled selected>Selecciona el rol</option>
-                <option value="pub">Publico</option>
-                <option value="priv">Privado</option>
+                <option value="true">Publico</option>
+                <option value="false">Privado</option>
             </select>
             <p id="warningsRol" class="warnings alertas"></p>
 
@@ -43,8 +43,8 @@
             <label for="genderR">Sexo</label>
             <select id="genderR" name="genderR">
                 <option value="" disabled selected>Selecciona el genero</option>
-                <option value="masculino">Masculino</option>
-                <option value="femenino">Femenino</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
                 <option value="otro">Otro</option>
             </select>
             <p id="warningsGender" class="warnings alertas"></p>
@@ -57,11 +57,11 @@
             </div>
             <div class="imageinput">
                 <label for="imagen">Selecciona una imagen de perfil:</label>
-                <input type="file" id="imagenR" name="imagenR" accept="image/*">
+                <input type="file" id="imagenR" name="imagenR" id="imagenR" accept="image/*">
                 <p id="warningsImagen" class="warnings alertas"></p>
             </div>
 
-            <input class="btn" type="submit" value="Registrarse">
+            <input class="btn" type="submit" value="Registrarse" name="RegButton" id="RegButton">
             <div style="text-align: left;">
                 <label for="rememberUser">
                     <input type="checkbox" id="rememberUser" name="rememberUser" value="rememberUser">
