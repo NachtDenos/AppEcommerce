@@ -27,8 +27,8 @@
             <label for="rolR">Rol de Usuario</label>
             <select id="rolR" name="rolR">
                 <option value="" disabled selected>Selecciona el rol</option>
-                <option value="true">Publico</option>
-                <option value="false">Privado</option>
+                <option value="0">Publico</option>
+                <option value="1">Privado</option>
             </select>
             <p id="warningsRol" class="warnings alertas"></p>
 
@@ -58,7 +58,8 @@
             <div class="imageinput">
                 <label for="imagen">Selecciona una imagen de perfil:</label>
                <!-- <input type="file" id="imagen" name="imagenFormR" accept="image/*"> -->
-                <input type="file" id="imagen" name="imagen" accept="image/*">
+               <input type="file" id="imagen" name="imagenForm" accept="image/*">
+               <input type="file" id="imagen" name="imagenForm2" accept="image/*">
                 <p id="warningsImagen" class="warnings alertas"></p>
             </div>
 
