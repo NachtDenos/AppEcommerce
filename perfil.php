@@ -1,3 +1,28 @@
+<?php
+ session_start();
+
+ if(isset($_SESSION['usuario']))
+ {
+  $usuario = $_SESSION['usuario'];
+ }
+ else
+ {
+  header("Location: login.html");
+  exit();
+ }
+
+
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+  // Convierte los datos BLOB a una representación base64
+  $imagenBase64 = base64_encode($imagenBlob);
+} else {
+  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+  $imagenBase64 = base64_encode(file_get_contents('Imagenes/agua.png'));
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,13 +70,14 @@
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="Imagenes/iconBlack.png" alt="img-avatar">
+                  <img src="data:image/jpeg;base64, <?php echo $imagenBlob; ?>" alt="img-avatar">
+                   <!-- <img src="Imagenes/iconBlack.png" alt="img-avatar"> -->
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h1 class="titulo"> <php?  echo $usuario ['Nombre'] ?> </h1>
+                <h1 class="titulo"> <?php echo $usuario['Nombre']; ?> </h1>
                 <div class="row" style="width: 100%;">
                     <div class="col">
                         <p> <img src="Imagenes/carritoBlack.png" width="30px"> Vendedor/Administrador/Comprador</p>

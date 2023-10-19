@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
         showValidationMessage("warningsPass", "La contraseña es incorrecta.");
         isValid = false;
       }
+
+      if (!isValid) {
+        event.preventDefault(); 
+    }
  
     });
   

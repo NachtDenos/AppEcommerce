@@ -64,7 +64,7 @@
 						
 						
 
-						header("Location: ../dashboard.php");
+						header("Location: ../perfil.php");
 						exit();
 				//	}
 					//else
