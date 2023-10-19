@@ -24,12 +24,12 @@ class RegisterAPI extends DB
 		//$imagen = file_get_contents($_FILES["imagenFormR"]["tmp_name"]);
 		//$imagenBlob = base64_encode($imagen);
 
-		if (isset($_FILES["imagenFormR"])) {
+		if (isset($_FILES["imagen"])) {
 			$imagen = file_get_contents($_FILES["imagen"]["tmp_name"]);
 			$imagenBlob = base64_encode($imagen);
 			// Resto del código para procesar la imagen.
 		} else {
-			echo $imagen;
+			//echo $imagen;
 			echo "El campo de imagen no se envió correctamente.";
 		}
 		

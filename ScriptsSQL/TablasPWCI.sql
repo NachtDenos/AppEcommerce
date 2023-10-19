@@ -23,7 +23,7 @@ create table if not exists Usuarios
     Sexo char(1) not null,
     Fecha_Ingreso timestamp,
     Visibilidad boolean,
-    Rol int
+    Rol	int
     
 );
 
