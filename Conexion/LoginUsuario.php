@@ -39,23 +39,23 @@
 				
 
 				$result = $kevin->fetch(PDO::FETCH_ASSOC);
-				echo json_encode($result);
+				//echo json_encode($result);
 	
 				if ($result == true) {
-					//if ($kevin->rowCount() == 1) {
+					//if ($kevin->rowCount() == 1) 		{
 						// code...
 
 						//$_FetchData = $result->fetch(PDO::FETCH_ASSOC);
 
 						$obj = array(
-							"id" => $_FetchData['Id_Usuario'],
-							"Mail" => $_FetchData['Correo'],
-							"Pass" => $_FetchData['Contraseña'],
-							"Img" => $_FetchData['ImagenPerfil'],
-							"Nombre" => $_FetchData['Nombre'],
-							"Sexo" => $_FetchData['Sexo'],
-							"Visibilidad" => $_FetchData['Visibilidad'],
-							"RolUsuario" => $_FetchData['Rol']
+							"id" => $result['Id_Usuario'],
+							"Mail" => $result['Correo'],
+							"Pass" => $result['Contraseña'],
+							"Img" => $result['ImagenPerfil'],
+							"Nombre" => $result['Nombre'],
+							"Sexo" => $result['Sexo'],
+							"Visibilidad" => $result['Visibilidad'],
+							"RolUsuario" => $result['Rol']
 						);
 						
 
@@ -63,7 +63,7 @@
 						
 						
 
-						header("Location: ../index.html");
+						header("Location: ../dashboard.php");
 						exit();
 				//	}
 					//else
@@ -74,10 +74,9 @@
 				
 				}else{
 					$error = "Credenciales Incorrectas";
-					echo $contra;
-					echo $User;
+					
 					header("Location: ../login.html");
-					print_r ($kevin);
+					
 					//header("Location: ../login.html");
 					
 				exit();
