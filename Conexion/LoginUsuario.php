@@ -26,7 +26,7 @@
 				$contra = $_POST['passLog'];
 				
 				$query = "SELECT Id_Usuario,Correo, Contraseña,
-				ImagenPerfil, Nombre,
+				ImagenPerfil, Nombre, Usuario
 				Sexo, Visibilidad, 
 				Rol  FROM usuarios WHERE Correo = :user AND Contraseña = :contra";
 				$kevin = $kevin->prepare($query);
@@ -53,7 +53,8 @@
 							"Pass" => $result['Contraseña'],
 							"Img" => $result['ImagenPerfil'],
 							"Nombre" => $result['Nombre'],
-							"Sexo" => $result['Sexo'],
+							"User" => $result['Usuario'],
+							"Sex" => $result['Sexo'],
 							"Visibilidad" => $result['Visibilidad'],
 							"RolUsuario" => $result['Rol']
 						);

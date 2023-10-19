@@ -1,9 +1,27 @@
+<?php
+  session_start();
+
+ 
+ if(isset($_SESSION['usuario']))
+ {
+  $usuario = $_SESSION['usuario'];
+ }
+ else
+ {
+  header("Location: login.html");
+  exit();
+ }
+
+ 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro | El Negocios</title>
+    <title>Editar | El Negocios</title>
     <link rel="stylesheet" href="forms.css">
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
@@ -13,27 +31,29 @@
             <h2 style="text-align: center;">Editar Perfil</h2>
             <br>
             <label for="emailR">Email</label>
-            <input type="email" name="email" placeholder="Email" id="emailR">
+            <input type="email" name="email" placeholder="<?php echo $usuario['Mail']; ?>" id="emailR"> 
             <p id="warningsEmail" class="warnings alertas"></p>
             
             <label for="nameR">Nombre de Usuario</label>
-            <input type="text" name="nameuR" placeholder="Usuario" id="nameuR">
+            <input type="text" name="nameuR" placeholder="<?php echo $usuario['Sex']; ?>" id="nameuR">
             <p id="warningsNameU" class="warnings alertas"></p>
 
             <label for="passR">Contraseña</label>
-            <input type="password" name="passR" placeholder="Contraseña" id="passR">
+            <input type="password" name="passR" placeholder="<?php echo $usuario['Pass']; ?>" id="passR">
             <p id="warningsPass" class="warnings alertas"></p>
 
             <label for="rolR">Rol de Usuario</label>
             <select id="rolR" name="rolR">
-                <option value="" disabled selected>Selecciona el rol</option>
+                <option value="" disabled selected><?php  
+                echo '<script> console.log($usuario); </script>' ;
+                ?></option>
                 <option value="0">Publico</option>
                 <option value="1">Privado</option>
             </select>
             <p id="warningsRol" class="warnings alertas"></p>
 
             <label for="nameR">Nombre Completo</label>
-            <input type="text" name="nameR" placeholder="Nombre" id="nameR">
+            <input type="text" name="nameR" placeholder="<?php echo $usuario['Nombre']; ?>" id="nameR">
             <p id="warningsName" class="warnings alertas"></p>
 
             <label for="dateR">Fecha de Nacimiento</label>
@@ -42,7 +62,7 @@
 
             <label for="genderR">Sexo</label>
             <select id="genderR" name="genderR">
-                <option value="" disabled selected>Selecciona el genero</option>
+                <option value="" disabled selected>Masculino</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
                 <option value="otro">Otro</option>
@@ -84,5 +104,8 @@
     </form>
 
     <script src="validacionRe.js"></script>
+    <script>
+        console.print(<?php echo $usuario ?>);
+    </script>
 </body>
 </html>
