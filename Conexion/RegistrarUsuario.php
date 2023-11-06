@@ -20,6 +20,7 @@ class RegisterAPI extends DB
 		$nombeComple = $_POST['nameR'];
 		$birthDate = $_POST['dateR'];
 		$gender = $_POST['genderR'];
+		$rolUsuario = $_POST['rolUR'];
 		//$ProfilePic = $_POST['imagenR'];
 		//$imagen = file_get_contents($_FILES["imagenFormR"]["tmp_name"]);
 		//$imagenBlob = base64_encode($imagen);
@@ -43,7 +44,7 @@ class RegisterAPI extends DB
 	//	if(substr($imageType, 0 ,5) == "image")
 	//	{
 			$sql = "INSERT INTO usuarios (Correo, Usuario, Contraseña, ImagenPerfil, Nombre,
-			Sexo, Visibilidad) VALUES (?, ?, ?, ?, ?, ?,?)";
+			Sexo, Visibilidad, Rol) VALUES (?, ?, ?, ?, ?, ?,?,?)";
 			$stmt = $conn->prepare($sql);
 		//	$stmt->bind_param($Email, $Username, $password, $ProfilePic, $nombeComple, $gender, $visibilidad);
 			$stmt->bindValue(1, $Email, PDO::PARAM_STR);
@@ -53,6 +54,7 @@ class RegisterAPI extends DB
     		$stmt->bindValue(5, $nombeComple, PDO::PARAM_STR);
    			$stmt->bindValue(6, $gender, PDO::PARAM_STR);
    			$stmt->bindValue(7, $visibilidad, PDO::PARAM_STR);
+			$stmt->bindValue(8, $rolUsuario, PDO::PARAM_STR);
 			if($stmt->execute())
 			{
 				echo "Working Code";
@@ -75,6 +77,7 @@ class RegisterAPI extends DB
 		
 		
 	}
+}
 }
 
 if ($_POST['RegButton'] > 0) {

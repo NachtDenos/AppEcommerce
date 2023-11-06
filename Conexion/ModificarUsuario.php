@@ -7,7 +7,7 @@ class ModifyAPI extends DB
     function ModificarPerfilUsuario($Nombre, $Usuario, $Contrasena, $Genero, $Visibility, $Correo)
     {
         $conn = $this->connectDB();
-
+/*
         if(isset($_FILES["imagenForm2"]))
         {
             $imagen = file_get_contents($_FILES["imagenForm2"]["tmp_name"]);
@@ -17,28 +17,58 @@ class ModifyAPI extends DB
         {
             echo "El campo de imagen no se envió correctamente.";
         }
-
-        $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, ImagenPerfil = ?, Visibilidad = ? where Correo = ?";
+*/
+        $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, Visibilidad = ? where Correo = ?";
         $stament = $conn->prepare($sql);
         $stament->bindParam(1, $Nombre, PDO::PARAM_STR);
         $stament->bindParam(2, $Contrasena, PDO::PARAM_STR);
         $stament->bindParam(3, $Usuario, PDO::PARAM_STR);
         $stament->bindParam(4, $Genero, PDO::PARAM_STR);
-        $stament->bindParam(5, $imagenBlob, PDO::PARAM_STR);
-        $stament->bindParam(6, $Visibility, PDO::PARAM_STR);
-        $stament->bindParam(7, $Correo, PDO::PARAM_STR);
+        $stament->bindParam(5, $Visibility, PDO::PARAM_STR);
+        $stament->bindParam(6, $Correo, PDO::PARAM_STR);
         if($stament->execute())
         {
             echo "Working Code";
             //echo $stament;
-            header("Location: ../perfil.html");
+            header("Location: ../login.html");
         }
         else
         {
             header("Location: ../ModificarPerfil.php");
             echo "Error al modificar usuario: " . $stmt.error;
         }
+
+
+        $query = "SELECT Id_Usuario,Correo, Contraseña,
+				ImagenPerfil, Nombre, Usuario
+				Sexo, Visibilidad, 
+				Rol  FROM usuarios WHERE Correo = :user ";
+				$conn = $conn->prepare($query);
+				$conn->bindParam(':user', $Correo, PDO::PARAM_STR);
+				$conn->execute();
+				echo ($query);
+
+				
+				
+
+				$result = $conn->fetch(PDO::FETCH_ASSOC);   
+
         
+        $obj = array(
+            "id" => $result['Id_Usuario'],
+            "Mail" => $result['Correo'],
+            "Pass" => $result['Contraseña'],
+            "Img" => $result['ImagenPerfil'],
+            "Nombre" => $result['Nombre'],
+            "User" => $result['Usuario'],
+            "Sex" => $result['Sexo'],
+            "Visibilidad" => $result['Visibilidad'],
+            "RolUsuario" => $result['Rol']
+        );
+
+
+        $_SESSION['usuario'] = $obj;
+						
         
 		$conn->closeConnection();
 

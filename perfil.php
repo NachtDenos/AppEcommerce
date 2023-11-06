@@ -80,10 +80,20 @@ if ($imagenBlob) {
                 <h1 class="titulo"> <?php echo $usuario['Nombre']; ?> </h1>
                 <div class="row" style="width: 100%;">
                     <div class="col">
-                        <p> <img src="Imagenes/carritoBlack.png" width="30px"> Vendedor/Administrador/Comprador</p>
+                        <p> <img src="Imagenes/carritoBlack.png" width="30px"><?php if($usuario['Visibilidad'] == 0)
+                        {
+                          echo "Vendedor";
+                        } 
+                        else
+                         echo "Usuario";?></p>
                     </div>
                     <div class="col">
-                        <p>Publico <img src="Imagenes/publico.png" width="30px"> </p>
+                        <p><?php if($usuario['RolUsuario'] == 0)
+                        {
+                          echo "Publico";
+                        } 
+                        else
+                         echo "Privado";?> <img src="Imagenes/publico.png" width="30px"> </p>
                     </div>
                 </div>
             </div>
