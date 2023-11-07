@@ -12,7 +12,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navColor static">
                 <div class="col alingImage">
-                    <a class="navbar-brand" href="#"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                    <a class="navbar-brand" href="dashboard.php"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
                 <button type="button" class="btn btn-dark"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
@@ -26,17 +26,17 @@
                       <a><img src="../Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Mis Listas</a></li>
-                      <li><a class="dropdown-item" href="#">Vender</a></li>
-                      <li><a class="dropdown-item" href="#">Consulta de Ventas</a></li>
-                      <li><a class="dropdown-item" href="#">Pedidos</a></li>
-                      <li><a class="dropdown-item" href="#">Stock</a></li>
-                      <li><a class="dropdown-item" href="#">Aceptar Productos</a></li>
+                      <li><a class="dropdown-item" href="listas.php">Mis Listas</a></li>
+                      <li><a class="dropdown-item" href="newProducto.php">Ventas</a></li>
+                      <li><a class="dropdown-item" href="ReporteVentas.php">Consulta de Ventas</a></li>
+                      <li><a class="dropdown-item" href="PedidosRealizados.php">Pedidos</a></li>
+                      <li><a class="dropdown-item" href="productosActuales.php">Stock</a></li>
+                      <li><a class="dropdown-item" href="adminCheck.php">Aceptar Productos</a></li>
                     </ul>
                   </div>
                 <div class="col alingFlex">
-                  <button type="button" class="btn btn-dark"><a><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
-                  <a class="navbar-brand" href="#"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <a href="carrito.php"><button type="button" class="btn btn-dark"><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></button></a>  
+                  <a class="navbar-brand" href="perfil.php"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>
@@ -81,12 +81,21 @@
                         
                     </div>
                     <div class="other-register">
-                        <input class="btn btn-compra" type="submit" value="Comprar">
-                        <input class="btn btn-compra" type="submit" value="Añadir al carrito">
-                        <input class="btn btn-compra" type="submit" value="Añadir a lista">
+                        <button class="btn btn-compra" type="submit" formaction="pago.php">
+                            Comprar
+                        </button>
+                        <button class="btn btn-compra" type="submit" formaction="carrito.php">
+                            Añadir al carrito
+                        </button>
+                        <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            Añadir a lista
+                        </button>
                     </div>
+                    <br>
                     <div>
-                        <input class="btn btn-compra" type="submit" value="Cotizar">
+                        <button class="btn btn-compra" type="submit" formaction="mensajes.php">
+                            Cotizar
+                        </button>
                     </div>
                 </form>
             </div>
@@ -99,7 +108,7 @@
                         <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Comentarios</h1>
                     </div>
                     <div class="col text-end">
-                        <button class="btn-coment"> Agregar comentario</button>
+                        <button class="btn-coment" data-bs-toggle="modal" data-bs-target="#exampleModal2"> Agregar comentario</button>
                     </div>
                 </div>
                 <div>
@@ -165,5 +174,57 @@
         </div>
     </footer>
     <script src="../ProcJS/producto.js"></script>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content formato-form">
+          <form class="contenido-form">
+              <div class="modal-header">
+                  <h2 id="exampleModal2Label">Comenta algo...</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                          <input type="text" class="input-form" name="comentaProd" placeholder="Titulo..." id="comentaProd">
+                          <textarea class="input-form" name="comentarioProd" placeholder="Escribe tu comentario..." id="comentarioProd"></textarea>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                   <input class="btn btn-compra" type="submit" value="Confirmar">
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content formato-form">
+          <form class="contenido-form">
+              <div class="modal-header">
+                  <h2 id="exampleModal3Label">Agregar a lista</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="row contenido-form">
+                            <label for="listaSeleccionada">Selecciona una lista:</label>
+                            <select class="input-form" name="listaSeleccionada" id="listaSeleccionada">
+                                <option value="lista1">Lista 1</option>
+                                <option value="lista2">Lista 2</option>
+                                <option value="lista3">Lista 3</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                   <input class="btn btn-compra" type="submit" value="Confirmar">
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

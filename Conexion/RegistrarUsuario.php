@@ -62,7 +62,7 @@ class RegisterAPI extends DB
 			}
 			else
 			{
-				header("Location: ../Register.html");
+				header("Location: ../PantallasPHP/Register.php");
 				echo "Error al registrar usuario: " . $stmt.error;
 			}
 			

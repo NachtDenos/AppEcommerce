@@ -10,7 +10,7 @@
 			 
 			//Pasar el login, a esta parte
 				if (isset($_SESSION['usuario'])) {
-				header("Location: index.html");
+				header("Location: index.php");
 				exit();
 				}
 				session_start();
@@ -64,7 +64,7 @@
 						
 						
 
-						header("Location: ../perfil.php");
+						header("Location: ../PantallasPHP/dashboard.php");
 						exit();
 				//	}
 					//else
@@ -76,7 +76,7 @@
 				}else{
 					$error = "Credenciales Incorrectas";
 					
-					header("Location: ../login.php");
+					header("Location: ../PantallasPHP/login.php");
 					
 					//header("Location: ../login.html");
 					

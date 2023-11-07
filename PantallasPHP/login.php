@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <form class="formato-form" id="formLogin" action="Conexion/LoginUsuario.php" method="post">
+    <form class="formato-form" id="formLogin" action="../Conexion/LoginUsuario.php" method="post">
         <h2 class="titulo">Iniciar Sesión</h2>
         <span class="line"></span>
         <div class="contenido-form">
@@ -37,7 +37,7 @@
             <button type="submit" class="button-red"> <i class="fa-brands fa-facebook" style="color: #ffffff; margin-right: 5px;"></i>Facebook</button>
         </div>
         <div class="registrar-iniciar">
-            <span>¿No tienes una cuenta? <a href="#"> Crea una aquí</a></span>      
+            <span>¿No tienes una cuenta? <a href="register.php"> Crea una aquí</a></span>      
             <p class="warnings" id="warnings"></p>
         </div>
     </form>

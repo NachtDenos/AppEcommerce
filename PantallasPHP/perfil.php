@@ -37,7 +37,7 @@ if ($imagenBlob) {
     <div>
         <nav class="navbar navbar-expand-lg navColor static">
                 <div class="col alingImage">
-                    <a class="navbar-brand" href="#"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                    <a class="navbar-brand" href="dashboard.php"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
                 <button type="button" class="btn btn-dark"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
@@ -51,17 +51,17 @@ if ($imagenBlob) {
                       <a><img src="../Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Mis Listas</a></li>
-                      <li><a class="dropdown-item" href="#">Vender</a></li>
-                      <li><a class="dropdown-item" href="#">Consulta de Ventas</a></li>
-                      <li><a class="dropdown-item" href="#">Pedidos</a></li>
-                      <li><a class="dropdown-item" href="#">Stock</a></li>
-                      <li><a class="dropdown-item" href="#">Aceptar Productos</a></li>
+                      <li><a class="dropdown-item" href="listas.php">Mis Listas</a></li>
+                      <li><a class="dropdown-item" href="newProducto.php">Ventas</a></li>
+                      <li><a class="dropdown-item" href="ReporteVentas.php">Consulta de Ventas</a></li>
+                      <li><a class="dropdown-item" href="PedidosRealizados.php">Pedidos</a></li>
+                      <li><a class="dropdown-item" href="productosActuales.php">Stock</a></li>
+                      <li><a class="dropdown-item" href="adminCheck.php">Aceptar Productos</a></li>
                     </ul>
                   </div>
                 <div class="col alingFlex">
-                  <button type="button" class="btn btn-dark"><a><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
-                  <a class="navbar-brand" href="#"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <a href="carrito.php"><button type="button" class="btn btn-dark"><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></button></a>  
+                  <a class="navbar-brand" href="perfil.php"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>
@@ -77,7 +77,9 @@ if ($imagenBlob) {
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h1 class="titulo"> <?php echo $usuario['Nombre']; ?> </h1>
+                <h1 class="titulo"> <?php echo $usuario['Nombre']; ?>
+                  <a class="navbar-brand" href="ModificarPerfil.php"><img src="../Imagenes/Edit.png" alt="logo" width="25px" class="rounded-circle"></a>
+                </h1>
                 <div class="row" style="width: 100%;">
                     <div class="col">
                         <p> <img src="../Imagenes/carritoBlack.png" width="30px"><?php if($usuario['Visibilidad'] == 0)
@@ -106,7 +108,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -117,7 +119,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -128,7 +130,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -139,7 +141,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -150,7 +152,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -161,7 +163,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -172,7 +174,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -183,7 +185,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>
@@ -194,7 +196,7 @@ if ($imagenBlob) {
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
-                      <a href="#" class="product-name">
+                      <a href="producto.php" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
                         <p class="card-text">$200.00</p>
                       </a>

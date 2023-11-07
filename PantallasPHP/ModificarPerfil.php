@@ -84,23 +84,7 @@
             </div>
            
 
-            <input class="btn" type="submit" value="Registrarse" name="RegButton" id="RegButton">
-            <div style="text-align: left;">
-                <label for="rememberUser">
-                    <input type="checkbox" id="rememberUser" name="rememberUser" value="rememberUser">
-                    Recordarme
-                </label>
-            </div>
-            <div class="registrar-iniciar">
-                <span>Registrate con...</span>  
-            </div>
-            <div class="other-register">
-                <button type="submit" class="button-red"><i class="fa-brands fa-google" style="color: #ffffff; margin-right: 5px;"></i> Google</button>
-                <button type="submit" class="button-red"> <i class="fa-brands fa-facebook" style="color: #ffffff; margin-right: 5px;"></i>Facebook</button>
-            </div>
-            <div class="registrar-iniciar">
-                <span>¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a></span>      
-            </div>
+            <input class="btn" type="submit" value="Editar" name="RegButton" id="RegButton">
         </div>
     </form>
 

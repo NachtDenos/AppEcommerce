@@ -90,7 +90,7 @@ class ModifyAPI extends DB
         {
             echo "Working Code";
             //echo $stament;
-            header("Location: ../perfil.html");
+            header("Location: ../perfil.php");
         }
         else
         {

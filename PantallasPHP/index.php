@@ -17,8 +17,8 @@
                   </div>
                   
                   <div class="col alingFlex">
-                    <button type="button" class="btn btn-dark">Registrarse</button>
-                    <button type="button" class="btn btn-dark">Iniciar Sesión</button>
+                    <a href="register.php"><button type="button" class="btn btn-dark">Registrarse</button></a>
+                    <a href="login.php"><button type="button" class="btn btn-dark">Iniciar Sesión</button></a>
                   </div>
           </nav>
         </div>
