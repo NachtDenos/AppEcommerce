@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | El Negocios</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="bootstrap-5.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Estilos/index.css">
+    <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.min.css">
 </head>
 
   <body class="colorBody slideBarScroll">
@@ -13,7 +13,7 @@
           <nav class="navbar navbar-expand-lg navColor">
               
                   <div class="col alingImage">
-                      <a class="navbar-brand" href="#"><img src="Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                      <a class="navbar-brand" href="#"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                   </div>
                   
                   <div class="col alingFlex">
@@ -35,7 +35,7 @@
             </div>
             <div class="row">
               <button type="button" class="mybutton" data-bs-container="body">
-                <img src="Imagenes/ElNegociosLogo.png" alt="logo" width="460px"></a>
+                <img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="460px"></a>
             </div>
           </div>
         </div>

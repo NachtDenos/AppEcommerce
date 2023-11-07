@@ -58,7 +58,7 @@ class RegisterAPI extends DB
 			if($stmt->execute())
 			{
 				echo "Working Code";
-				header("Location: ../login.html");
+				header("Location: ../login.php");
 			}
 			else
 			{

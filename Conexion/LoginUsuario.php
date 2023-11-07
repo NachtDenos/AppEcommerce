@@ -76,7 +76,7 @@
 				}else{
 					$error = "Credenciales Incorrectas";
 					
-					header("Location: ../login.html");
+					header("Location: ../login.php");
 					
 					//header("Location: ../login.html");
 					

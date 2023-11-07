@@ -7,7 +7,7 @@
  				  if (isset($_SESSION['usuario'])) {
                  unset($_SESSION['usuario']); // Esto vaciará la variable de sesión 'usuario'
               }
-              header("Location: ../Login.html");
+              header("Location: ../Login.php");
               exit();
 		}
 	}

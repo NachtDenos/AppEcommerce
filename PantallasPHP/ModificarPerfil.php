@@ -8,7 +8,7 @@
  }
  else
  {
-  header("Location: login.html");
+  header("Location: login.php");
   exit();
  }
 
@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar | El Negocios</title>
-    <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="../Estilos/forms.css">
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -80,7 +80,7 @@
         <div class="contenido-form-registro columna-derecha">
             
             <div>
-                <img src="Imagenes/iconBlack.png" class="img-icon">
+                <img src="../Imagenes/iconBlack.png" class="img-icon">
             </div>
            
 
@@ -104,7 +104,7 @@
         </div>
     </form>
 
-    <script src="validacionRe.js"></script>
+    <script src="../ProcJS/validacionRe.js"></script>
     <script>
         console.print(<?php echo $usuario ?>);
     </script>

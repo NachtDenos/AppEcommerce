@@ -6,24 +6,24 @@
     <title>Vender | El Negocios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="newProducto.css">
+    <link rel="stylesheet" href="../Estilos/newProducto.css">
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-lg navColor static">
                 <div class="col alingImage">
-                    <a class="navbar-brand" href="#"><img src="Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                    <a class="navbar-brand" href="#"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
-                <button type="button" class="btn btn-dark"><a><img src="Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                <button type="button" class="btn btn-dark"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn  btn-dark" type="submit"><a><img src="Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                        <button class="btn  btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                       </form>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <a><img src="Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
+                      <a><img src="../Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
                     </button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Mis Listas</a></li>
@@ -35,8 +35,8 @@
                     </ul>
                   </div>
                 <div class="col alingFlex">
-                  <button type="button" class="btn btn-dark"><a><img src="Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
-                  <a class="navbar-brand" href="#"><img src="Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <button type="button" class="btn btn-dark"><a><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
+                  <a class="navbar-brand" href="#"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>

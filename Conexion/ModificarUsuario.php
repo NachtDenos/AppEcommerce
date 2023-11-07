@@ -30,7 +30,7 @@ class ModifyAPI extends DB
         {
             echo "Working Code";
             //echo $stament;
-            header("Location: ../login.html");
+            header("Location: ../login.php");
         }
         else
         {

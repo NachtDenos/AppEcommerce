@@ -6,24 +6,24 @@
     <title>Compra Producto | El Negocios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="producto.css">
+    <link rel="stylesheet" href="../Estilos/producto.css">
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-lg navColor static">
                 <div class="col alingImage">
-                    <a class="navbar-brand" href="#"><img src="Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                    <a class="navbar-brand" href="#"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
-                <button type="button" class="btn btn-dark"><a><img src="Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                <button type="button" class="btn btn-dark"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn  btn-dark" type="submit"><a><img src="Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                        <button class="btn  btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                       </form>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <a><img src="Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
+                      <a><img src="../Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
                     </button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Mis Listas</a></li>
@@ -35,8 +35,8 @@
                     </ul>
                   </div>
                 <div class="col alingFlex">
-                  <button type="button" class="btn btn-dark"><a><img src="Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
-                  <a class="navbar-brand" href="#"><img src="Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <button type="button" class="btn btn-dark"><a><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
+                  <a class="navbar-brand" href="#"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>
@@ -46,13 +46,13 @@
         <div class="row">
             <div class="col fondo-imagen">
                 <div class="img-cont">
-                    <img src="Imagenes/agua.png" class="main_img">
+                    <img src="../Imagenes/agua.png" class="main_img">
                 </div>
                 <div class="thumbnail-cont">
-                    <img src="Imagenes/agua.png" class="thumbnail active">
-                    <img src="Imagenes/agua2.png" class="thumbnail">
-                    <img src="Imagenes/agua3.png" class="thumbnail">
-                    <img src="Imagenes/agua4.png" class="thumbnail">
+                    <img src="../Imagenes/agua.png" class="thumbnail active">
+                    <img src="../Imagenes/agua2.png" class="thumbnail">
+                    <img src="../Imagenes/agua3.png" class="thumbnail">
+                    <img src="../Imagenes/agua4.png" class="thumbnail">
                 </div>
             </div>
             <div class="col" >
@@ -96,7 +96,7 @@
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <h1><a><img src="Imagenes/carritoBlack.png" width="45px"></a>Comentarios</h1>
+                        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Comentarios</h1>
                     </div>
                     <div class="col text-end">
                         <button class="btn-coment"> Agregar comentario</button>
@@ -104,7 +104,7 @@
                 </div>
                 <div>
                     <div>
-                        <h6><a><img src="Imagenes/iconBlack.png" width="45px" class="img-coment"></a> Edson Eduardo</h6>
+                        <h6><a><img src="../Imagenes/iconBlack.png" width="45px" class="img-coment"></a> Edson Eduardo</h6>
                     </div>
                     <div class="conten-coment">
                         <div>
@@ -121,7 +121,7 @@
                 <hr>
                 <div>
                     <div>
-                        <h6><a><img src="Imagenes/iconBlack.png" width="45px" class="img-coment"></a> Isaac Espinoza</h6>
+                        <h6><a><img src="../Imagenes/iconBlack.png" width="45px" class="img-coment"></a> Isaac Espinoza</h6>
                     </div>
                     <div class="conten-coment">
                         <div>
@@ -138,7 +138,7 @@
                 <hr>
                 <div>
                     <div>
-                        <h6><a><img src="Imagenes/iconBlack.png" width="45px" class="img-coment"></a> Aylin Galindo</h6>
+                        <h6><a><img src="../Imagenes/iconBlack.png" width="45px" class="img-coment"></a> Aylin Galindo</h6>
                     </div>
                     <div class="conten-coment">
                         <div>
@@ -164,6 +164,6 @@
             <p>LMAD | UANL</p>
         </div>
     </footer>
-    <script src="producto.js"></script>
+    <script src="../ProcJS/producto.js"></script>
 </body>
 </html>

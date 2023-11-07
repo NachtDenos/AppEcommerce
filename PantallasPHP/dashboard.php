@@ -7,7 +7,7 @@
  }
  else
  {
-  header("Location: login.html");
+  header("Location: login.php");
   exit();
  }
 
@@ -18,7 +18,7 @@ if ($imagenBlob) {
   $imagenBase64 = base64_encode($imagenBlob);
 } else {
   // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
-  $imagenBase64 = base64_encode(file_get_contents('Imagenes/agua.png'));
+  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
 }
 
 ?>
@@ -31,24 +31,24 @@ if ($imagenBlob) {
     <title>Pagina Principal | El Negocios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../Estilos/dashboard.css">
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-lg navColor static">
                 <div class="col alingImage">
-                    <a class="navbar-brand" href="#"><img src="Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
+                    <a class="navbar-brand" href="#"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn  btn-dark" type="submit"><a><img src="Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                        <button class="btn  btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                       </form>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <a><img src="Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
+                      <a><img src="../Imagenes/menu.png" alt="logo" width="23px" class="rounded-circle"></a>
                     </button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Mis Listas</a></li>
@@ -60,20 +60,20 @@ if ($imagenBlob) {
                     </ul>
                   </div>
                 <div class="col alingFlex">
-                  <button type="button" class="btn btn-dark"><a><img src="Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
+                  <button type="button" class="btn btn-dark"><a><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></a></button>  
                   <a class="navbar-brand" href="#"><img src=" data:image/jpeg;base64,  <?php echo $imagenBase64; ?>" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>
     <br> <br> <br> <br>
     <div>
-        <h1><a><img src="Imagenes/carritoBlack.png" width="45px"></a>Recomendados</h1>
+        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Recomendados</h1>
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -86,7 +86,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -99,7 +99,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -112,7 +112,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -125,7 +125,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -138,7 +138,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -151,7 +151,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -164,7 +164,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -177,7 +177,7 @@ if ($imagenBlob) {
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -190,13 +190,13 @@ if ($imagenBlob) {
     </div>
     <hr>
     <div>
-        <h1><a><img src="Imagenes/carritoBlack.png" width="45px"></a>Populares</h1>
+        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Populares</h1>
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -209,13 +209,13 @@ if ($imagenBlob) {
     </div>
     <hr>
     <div>
-        <h1><a><img src="Imagenes/carritoBlack.png" width="45px"></a>Más baratos</h1>
+        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Más baratos</h1>
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
@@ -228,13 +228,13 @@ if ($imagenBlob) {
     </div>
     <hr>
     <div>
-        <h1><a><img src="Imagenes/carritoBlack.png" width="45px"></a>Antes vistos</h1>
+        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Antes vistos</h1>
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
                     <div class="card-body">
                       <a href="#" class="product-name">
                         <h5 class="card-title">Botella de agua.</h5>
