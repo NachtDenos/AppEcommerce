@@ -26,7 +26,7 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form-registro" id="formRegister" action="Conexion/ModificarUsuario.php" method="post" enctype="multipart/form-data">
+    <form class="formato-form-registro" id="formRegister" action="../Conexion/ModificarUsuario.php" method="post" enctype="multipart/form-data">
         <div class="contenido-form-registro columna-izquierda">
             <h2 style="text-align: center;">Editar Perfil</h2>
             <br>
@@ -84,7 +84,7 @@
             </div>
            
 
-            <input class="btn" type="submit" value="Editar" name="RegButton" id="RegButton">
+            <input class="btn" type="submit" value="Editar" name="ModButton" id="RegButton">
         </div>
     </form>
 

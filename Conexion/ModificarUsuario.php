@@ -1,10 +1,24 @@
 <?php
+  session_start();
+
+ 
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+}
+else
+{
+ header("Location: ../PantallasPHP/login.php");
+ exit();
+}
+
 
 include_once 'ConexionPDP.php';
+include_once 'LoginUsuario.php';
 
 class ModifyAPI extends DB
 {
-    function ModificarPerfilUsuario($Nombre, $Usuario, $Contrasena, $Genero, $Visibility, $Correo)
+    function ModificarPerfilUsuario($Nombre, $Usuario, $Contrasena, $Genero, $Visibility, $Correo, $CorreoActual)
     {
         $conn = $this->connectDB();
 /*
@@ -18,58 +32,35 @@ class ModifyAPI extends DB
             echo "El campo de imagen no se envió correctamente.";
         }
 */
-        $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, Visibilidad = ? where Correo = ?";
+
+        //  $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, Visibilidad = ? where Correo = ?";
+        $sql = "Call UpdateUsuarios(:UsuarioNuevo, :NombreNuevo, :ContraNueva, :SexoNuevo, :Visibilidad, :CorreoNuevo, :CorreoActual);";
         $stament = $conn->prepare($sql);
-        $stament->bindParam(1, $Nombre, PDO::PARAM_STR);
-        $stament->bindParam(2, $Contrasena, PDO::PARAM_STR);
-        $stament->bindParam(3, $Usuario, PDO::PARAM_STR);
-        $stament->bindParam(4, $Genero, PDO::PARAM_STR);
-        $stament->bindParam(5, $Visibility, PDO::PARAM_STR);
-        $stament->bindParam(6, $Correo, PDO::PARAM_STR);
+        //Se ejecutan los parametros en el orden establecido en la DB
+        $stament->bindParam(':UsuarioNuevo', $Usuario, PDO::PARAM_STR);
+        $stament->bindParam(':NombreNuevo', $Nombre, PDO::PARAM_STR);
+        $stament->bindParam(':ContraNueva', $Contrasena, PDO::PARAM_STR);
+        $stament->bindParam(':SexoNuevo', $Genero, PDO::PARAM_STR);
+        $stament->bindParam(':Visibilidad', $Visibility, PDO::PARAM_STR);
+        $stament->bindParam(':CorreoNuevo', $Correo, PDO::PARAM_STR);
+        $stament->bindParam(':CorreoActual', $CorreoActual, PDO::PARAM_STR);
+        //$stament->bindParam(':RolNuevo', $Rol, PDO::PARAM_STR);
         if($stament->execute())
         {
             echo "Working Code";
             //echo $stament;
-            header("Location: ../login.php");
+           
+            header("Location: ../PantallasPHP/perfil.php");
+            return true;
         }
         else
         {
-            header("Location: ../ModificarPerfil.php");
+            
+            header("Location: ../PantallasPHP/ModificarPerfil.php");
             echo "Error al modificar usuario: " . $stmt.error;
+            return false;
         }
 
-
-        $query = "SELECT Id_Usuario,Correo, Contraseña,
-				ImagenPerfil, Nombre, Usuario
-				Sexo, Visibilidad, 
-				Rol  FROM usuarios WHERE Correo = :user ";
-				$conn = $conn->prepare($query);
-				$conn->bindParam(':user', $Correo, PDO::PARAM_STR);
-				$conn->execute();
-				echo ($query);
-
-				
-				
-
-				$result = $conn->fetch(PDO::FETCH_ASSOC);   
-
-        
-        $obj = array(
-            "id" => $result['Id_Usuario'],
-            "Mail" => $result['Correo'],
-            "Pass" => $result['Contraseña'],
-            "Img" => $result['ImagenPerfil'],
-            "Nombre" => $result['Nombre'],
-            "User" => $result['Usuario'],
-            "Sex" => $result['Sexo'],
-            "Visibilidad" => $result['Visibilidad'],
-            "RolUsuario" => $result['Rol']
-        );
-
-
-        $_SESSION['usuario'] = $obj;
-						
-        
 		$conn->closeConnection();
 
 
@@ -114,10 +105,16 @@ $nombeComple = $_POST['nameR'];
 //$birthDate = $_POST['dateR'];
 $gender = $_POST['genderR'];
 //$pic = $_POST['imagen'];
+$correoActual = $usuario['Mail'];
 
-if ($_POST['RegButton'] > 0) {
+if ($_POST['ModButton'] > 0) {
 	$obj = new ModifyAPI();
-    $obj->ModificarPerfilUsuario($nombeComple, $Username, $password, $gender, $visibilidad, $Email);
+    $Obj2 = new DemoraAPI();
+    $Success;
+    $Success = $obj->ModificarPerfilUsuario($nombeComple, $Username, $password, $gender, $visibilidad, $Email, $correoActual);
+    if($Success){
+        $Obj2->loginUsuarioParam($Email, $password);
+    }
 	//$obj->ModificarUser($nombeComple, $Username, $password, $gender, $Email);
 	// code...
 }

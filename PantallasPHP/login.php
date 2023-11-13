@@ -46,3 +46,12 @@
     <script src="validacion.js"></script>
 </body>
 </html>
+
+<?php 
+if ($_POST['botonLog'] > 0) {
+    $obj = new DemoraAPI();
+    $obj->login();
+    // code...
+}
+
+?>
