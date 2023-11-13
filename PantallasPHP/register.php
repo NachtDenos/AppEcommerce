@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form-registro" id="formRegister" action="Conexion/RegistrarUsuario.php" method="post" enctype="multipart/form-data">
+    <form class="formato-form-registro" id="formRegister" action="../Conexion/RegistrarUsuario.php" method="post" enctype="multipart/form-data">
         <div class="contenido-form-registro columna-izquierda">
             <h2 style="text-align: center;">Registro</h2>
             <br>
@@ -27,8 +27,8 @@
             <label for="rolR">Rol de Usuario</label>
             <select id="rolR" name="rolR">
                 <option value="" disabled selected>Selecciona el rol</option>
-                <option value="true">Publico</option>
-                <option value="false">Privado</option>
+                <option value="0">Publico</option>
+                <option value="1">Privado</option>
             </select>
             <p id="warningsRol" class="warnings alertas"></p>
 

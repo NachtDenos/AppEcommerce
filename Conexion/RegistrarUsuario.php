@@ -43,26 +43,29 @@ class RegisterAPI extends DB
 
 	//	if(substr($imageType, 0 ,5) == "image")
 	//	{
-			$sql = "INSERT INTO usuarios (Correo, Usuario, Contraseña, ImagenPerfil, Nombre,
+			/*$sql = "INSERT INTO usuarios (Correo, Usuario, Contraseña, ImagenPerfil, Nombre,
 			Sexo, Visibilidad, Rol) VALUES (?, ?, ?, ?, ?, ?,?,?)";
+			*/
+
+			$sql = "Call RegistroUsuarios(:CorreoP, :UsuarioP, :ContrasenaP, :ImagenUsuario, :NombreP,:SexoP, :VisibilidadP, :RolP); ";
 			$stmt = $conn->prepare($sql);
 		//	$stmt->bind_param($Email, $Username, $password, $ProfilePic, $nombeComple, $gender, $visibilidad);
-			$stmt->bindValue(1, $Email, PDO::PARAM_STR);
-    		$stmt->bindValue(2, $Username, PDO::PARAM_STR);
-    		$stmt->bindValue(3, $password, PDO::PARAM_STR);
-   		    $stmt->bindValue(4, $imagenBlob, PDO::PARAM_LOB);
-    		$stmt->bindValue(5, $nombeComple, PDO::PARAM_STR);
-   			$stmt->bindValue(6, $gender, PDO::PARAM_STR);
-   			$stmt->bindValue(7, $visibilidad, PDO::PARAM_STR);
-			$stmt->bindValue(8, $rolUsuario, PDO::PARAM_STR);
+			$stmt->bindParam(':CorreoP', $Email, PDO::PARAM_STR);
+    		$stmt->bindParam(':UsuarioP', $Username, PDO::PARAM_STR);
+    		$stmt->bindParam(':ContrasenaP', $password, PDO::PARAM_STR);
+   		    $stmt->bindParam(':ImagenUsuario', $imagenBlob, PDO::PARAM_LOB);
+    		$stmt->bindParam(':NombreP', $nombeComple, PDO::PARAM_STR);
+   			$stmt->bindParam(':SexoP', $gender, PDO::PARAM_STR);
+   			$stmt->bindParam(':VisibilidadP', $visibilidad, PDO::PARAM_STR);
+			$stmt->bindParam(':RolP', $rolUsuario, PDO::PARAM_STR);
 			if($stmt->execute())
 			{
 				echo "Working Code";
-				header("Location: ../login.php");
+				header("Location: ../PantallasPHP/login.php");
 			}
 			else
 			{
-				header("Location: ../PantallasPHP/Register.php");
+				header("Location: ../PantallasPHP/register.php");
 				echo "Error al registrar usuario: " . $stmt.error;
 			}
 			

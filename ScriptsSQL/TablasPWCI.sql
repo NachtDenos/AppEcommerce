@@ -10,7 +10,6 @@ create table if not exists Roles
     
 );
 
-
 create table if not exists Usuarios
 (
 	Id_Usuario int auto_increment primary key,
@@ -23,7 +22,7 @@ create table if not exists Usuarios
     ApellidoM varchar(50) not null,
     Sexo char(1) not null,
     Fecha_Ingreso timestamp,
-    Visibilidad boolean,
+    Visibilidad int,
     Rol	int
     
 );
