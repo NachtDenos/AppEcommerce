@@ -167,7 +167,14 @@
 	   }
 }
 
-
+if ($_POST['botonLog'] > 0) {
+    $obj = new DemoraAPI();
+    $obj->login();
+    // code...
+}else
+{
+    $_POST['botonLog'] = "";
+}
 
 	
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,11 +48,6 @@
 </body>
 </html>
 
-<?php 
-if ($_POST['botonLog'] > 0) {
-    $obj = new DemoraAPI();
-    $obj->login();
-    // code...
-}
+<?php
 
 ?>
