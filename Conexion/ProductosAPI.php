@@ -170,6 +170,22 @@ class ProductosAPI extends DB
             $conn->closeConnection();
     }
 
+    function ObtenerProductosAprovacion()
+    {
+        $conn = $this->connectDB();
+        $sql = "Call ObtenerProductos();";
+        $stmt = $conn->prepare($sql);
+
+    
+         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Convertir a JSON
+         $jsonResultados = json_encode($resultados);
+        
+            // Imprimir JSON
+         echo $jsonResultados;
+        
+    }
 
 }
 

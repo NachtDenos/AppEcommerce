@@ -1,3 +1,29 @@
+<?php
+ include_once '../Conexion/CategoriasAPI.php'; //Aqui ya inicio la sesion
+ if(isset($_SESSION['usuario']))
+ {
+  $usuario = $_SESSION['usuario'];
+
+  $rolUser = $usuario['RolUsuario'];
+
+  if($rolUser != 2)
+  {
+    header("Location: ../PantallasPHP/login.php");
+  }
+
+ }
+ else
+ {
+  header("Location: ../PantallasPHP/login.php");
+  exit();
+ }
+ 
+ 
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
