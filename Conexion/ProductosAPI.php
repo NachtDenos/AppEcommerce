@@ -112,7 +112,8 @@ if(isset($_GET['action']))
             $CorreoU = $usuario['Mail'];
             $Obj = new ProductosAPI();
             echo"Entro";
-            $Obj->AltaProductos($NombreProducto, $DesProducto, 0, $PrecioProd, $ExistenciaProd, $CateProd, $CorreoU, $TipoProd);
+            echo($ExistenciaProd);
+            $Obj->AltaProductos($NombreProducto, $DesProducto, $ExistenciaProd, $PrecioProd, 0, $CateProd, $CorreoU, $TipoProd);
             //CrearProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
             break;
     
