@@ -16,7 +16,45 @@ else
 include_once 'ConexionPDP.php';
 //Ya tengo el SP para crear categorias.
 class CategoriasAPI extends DB
-{
+{   
+    function ObtenerCategorias()
+    {
+        $kevin = $this->connectDB();
+
+
+        $query = "Call GetCategorias();";
+        $kevin = $kevin-prepare($query);
+        $kevin->execute();
+
+        $result = $kevin->fetch(PDO::FETCH_ASSOC);
+
+
+        if ($result == true) {
+           
+                $obj = array(
+                    "IdCat" => $result['categoryID'],
+                    "Nombre Categoria" => $result['name']
+                );
+                
+
+                $_SESSION['Categoria'] = $obj;
+                
+                
+
+                header("Location: ../PantallasPHP/newProducto.php");
+                exit(); 
+        }else{
+            $error = "Hubo un problema";
+            
+            header("Location: ../PantallasPHP/CrearCategoria.php");
+            
+        exit();
+            
+        }
+        return $query;
+    }
+
+
     function CrearCategorias($Nombre, $Descripcion, $Correo)
     {
         
@@ -32,17 +70,18 @@ class CategoriasAPI extends DB
         {
             echo "Working Code";
 
-            header("Location: ../PantallasPHP/newProducto.php");
+            //header("Location: ../PantallasPHP/newProducto.php");
 
         }
         else
         {
-            header("Location: ../PantallasPHP/newProducto.php");
+           // header("Location: ../PantallasPHP/newProducto.php");
         }
         $conn->closeConnection();
     }
 }
 
+/*
 $NombreCategoria = $_POST['CategoriaName'];
 $DesCategoria = $_POST['CatDescription'];
 $CorreoU = $usuario['Mail'];
@@ -55,5 +94,5 @@ $CorreoU = $usuario['Mail'];
         // code...
     }
 
-
+*/
 ?>

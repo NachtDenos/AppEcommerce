@@ -1,17 +1,15 @@
 <?php
-  session_start();
-
- 
+ include_once '../Conexion/CategoriasAPI.php'; //Aqui ya inicio la sesion
  if(isset($_SESSION['usuario']))
  {
   $usuario = $_SESSION['usuario'];
  }
  else
  {
-  header("Location: login.php");
+  header("Location: ../PantallasPHP/login.php");
   exit();
  }
-
+ 
  
 ?>
 
@@ -51,6 +49,22 @@
 </body>
 </html>
 <?php 
+
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CrearCatButton'])) {
+    if ($_POST['CrearCatButton'] == 'Post') {
+        // Tu lógica de procesamiento aquí
+        //$NombreCategoria = $_POST['CategoriaName'];
+        //$DesCategoria = $_POST['CatDescription'];
+        $NombreCategoria = $_POST['CategoriaName'];
+
+        $DesCategoria = $_POST['CatDescription'];
+        $CorreoU = $usuario['Mail'];
+        $obj = new CategoriasAPI();
+        $obj->CrearCategorias($NombreCategoria, $DesCategoria);
+    }
+}
 /*
 $NombreCategoria = $_POST['CategoriaName'];
 $DesCategoria = $_POST['CatDescription'];
