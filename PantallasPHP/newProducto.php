@@ -1,5 +1,5 @@
 <?php 
-
+/*
 session_start();
 
  
@@ -12,6 +12,12 @@ else
  header("Location: ../PantallasPHP/login.php");
  exit();
 }
+*/
+include_once '../Conexion/CategoriasAPI.php';
+
+$CatObj = new CategoriasAPI();
+
+
 
 ?>
 
@@ -60,7 +66,7 @@ else
     </div>
     <br> <br> <br> <br> <br>
     <div class="container prod-ventana">
-        <form>
+        <form id="FormNewProducto" action="../Conexion/ProductosAPI.php?action=insert" method="post" enctype="multipart/form-data">
             <h1>Vender/Cotizar Producto</h1>
             <div class="container">
                 <div class="row">
@@ -111,11 +117,19 @@ else
 
                             <label for="cateProd">Categoría</label>
                             <select id="cateProd" name="cateProd" class="input-form">
-                                <option value="" disabled selected>Selecciona la categoría</option>
+                                <option value="0" disabled selected>Selecciona la categoría</option>
+                                <?php
+                                $categorias = $CatObj->ObtenerCategorias();
+                                 foreach($categorias as $CatObj){
+                                    echo "<option value=" . $CatObj['categoryID'] . " name='cat'>" . $CatObj['name'] . "</option>";
+                                 }
+                               ?> 
+                                <!--
                                 <option value="pub">Nueva Categoría</option>
-                                <option value="priv">Botellas</option>
+                                <option value="priv">Botellas</option>  
                                 <option value="priv">Juegos</option>
                                 <option value="priv">Cocina</option>
+                                -->
                             </select>
                             <!--
                             <label for="nameCatProd">Nombre de la nueva categoría</label>
@@ -124,7 +138,7 @@ else
                             <label for="newCatProd">Descripción de la nueva categoría</label>
                             <input type="text" name="newCatProd" placeholder="Descripción de la categoría" id="newCatProd" class="input-form">
 -->                         <a href="CrearCategoria.php"><button type="button" class="btn btn-form">Crear Categorias</button></a>
-                            <input class="btn btn-form" type="submit" value="Confirmar Producto">
+                            <input class="btn btn-form" type="submit" name="CrearProdButton" value="Confirmar Producto">
                         </div>
                     </div>
                 </div>

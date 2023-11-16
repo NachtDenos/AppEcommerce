@@ -21,41 +21,20 @@ class CategoriasAPI extends DB
 {   
     //El problema si marca error de caracteres es la funcion public construct o el constructor por default
     function ObtenerCategorias()
-    {
-        $kevin = $this->connectDB();
+{
+    $kevin = $this->connectDB();
+    $query = "Call GetCategorias();";
+    $stmt = $kevin->prepare($query);
+    $stmt->execute();
 
+    $categorias = array(); // Crear un array para almacenar las categorías
 
-        $query = "Call GetCategorias();";
-        $kevin = $kevin-prepare($query);
-        $kevin->execute();
-
-        $result = $kevin->fetch(PDO::FETCH_ASSOC);
-
-
-        if ($result == true) {
-           
-                $obj = array(
-                    "IdCat" => $result['categoryID'],
-                    "Nombre Categoria" => $result['name']
-                );
-                
-
-                $_SESSION['Categoria'] = $obj;
-                
-                
-
-                header("Location: ../PantallasPHP/newProducto.php");
-                exit(); 
-        }else{
-            $error = "Hubo un problema";
-            
-            header("Location: ../PantallasPHP/CrearCategoria.php");
-            
-        exit();
-            
-        }
-        return $query;
+    while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $categorias[] = $result; // Agregar cada categoría al array
     }
+
+    return $categorias;
+}
 
 
     function CrearCategorias($Nombre, $Descripcion, $Correo)

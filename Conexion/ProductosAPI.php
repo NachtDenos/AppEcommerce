@@ -16,7 +16,7 @@ include_once 'ConexionPDP.php';
 
 class ProductosAPI extends DB
 {
-    function CrearProductos($NombreProd, $DescProd, $CantExistencia, $VideoProducto, $PrecioProd, $Visibilidad, $Foto1Prod, $Foto2Prod, $Foto3Prod, $Categoria, $Correo, $TipoProducto)
+    function CrearProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
     {
         $conn = $this->connectDB();
 
@@ -69,19 +69,51 @@ class ProductosAPI extends DB
         $stmt->bindParam(':NombreProducto', $NombreProd, PDO::PARAM_STR);
         $stmt->bindParam(':DescripcionProducto', $DescProd, PDO::PARAM_STR);
         $stmt->bindParam(':CantidadProducto', $CantExistencia, PDO::PARAM_STR);
-        $stmt->bindParam(':VideoProducto', $VideoProducto, PDO::PARAM_LOB);
+        $stmt->bindParam(':VideoProducto', $vidBlob, PDO::PARAM_LOB);
         $stmt->bindParam(':PrecioProducto', $PrecioProd, PDO::PARAM_STR);
         $stmt->bindParam(':Visibilidad', $Visibilidad, PDO::PARAM_STR);
-        $stmt->bindParam(':FotoProducto', $Foto1Prod, PDO::PARAM_STR);
-        $stmt->bindParam(':FotoProducto2', $Foto2Prod, PDO::PARAM_STR);
-        $stmt->bindParam(':FotoProducto3', $Foto3Prod, PDO::PARAM_STR);
+        $stmt->bindParam(':FotoProducto', $imagenBlob, PDO::PARAM_STR);
+        $stmt->bindParam(':FotoProducto2', $imagenBlob2, PDO::PARAM_STR);
+        $stmt->bindParam(':FotoProducto3', $imagenBlob3, PDO::PARAM_STR);
         $stmt->bindParam(':CorreoVendedor', $Categoria, PDO::PARAM_STR);
         $stmt->bindParam(':CategoriaNombre', $Correo, PDO::PARAM_STR);
         $stmt->bindParam(':TipoProd', $TipoProducto, PDO::PARAM_STR);
-
-
+        if($stmt->execute())
+			{
+				echo "Working Code";
+				header("Location: ../PantallasPHP/dashboard.php");
+			}
+			else
+			{
+				header("Location: ../PantallasPHP/newProducto.php");
+				echo "Error al dar de alta";
+			}
+            $conn->closeConnection();
     }
 }
+/*
+if(isset($_GET['action']))
+{
+    $action = $_GET['action'];
+    echo($action);
+    
+    switch($action)
+    {
+        case 'insert':
+            
+            echo 'Crear Producto';
+            $NombreCategoria = $_POST['CategoriaName'];
+            $DesCategoria = $_POST['CatDescription'];
+            $CorreoU = $usuario['Mail'];
+            $categoriaObj = new CategoriasAPI();
+            $categoriaObj->CrearCategorias($NombreCategoria, $DesCategoria, $CorreoU);
+            break;
+    
+
+    }
+
+}
+*/
 
 
 ?>
