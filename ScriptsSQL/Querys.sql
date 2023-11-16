@@ -1,4 +1,4 @@
-use pwci_piapwci;
+use pwci_pia;
 Select * from usuarios;
 DELETE FROM usuarios WHERE Correo = 'WonderMedia@gmail.com';
 INSERT INTO usuarios (Correo, Usuario, Contraseña)
@@ -71,5 +71,26 @@ set @IdUsuarioVendedor = (SELECT usuarios.Id_Usuario FROM usuarios WHERE usuario
 set @IdCategoria = (SELECT category.categoryID from category WHERE category.name = CategoriaNombre);
 set Visibilidad = 0;
 INSERT INTO productos (productos.Nombre, productos.Descripcion, productos.Cant_Existencia, productos.Video, productos.Precio, productos.Visibilidad, productos.Foto, productos.Foto2, productos.Foto3, productos.UsuarioVendedor, productos.CategoriaId, productos.Tipo) VALUES (NombreProducto, DescripcionProducto, CantidadProducto, VideoProducto, PrecioProducto, Visibilidad, FotoProducto, FotoProducto2, FotoProducto3, @IdUsuarioVendedor, @IdCategoria, TipoProd);
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearProductos`(IN `NombreProducto` VARCHAR(255) CHARSET utf8mb4, IN `DescripcionProducto` VARCHAR(255), IN `CantidadProducto` INT(255), IN `VideoProducto` LONGBLOB, IN `PrecioProducto` DECIMAL(10,2) UNSIGNED, IN `Visibilidad` INT(1) UNSIGNED, IN `FotoProducto` BLOB, IN `FotoProducto2` BLOB, IN `FotoProducto3` BLOB, IN `CorreoVendedor` VARCHAR(255) CHARSET utf8mb4, IN `CategoriaNombre` INT(255), IN `TipoProd` VARCHAR(50) CHARSET utf8mb4)
+Begin 
+set @IdUsuarioVendedor = (SELECT usuarios.Id_Usuario FROM usuarios WHERE usuarios.Correo = CorreoVendedor);
+set @IdCategoria = (SELECT category.categoryID from category WHERE category.categoryID = CategoriaNombre);
+set Visibilidad = 0;
+INSERT INTO productos (productos.Nombre, productos.Descripcion, productos.Cant_Existencia, productos.Video, productos.Precio, productos.Visibilidad, productos.Foto, productos.Foto2, productos.Foto3, productos.UsuarioVendedor, productos.CategoriaId, productos.Tipo) VALUES (NombreProducto, DescripcionProducto, CantidadProducto, VideoProducto, PrecioProducto, Visibilidad, FotoProducto, FotoProducto2, FotoProducto3, @IdUsuarioVendedor, @IdCategoria, TipoProd);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearProductosImagen`(IN `NombreProducto` VARCHAR(255) CHARSET utf8mb4, IN `DescripcionProducto` VARCHAR(255), IN `CantidadProducto` INT(255), IN `PrecioProducto` DECIMAL(10,2) UNSIGNED, IN `Visibilidad` INT(1) UNSIGNED, IN `FotoProducto` BLOB, IN `FotoProducto2` BLOB, IN `FotoProducto3` BLOB, IN `CorreoVendedor` VARCHAR(255) CHARSET utf8mb4, IN `CategoriaNombre` INT(255), IN `TipoProd` VARCHAR(50) CHARSET utf8mb4)
+Begin 
+set @IdUsuarioVendedor = (SELECT usuarios.Id_Usuario FROM usuarios WHERE usuarios.Correo = CorreoVendedor);
+set @IdCategoria = (SELECT category.categoryID from category WHERE category.categoryID = CategoriaNombre);
+set Visibilidad = 0;
+INSERT INTO productos (productos.Nombre, productos.Descripcion, productos.Cant_Existencia, productos.Precio, productos.Visibilidad, productos.Foto, productos.Foto2, productos.Foto3, productos.UsuarioVendedor, productos.CategoriaId, productos.Tipo) VALUES (NombreProducto, DescripcionProducto, CantidadProducto, PrecioProducto, Visibilidad, FotoProducto, FotoProducto2, FotoProducto3, @IdUsuarioVendedor, @IdCategoria, TipoProd);
 END$$
 DELIMITER ;
