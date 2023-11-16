@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS pwci_pia;
-use pwci_pia;
+CREATE DATABASE IF NOT EXISTS pwci_piapwci;
+use pwci_piapwci;
 
 
 create table if not exists Roles
@@ -28,7 +28,7 @@ create table if not exists Usuarios
 );
 
 Alter table Usuarios
-ADD Constraint FK_RolId
+drop Constraint FK_RolId
 foreign key (Rol) references Roles(Id_Rol);
 
 create table if not exists Productos
@@ -47,13 +47,13 @@ create table if not exists Productos
 );
 
 Alter table Productos
-ADD Constraint FK_AdminPermit
+drop Constraint FK_AdminPermit
 foreign key (UsuarioAdmin) references Usuarios(Id_Usuario);
 
 
 Alter table Productos
-ADD Constraint FK_VendedorPublicador
-foreign key (UsuarioVendedor) references Usuarios(Id_Usuario);
+drop Constraint FK_VendedorPublicador
+foreign key (UsuarioVendedor) references Usuarios(Id_Uscategoryuario);
 
 create table if not exists Listas(
 	Id_Lista int primary key auto_increment,
@@ -63,7 +63,7 @@ create table if not exists Listas(
 );
 
 Alter table Listas
-ADD Constraint FK_UsuarioOwner
+drop Constraint FK_UsuarioOwner
 foreign key (Id_Usuario) references Usuarios(Id_Usuario);
 
 
