@@ -16,7 +16,7 @@ else
 include_once '../Conexion/CategoriasAPI.php';
 
 $CatObj = new CategoriasAPI();
-
+$categorias = $CatObj->ObtenerCategorias2();
 
 
 ?>
@@ -73,10 +73,10 @@ $CatObj = new CategoriasAPI();
                     <div class="col">
                         <div class="contenido-form">
                             <label for="nameP">Nombre</label>
-                            <input type="text" name="nameP" placeholder="Nombre" id="nameP" class="input-form">
+                            <input type="text" name="NombreProd" placeholder="Nombre" id="nameP" class="input-form">
                             
                             <label for="descP">Descripción</label>
-                            <input type="text" name="descP" placeholder="Descripción" id="descP" class="input-form">
+                            <input type="text" name="DescripciónProd" placeholder="Descripción" id="descP" class="input-form">
                             
                             <div class="imageinput">
                                 <label for="imagenProd1">Seleccione la primer imagen del Producto:</label>
@@ -105,8 +105,8 @@ $CatObj = new CategoriasAPI();
                             <label for="ventaCot">Elige si el producto se venderá o cotizará</label>
                             <select id="ventaCot" name="ventaCot" class="input-form">
                                 <option value="" disabled selected>Seleccione una opción</option>
-                                <option value="venta">Venta</option>
-                                <option value="cot">Cotización</option>
+                                <option value="V">Venta</option>
+                                <option value="C">Cotización</option>
                             </select>
 
                             <label for="precioProd">Precio</label>
@@ -119,17 +119,11 @@ $CatObj = new CategoriasAPI();
                             <select id="cateProd" name="cateProd" class="input-form">
                                 <option value="0" disabled selected>Selecciona la categoría</option>
                                 <?php
-                                $categorias = $CatObj->ObtenerCategorias();
+                                
                                  foreach($categorias as $CatObj){
                                     echo "<option value=" . $CatObj['categoryID'] . " name='cat'>" . $CatObj['name'] . "</option>";
                                  }
                                ?> 
-                                <!--
-                                <option value="pub">Nueva Categoría</option>
-                                <option value="priv">Botellas</option>  
-                                <option value="priv">Juegos</option>
-                                <option value="priv">Cocina</option>
-                                -->
                             </select>
                             <!--
                             <label for="nameCatProd">Nombre de la nueva categoría</label>
@@ -137,6 +131,8 @@ $CatObj = new CategoriasAPI();
                             
                             <label for="newCatProd">Descripción de la nueva categoría</label>
                             <input type="text" name="newCatProd" placeholder="Descripción de la categoría" id="newCatProd" class="input-form">
+                            
+                            
 -->                         <a href="CrearCategoria.php"><button type="button" class="btn btn-form">Crear Categorias</button></a>
                             <input class="btn btn-form" type="submit" name="CrearProdButton" value="Confirmar Producto">
                         </div>
@@ -145,7 +141,9 @@ $CatObj = new CategoriasAPI();
             </div>
         </form>
     </div>
+  
     <hr>
+   
     <footer class="text-white">
         <div class="text-center p-2" style="background-color: #252323">
             <p>Pagina creada por:</p>

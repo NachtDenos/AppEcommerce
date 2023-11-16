@@ -34,8 +34,24 @@ class CategoriasAPI extends DB
     }
 
     return $categorias;
+
 }
 
+function ObtenerCategorias2()
+{
+    $kevin = $this->connectDB();
+    $query = "Call GetCategorias();";
+    $stmt = $kevin->prepare($query);
+    $stmt->execute();
+
+    $categorias = array(); // Crear un array para almacenar las categorías
+
+    while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $categorias[] = $result; // Agregar cada categoría al array
+    }
+
+    return $categorias;
+}
 
     function CrearCategorias($Nombre, $Descripcion, $Correo)
     {

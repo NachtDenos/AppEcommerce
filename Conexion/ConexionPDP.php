@@ -10,7 +10,7 @@
     public function __construct()
     {
       $this->host = '127.0.0.1:3307'; //Localhost::3306
-      $this->db = 'pwci_piapwci'; //Base de datos
+      $this->db = 'pia_pwci'; //Base de datos
       $this->user = 'root'; //root
       $this->password = '';
       $this->charset = 'utf8mb4';

@@ -1,6 +1,5 @@
-CREATE DATABASE IF NOT EXISTS pwci_piapwci;
-use pwci_piapwci;
-
+CREATE DATABASE IF NOT EXISTS pwci_pia;
+use pwci_pia;
 
 create table if not exists Roles
 (
@@ -9,7 +8,7 @@ create table if not exists Roles
     -- 1 Sera Admin, 2 Vendedor y 3 Cliente en caso de no funcionar lo cambiare a varchahr
     
 );
-
+DROP TABLESPACE pwci_piapwci;
 create table if not exists Usuarios
 (
 	Id_Usuario int auto_increment primary key,

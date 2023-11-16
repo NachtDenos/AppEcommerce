@@ -16,10 +16,10 @@ include_once 'ConexionPDP.php';
 
 class ProductosAPI extends DB
 {
-    function CrearProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
+    function AltaProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
     {
         $conn = $this->connectDB();
-
+        /*
         // Tiene que ver para recibir el video
         if (isset($_FILES["videoProd"])) {
 			$vid = file_get_contents($_FILES["videoProd"]["tmp_name"]);
@@ -29,6 +29,7 @@ class ProductosAPI extends DB
 			echo $vid;
 			echo "El campo de imagen no se envió correctamente.";
 		}
+        */
         
 
         //Fotos, copiar y pegar, cambiar valores
@@ -64,20 +65,20 @@ class ProductosAPI extends DB
         
 
         //Los params deben llamarse igual que en el SP, al menos me ha tocado asi si no truena por no encontrar
-        $sql = "Call CrearProductos(:NombreProducto, :DescripcionProducto, :CantidadProducto, :VideoProducto, :PrecioProducto, :Visibilidad, :FotoProducto, :FotoProducto2, :FotoProducto3, :CorreoVendedor, :CategoriaNombre, :TipoProd);";
+        $sql = "Call CrearProductosImagen(:NombreProducto, :DescripcionProducto, :CantidadProducto,:PrecioProducto, :Visibilidad, :FotoProducto, :FotoProducto2, :FotoProducto3, :CorreoVendedor, :CategoriaNombre, :TipoProd);";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':NombreProducto', $NombreProd, PDO::PARAM_STR);
         $stmt->bindParam(':DescripcionProducto', $DescProd, PDO::PARAM_STR);
         $stmt->bindParam(':CantidadProducto', $CantExistencia, PDO::PARAM_STR);
-        $stmt->bindParam(':VideoProducto', $vidBlob, PDO::PARAM_LOB);
         $stmt->bindParam(':PrecioProducto', $PrecioProd, PDO::PARAM_STR);
         $stmt->bindParam(':Visibilidad', $Visibilidad, PDO::PARAM_STR);
-        $stmt->bindParam(':FotoProducto', $imagenBlob, PDO::PARAM_STR);
-        $stmt->bindParam(':FotoProducto2', $imagenBlob2, PDO::PARAM_STR);
-        $stmt->bindParam(':FotoProducto3', $imagenBlob3, PDO::PARAM_STR);
-        $stmt->bindParam(':CorreoVendedor', $Categoria, PDO::PARAM_STR);
-        $stmt->bindParam(':CategoriaNombre', $Correo, PDO::PARAM_STR);
+        $stmt->bindParam(':FotoProducto', $imagenBlob, PDO::PARAM_LOB);
+        $stmt->bindParam(':FotoProducto2', $imagenBlob2, PDO::PARAM_LOB);
+        $stmt->bindParam(':FotoProducto3', $imagenBlob3, PDO::PARAM_LOB);
+        $stmt->bindParam(':CorreoVendedor', $Correo, PDO::PARAM_STR);
+        $stmt->bindParam(':CategoriaNombre', $Categoria, PDO::PARAM_STR);
         $stmt->bindParam(':TipoProd', $TipoProducto, PDO::PARAM_STR);
+
         if($stmt->execute())
 			{
 				echo "Working Code";
@@ -91,7 +92,7 @@ class ProductosAPI extends DB
             $conn->closeConnection();
     }
 }
-/*
+
 if(isset($_GET['action']))
 {
     $action = $_GET['action'];
@@ -102,18 +103,24 @@ if(isset($_GET['action']))
         case 'insert':
             
             echo 'Crear Producto';
-            $NombreCategoria = $_POST['CategoriaName'];
-            $DesCategoria = $_POST['CatDescription'];
+            $NombreProducto = $_POST['NombreProd'];
+            $DesProducto = $_POST['DescripciónProd'];
+            $TipoProd = $_POST['ventaCot'];
+            $PrecioProd = $_POST['precioProd'];
+            $ExistenciaProd = $_POST['inventProd'];
+            $CateProd = $_POST['cateProd'];
             $CorreoU = $usuario['Mail'];
-            $categoriaObj = new CategoriasAPI();
-            $categoriaObj->CrearCategorias($NombreCategoria, $DesCategoria, $CorreoU);
+            $Obj = new ProductosAPI();
+            echo"Entro";
+            $Obj->AltaProductos($NombreProducto, $DesProducto, 0, $PrecioProd, $ExistenciaProd, $CateProd, $CorreoU, $TipoProd);
+            //CrearProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
             break;
     
 
     }
 
 }
-*/
+
 
 
 ?>
