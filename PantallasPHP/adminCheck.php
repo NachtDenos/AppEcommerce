@@ -1,5 +1,7 @@
 <?php
- include_once '../Conexion/CategoriasAPI.php'; //Aqui ya inicio la sesion
+ //include_once '../Conexion/CategoriasAPI.php'; //Aqui ya inicio la sesion
+ include_once '../Conexion/ProductosAPI.php';
+ 
  if(isset($_SESSION['usuario']))
  {
   $usuario = $_SESSION['usuario'];
@@ -8,7 +10,7 @@
 
   if($rolUser != 2)
   {
-    header("Location: ../PantallasPHP/login.php");
+    header("Location: ../PantallasPHP/login.php"); //Si no es admin, regresa al login, para que se logge
   }
 
  }
@@ -17,8 +19,10 @@
   header("Location: ../PantallasPHP/login.php");
   exit();
  }
- 
- 
+ $ObjProd = new ProductosAPI();
+ $JSONProductos = $ObjProd->ObtenerProductosAprovacion();
+ echo($JSONProductos);
+
 ?>
 
 

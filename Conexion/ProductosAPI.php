@@ -177,13 +177,21 @@ class ProductosAPI extends DB
         $stmt = $conn->prepare($sql);
 
     
-         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // Convertir a JSON
-         $jsonResultados = json_encode($resultados);
+        if ($stmt->execute()) {
+            // Inicializa un arreglo para almacenar los resultados
+            $data = array();
         
-            // Imprimir JSON
-         echo $jsonResultados;
+            // Recorre los resultados y agrega cada fila al arreglo
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+        
+            // Imprime el JSON resultante
+            echo json_encode($data);
+        } else {
+            // Si la llamada al stored procedure falla, imprime un mensaje de error o maneja la situación de otra manera
+            echo "Error en la llamada al stored procedure";
+        }
         
     }
 
