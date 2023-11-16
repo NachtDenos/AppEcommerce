@@ -117,13 +117,13 @@ else
                                 <option value="priv">Juegos</option>
                                 <option value="priv">Cocina</option>
                             </select>
-
+                            <!--
                             <label for="nameCatProd">Nombre de la nueva categoría</label>
                             <input type="text" name="nameCatProd" placeholder="Nombre de la categoría" id="nameCatProd" class="input-form">
-
+                            
                             <label for="newCatProd">Descripción de la nueva categoría</label>
                             <input type="text" name="newCatProd" placeholder="Descripción de la categoría" id="newCatProd" class="input-form">
-
+-->                         <a href="CrearCategoria.php"><button type="button" class="btn btn-form">Crear Categorias</button></a>
                             <input class="btn btn-form" type="submit" value="Confirmar Producto">
                         </div>
                     </div>

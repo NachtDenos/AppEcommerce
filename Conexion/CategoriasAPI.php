@@ -1,11 +1,11 @@
 <?php 
 
 session_start();
-
- 
 if(isset($_SESSION['usuario']))
 {
  $usuario = $_SESSION['usuario'];
+
+
 }
 else
 {
@@ -14,9 +14,12 @@ else
 }
 
 include_once 'ConexionPDP.php';
+include_once 'CategoriasAPI.php';
 //Ya tengo el SP para crear categorias.
+
 class CategoriasAPI extends DB
 {   
+    //El problema si marca error de caracteres es la funcion public construct o el constructor por default
     function ObtenerCategorias()
     {
         $kevin = $this->connectDB();
@@ -70,16 +73,42 @@ class CategoriasAPI extends DB
         {
             echo "Working Code";
 
-            //header("Location: ../PantallasPHP/newProducto.php");
+            header("Location: ../PantallasPHP/newProducto.php");
 
         }
         else
         {
-           // header("Location: ../PantallasPHP/newProducto.php");
+           header("Location: ../PantallasPHP/newProducto.php");
         }
         $conn->closeConnection();
     }
 }
+
+
+
+if(isset($_GET['action']))
+{
+    $action = $_GET['action'];
+    echo($action);
+    
+    switch($action)
+    {
+        case 'insert':
+            
+            echo 'Crear Categoria';
+            $NombreCategoria = $_POST['CategoriaName'];
+            $DesCategoria = $_POST['CatDescription'];
+            $CorreoU = $usuario['Mail'];
+            $categoriaObj = new CategoriasAPI();
+            $categoriaObj->CrearCategorias($NombreCategoria, $DesCategoria, $CorreoU);
+            break;
+    
+
+    }
+
+}
+
+
 
 /*
 $NombreCategoria = $_POST['CategoriaName'];

@@ -24,7 +24,7 @@
     <script src="https://kit.fontawesome.com/baf3df8175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="formato-form-registro" id="formRegister" action="../Conexion/CategoriasAPI.php" method="post" enctype="multipart/form-data">
+    <form class="formato-form-registro" id="formRegister" action="../Conexion/CategoriasAPI.php?action=insert" method="post" enctype="multipart/form-data">
         <div class="contenido-form-registro columna-izquierda">
             <h2 style="text-align: center;">Crear Categoria</h2>
             <br>
@@ -51,7 +51,7 @@
 <?php 
 
 
-
+/*
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CrearCatButton'])) {
     if ($_POST['CrearCatButton'] == 'Post') {
         // Tu lógica de procesamiento aquí
@@ -65,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CrearCatButton'])) {
         $obj->CrearCategorias($NombreCategoria, $DesCategoria);
     }
 }
+*/
 /*
 $NombreCategoria = $_POST['CategoriaName'];
 $DesCategoria = $_POST['CatDescription'];
