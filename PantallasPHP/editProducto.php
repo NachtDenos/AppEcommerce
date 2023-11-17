@@ -86,6 +86,8 @@ $fotoProducto = $ProductoJSON[0]['Foto'];
                 <div class="row">
                     <div class="col">
                         <div class="contenido-form">
+                            
+
                             <label for="nameP">Nombre</label>
                             <input type="text" name="NombreProdEdit" placeholder="<?php echo $nombreProducto ?>" id="nameP" class="input-form" value="<?php echo $nombreProducto ?>">
                             
@@ -114,6 +116,7 @@ $fotoProducto = $ProductoJSON[0]['Foto'];
                                 <input type="file" id="videoProd" name="videoProd" accept="video/*" class="input-form">
                             </div>
                             -->
+                            <input type="hidden" name="IdProductoEdit" placeholder="<?php echo $idProducto ?>" style="" value="<?php echo $idProducto ?>">
                         </div>
                     </div>
                     <div class="col">

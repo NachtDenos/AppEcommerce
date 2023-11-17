@@ -323,7 +323,18 @@ if(isset($_GET['action']))
             //CrearProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
             break;
         case 'Update':
-            echo "Soy puto";
+            echo "Editar Producto";
+            $NombreProducto = $_POST['NombreProdEdit'];
+            $DesProducto = $_POST['DescripciónProd'];
+            $TipoProd = $_POST['ventaCot'];
+            $PrecioProd = $_POST['precioProd'];
+            $ExistenciaProd = $_POST['inventProd'];
+            $CateProd = $_POST['cateProd'];
+            $IdProductoFinal = $_POST['IdProductoEdit'];
+            echo ($IdProductoFinal);
+            $Obj = new ProductosAPI();
+            $Obj->ModificarProducto($IdProductoFinal, $NombreProducto, $DesProducto, $TipoProd, $PrecioProd, $ExistenciaProd, $CateProd);
+            //ModificarProducto($IdProductoEdit, $NombreProductoEdit, $DescripcionProductoEdit, $TipoProdEdit, $PrecioProdEdit, $InventarioProdEdit, $CategoriaEdit)
             break;
 
     }
