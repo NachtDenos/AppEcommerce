@@ -199,10 +199,12 @@ class ProductosAPI extends DB
 
     function ObtenerProductosUsuario($User)
     {
+        //$User = $usuario['User'];
         $conn = $this->connectDB();
         $sql = "Call ObtenerProductosUsuario(:UsuarioCreador);"; //Obtiene los productos del usuario que los creo, para editar usamos que al darle click pase los datos de la pestaña 
-        stmt->bindParam(':UsuarioCreador', $User, PDO::PARAM_STR);
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':UsuarioCreador', $User, PDO::PARAM_STR);
+       
 
     
         if ($stmt->execute()) {
@@ -213,10 +215,11 @@ class ProductosAPI extends DB
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $row;
             }
+            // Imprime el JSON resultante
+           // echo json_encode($data); Desconemntala la primera vez que pruebas para verificar que funcion y imprime datos
             return $data;
         
-            // Imprime el JSON resultante
-            //echo json_encode($data);
+            
         } else {
             // Si la llamada al stored procedure falla, imprime un mensaje de error o maneja la situación de otra manera
             echo "Error en la llamada al stored procedure";

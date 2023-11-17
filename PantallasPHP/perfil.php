@@ -1,17 +1,23 @@
 <?php
- session_start();
-
- if(isset($_SESSION['usuario']))
- {
-  $usuario = $_SESSION['usuario'];
- }
- else
- {
-  header("Location: login.php");
-  exit();
- }
+  
+/*
 
 
+
+
+*/
+//session_start();
+include_once '../Conexion/ProductosAPI.php';
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+ $Username = $usuario['User'];
+}
+else
+{
+ header("Location: ../Pantallas/login.php");
+ exit();
+}
 $imagenBlob = $usuario['Img'];
 if ($imagenBlob) {
   // Convierte los datos BLOB a una representación base64
@@ -21,6 +27,10 @@ if ($imagenBlob) {
   $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
 }
 
+$ObjProd = new ProductosAPI();
+$IdUsuarioLogeado = $usuario['id'];
+//$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
+$JSONProductos = $ObjProd->ObtenerProductosUsuario($IdUsuarioLogeado);
 ?>
 
 <!DOCTYPE html>
@@ -110,94 +120,40 @@ if ($imagenBlob) {
     <h1>Productos/Listas</h1>
     <div class="container margen d-flex row-right-product">
         <div class="row">
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
+             <?php
+                              if ($JSONProductos !== false) {
+                               
+
+
+                              // Itera sobre los productos y construye la estructura HTML deseada
+                              foreach ($JSONProductos as $producto) {
+                                $imageBlob = $producto['Foto'];
+                                $image = base64_encode($imageBlob);
+                                $imageExt = $producto['Foto'];
+                                /*
+                                $fotoBase64 = base64_encode($producto['Foto']);
+                                $tipoContenido = 'image/jpeg'; // Ajusta según el tipo de imagen almacenada
+                                $imagenSrc = 'data:' . $tipoContenido . ';base64,' . $fotoBase64;
+                                */
+                                  echo '<div class="col alingFlex row-right-product">';
+                                    echo '<div class="card text-center estilo-card" style="width: 15rem" value="' . $producto['Id_Productos'] .'">';
+                                    echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '" class="card-img-top" style="height: 10rem;">';
+                                        echo '<div class="card-body">';
+                                         echo '<a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">';
+                                          echo '<h5 class="card-title">' . $producto['NombreProd'] . '</h5>';
+                                           //echo '<h2>' . $producto['Id_Productos'] . '</h2>';
+                                  // Agrega aquí otras etiquetas HTML con los datos necesarios
+                                            echo '<p class="card-text">'. '$' . $producto['Precio'] . '</p>';
+                                         echo '</a>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                  echo '</div>';
+                              }
+                          } else {
+                              // Maneja el caso en que la obtención de datos falla
+                              echo "Error en la obtención de productos";
+                          }
+                          ?>
             <div class="col alingFlex row-right-product">
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
