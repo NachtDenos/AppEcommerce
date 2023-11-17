@@ -94,8 +94,14 @@ if ($imagenBlob) {
                         {
                           echo "Publico";
                         } 
-                        else
-                         echo "Privado";?> <img src="../Imagenes/publico.png" width="30px"> </p>
+                        else if($usuario['RolUsuario'] == 1)
+                        {
+                         echo "Privado";
+                        }else
+                        {
+                          echo "Admin";
+                        }
+                        ?> <img src="../Imagenes/publico.png" width="30px"> </p>
                     </div>
                 </div>
             </div>

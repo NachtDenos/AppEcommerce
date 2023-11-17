@@ -83,14 +83,9 @@
                           if ($JSONProductos !== false) {
                               // Itera sobre los productos y construye la estructura HTML deseada
                               foreach ($JSONProductos as $producto) {
-                                $imagenBlob = $producto['Foto'];
-                                if ($imagenBlob) {
-                                  // Convierte los datos BLOB a una representación base64
-                                  $imagenBase64 = base64_encode($imagenBlob);
-                                } else {
-                                  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
-                                  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
-                                }
+                                $imageBlob = $producto['Foto'];
+                                $image = base64_encode($imageBlob);
+                                $imageExt = $producto['Foto'];
                                 /*
                                 $fotoBase64 = base64_encode($producto['Foto']);
                                 $tipoContenido = 'image/jpeg'; // Ajusta según el tipo de imagen almacenada
@@ -98,7 +93,7 @@
                                 */
                                   echo '<div class="col alingFlex row-right-product">';
                                     echo '<div class="card text-center estilo-card" style="width: 15rem" value="' . $producto['Id_Productos'] .'">';
-                                      echo '<img src="data:image/jpeg;base64'. $imagenBlob .'" class="card-img-top" style="height: 10rem;">';
+                                    echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '" class="card-img-top" style="height: 10rem;">';
                                         echo '<div class="card-body">';
                                          echo '<a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">';
                                           echo '<h5 class="card-title">' . $producto['NombreProd'] . '</h5>';
