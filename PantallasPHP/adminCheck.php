@@ -21,7 +21,7 @@
  }
  $ObjProd = new ProductosAPI();
  $JSONProductos = $ObjProd->ObtenerProductosAprovacion();
- echo($JSONProductos);
+ //echo($JSONProductos);
 
 ?>
 
@@ -37,6 +37,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/adminCheck.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <div>
@@ -76,6 +77,32 @@
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
+          <!--Aqui es para el cuadro del producto -->
+                <?php
+                          // Verifica si se obtuvieron datos correctamente
+                          if ($JSONProductos !== false) {
+                              // Itera sobre los productos y construye la estructura HTML deseada
+                              foreach ($JSONProductos as $producto) {
+                                  echo '<div class="col alingFlex row-right-product">';
+                                    echo '<div class="card text-center estilo-card" style="width: 15rem" value="' . $producto['Id_Productos'] .'">';
+                                      echo '<img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">';
+                                        echo '<div class="card-body">';
+                                         echo '<a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">';
+                                          echo '<h5 class="card-title">' . $producto['NombreProd'] . '</h5>';
+                                           //echo '<h2>' . $producto['Id_Productos'] . '</h2>';
+                                  // Agrega aquí otras etiquetas HTML con los datos necesarios
+                                            echo '<p class="card-text">'. '$' . $producto['Precio'] . '</p>';
+                                         echo '</a>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                  echo '</div>';
+                              }
+                          } else {
+                              // Maneja el caso en que la obtención de datos falla
+                              echo "Error en la obtención de productos";
+                          }
+                ?>
+                <!-- Este es la base para las pestañitas
             <div class="col alingFlex row-right-product">
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
@@ -87,94 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
+                        -->
         </div>
     </div>
     <hr>

@@ -185,12 +185,14 @@ class ProductosAPI extends DB
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $row;
             }
+            return $data;
         
             // Imprime el JSON resultante
-            echo json_encode($data);
+            //echo json_encode($data);
         } else {
             // Si la llamada al stored procedure falla, imprime un mensaje de error o maneja la situación de otra manera
             echo "Error en la llamada al stored procedure";
+            return array();
         }
         
     }
