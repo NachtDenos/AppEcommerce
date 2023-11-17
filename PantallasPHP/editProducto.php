@@ -14,11 +14,15 @@ else
 }
 */
 include_once '../Conexion/CategoriasAPI.php';
-
+include_once '../Conexion/ProductosAPI.php';
+$productId = $_GET['id'];
 $CatObj = new CategoriasAPI();
 $categorias = $CatObj->ObtenerCategorias2();
+$ProdObj = new ProductosAPI();
+$ProductoJSON = $ProdObj->ObtenerProductosId($productId);
 
-
+// placeholder="<?php echo $usuario['Mail']; /*?>" value="<?php echo $usuario['Mail']; ?>"*/
+<?php echo $productId; ?>
 ?>
 
 

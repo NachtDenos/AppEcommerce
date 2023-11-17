@@ -131,7 +131,7 @@ $JSONProductos = $ObjProd->ObtenerProductosUsuario($IdUsuarioLogeado);
                                     echo '<div class="card text-center estilo-card" style="width: 15rem" value="' . $producto['Id_Productos'] .'">';
                                     echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '" class="card-img-top" style="height: 10rem;">';
                                         echo '<div class="card-body">';
-                                         echo '<a href="editProducto.php" class="product-name">';
+                                         echo '<a href="editProducto.php?id='. $producto['Id_Productos']. '" class="product-name">';
                                           echo '<h5 class="card-title">' . $producto['NombreProd'] . '</h5>';
                                            //echo '<h2>' . $producto['Id_Productos'] . '</h2>';
                                   // Agrega aquí otras etiquetas HTML con los datos necesarios
