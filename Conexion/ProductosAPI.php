@@ -247,7 +247,7 @@ class ProductosAPI extends DB
                 $data[] = $row;
             }
             // Imprime el JSON resultante
-            echo json_encode($data); //Desconemntala la primera vez que pruebas para verificar que funcion y imprime datos
+            //echo json_encode($data); //Desconemntala la primera vez que pruebas para verificar que funcion y imprime datos
             return $data;
         
             
@@ -258,6 +258,44 @@ class ProductosAPI extends DB
         }
         
     }
+
+    function ModificarProducto($IdProductoEdit, $NombreProductoEdit, $DescripcionProductoEdit, $TipoProdEdit, $PrecioProdEdit, $InventarioProdEdit, $CategoriaEdit)
+    {
+        $conn = $this->connectDB();
+        //  $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, Visibilidad = ? where Correo = ?";
+        $sql = "Call EditarProductos(:IdProdEditar, :NombreProducto, :DescripcionProducto, :TipoProd, :PrecioProd, :InventarioProd, :CategoriaId);";
+        $stament = $conn->prepare($sql);
+        //Se ejecutan los parametros en el orden establecido en la DB
+        $stament->bindParam(':IdProdEditar', $IdProductoEdit, PDO::PARAM_STR);
+        $stament->bindParam(':NombreProducto', $NombreProductoEdit, PDO::PARAM_STR);
+        $stament->bindParam(':DescripcionProducto', $DescripcionProductoEdit, PDO::PARAM_STR);
+        $stament->bindParam(':TipoProd', $TipoProdEdit, PDO::PARAM_STR);
+        $stament->bindParam(':PrecioProd', $PrecioProdEdit, PDO::PARAM_STR);
+        $stament->bindParam(':InventarioProd', $InventarioProdEdit, PDO::PARAM_STR);
+        $stament->bindParam(':CategoriaId', $CategoriaEdit, PDO::PARAM_STR);
+        //$stament->bindParam(':RolNuevo', $Rol, PDO::PARAM_STR);
+        if($stament->execute())
+        {
+            echo "Working Code";
+            //echo $stament;
+           
+            header("Location: ../PantallasPHP/dashboard.php");
+            return true;
+        }
+        else
+        {
+            
+            header("Location: ../PantallasPHP/editProducto.php");
+            echo "Error al modificar usuario: " . $stmt.error;
+            return false;
+        }
+
+		$conn->closeConnection();
+
+
+    }
+
+
 
 }
 
@@ -284,7 +322,9 @@ if(isset($_GET['action']))
             $Obj->AltaProductosVideo($NombreProducto, $DesProducto, $ExistenciaProd, $PrecioProd, 0, $CateProd, $CorreoU, $TipoProd);
             //CrearProductos($NombreProd, $DescProd, $CantExistencia, $PrecioProd, $Visibilidad, $Categoria, $Correo, $TipoProducto)
             break;
-    
+        case 'Update':
+            echo "Soy puto";
+            break;
 
     }
 

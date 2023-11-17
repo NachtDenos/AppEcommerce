@@ -13,16 +13,26 @@ else
  exit();
 }
 */
-include_once '../Conexion/CategoriasAPI.php';
+require_once '../Conexion/CategoriasAPI.php';
 include_once '../Conexion/ProductosAPI.php';
 $productId = $_GET['id'];
 $CatObj = new CategoriasAPI();
 $categorias = $CatObj->ObtenerCategorias2();
 $ProdObj = new ProductosAPI();
 $ProductoJSON = $ProdObj->ObtenerProductosId($productId);
+//var_dump ($ProductoJSON);
+$idProducto = $ProductoJSON[0]['Id_Productos'];
+$nombreProducto = $ProductoJSON[0]['NombreProd'];
+$descripcionProducto = $ProductoJSON[0]['Descripcion'];
+$cantidadExistencia = $ProductoJSON[0]['Cant_Existencia'];
+$usuarioVendedor = $ProductoJSON[0]['UsuarioVendedor'];
+$categoriaId = $ProductoJSON[0]['CategoriaId'];
+$precioProducto = $ProductoJSON[0]['Precio'];
+$nombreVendedor = $ProductoJSON[0]['Nombre'];
+$categoriaNombre = $ProductoJSON[0]['name'];
+$fotoProducto = $ProductoJSON[0]['Foto'];
+//echo $nombreProducto 
 
-// placeholder="<?php echo $usuario['Mail']; /*?>" value="<?php echo $usuario['Mail']; ?>"*/
-<?php echo $productId; ?>
 ?>
 
 
@@ -70,18 +80,18 @@ $ProductoJSON = $ProdObj->ObtenerProductosId($productId);
     </div>
     <br> <br> <br> <br> <br>
     <div class="container prod-ventana">
-        <form id="FormNewProducto" action="../Conexion/ProductosAPI.php?action=insert" method="post" enctype="multipart/form-data">
+        <form id="FormEditProducto" action="../Conexion/ProductosAPI.php?action=Update" method="post" enctype="multipart/form-data">
             <h1>Editar Producto</h1>
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="contenido-form">
                             <label for="nameP">Nombre</label>
-                            <input type="text" name="NombreProd" placeholder="Nombre" id="nameP" class="input-form">
+                            <input type="text" name="NombreProdEdit" placeholder="<?php echo $nombreProducto ?>" id="nameP" class="input-form" value="<?php echo $nombreProducto ?>">
                             
                             <label for="descP">Descripción</label>
-                            <input type="text" name="DescripciónProd" placeholder="Descripción" id="descP" class="input-form">
-                            
+                            <input type="text" name="DescripciónProd" placeholder="<?php echo $descripcionProducto ?>" id="descP" class="input-form" value="<?php echo $descripcionProducto ?>">
+                            <!-- Esto es para las imagene
                             <div class="imageinput">
                                 <label for="imagenProd1">Seleccione la primer imagen del Producto:</label>
                                 <input type="file" id="imagenProd1" name="imagenProd1" accept="image/*" class="input-form">
@@ -96,12 +106,14 @@ $ProductoJSON = $ProdObj->ObtenerProductosId($productId);
                                 <label for="imagenProd3">Seleccione la tercer imagen del Producto:</label>
                                 <input type="file" id="imagenProd3" name="imagenProd3" accept="image/*" class="input-form">
                             </div>
+                            -->
 
+                            <!--
                             <div class="imageinput">
                                 <label for="videoProd">Selecciona un video para el producto:</label>
                                 <input type="file" id="videoProd" name="videoProd" accept="video/*" class="input-form">
                             </div>
-
+                            -->
                         </div>
                     </div>
                     <div class="col">
@@ -114,14 +126,14 @@ $ProductoJSON = $ProdObj->ObtenerProductosId($productId);
                             </select>
 
                             <label for="precioProd">Precio</label>
-                            <input type="number" name="precioProd" placeholder="Precio" id="precioProd" class="input-form">
+                            <input type="number" name="precioProd" placeholder="<?php echo $precioProducto ?>" id="precioProd" class="input-form" value="<?php echo $precioProducto ?>">
 
                             <label for="inventProd">Inventario</label>
-                            <input type="number" name="inventProd" placeholder="Inventario" id="inventProd" class="input-form">
+                            <input type="number" name="inventProd" placeholder="<?php echo $cantidadExistencia ?>" id="inventProd" class="input-form" value="<?php echo $cantidadExistencia ?>">
 
                             <label for="cateProd">Categoría</label>
-                            <select id="cateProd" name="cateProd" class="input-form">
-                                <option value="0" disabled selected>Selecciona la categoría</option>
+                            <select id="cateProd" name="cateProd" class="input-form" >
+                                <option value="0" disabled selected><?php echo $categoriaNombre ?></option>
                                 <?php
                                 
                                  foreach($categorias as $CatObj){
@@ -137,8 +149,8 @@ $ProductoJSON = $ProdObj->ObtenerProductosId($productId);
                             <input type="text" name="newCatProd" placeholder="Descripción de la categoría" id="newCatProd" class="input-form">
                             
                             
--->                         <a href="CrearCategoria.php"><button type="button" class="btn btn-form">Crear Categorias</button></a>
-                            <input class="btn btn-form" type="submit" name="CrearProdButton" value="Confirmar Producto">
+-->                         
+                            <input class="btn btn-form" type="submit" name="ModProdButton" value="Editar Producto">
                         </div>
                     </div>
                 </div>
