@@ -151,10 +151,10 @@
                         <img src="../Imagenes/agua.png" style="max-width: 200px; min-width: 200px;">
                       </div>
                       <div class="col">
-                        <h2>Botella de Agua</h2>
-                        <p>Categoría: Botellas</p>
-                        <h5>$200.00</h5>
-                        <p>Stock: 9 Articulos</p>
+                        <h2 id="modal-NombreProducto">Botella de Agua</h2>
+                        <p  id="modal-CategoriaProducto">Categoría: Botellas</p>
+                        <h5 id="modal-PrecioProducto">$200.00</h5>
+                        <p  id="modal-ExistenciaProducto">Stock: 9 Articulos</p>
                       </div>
                     </div>
                     <div class="row">

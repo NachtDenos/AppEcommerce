@@ -18,8 +18,23 @@ $(document).ready(function() {
                 if (response.success) {
                     // Accede directamente a los datos
                     var detallesProducto = response.data;
-        
-                    // Ahora puedes trabajar con detallesProducto sin la envoltura "Detalles"
+                    
+                    var producto = response.data[0];
+                    // Verificar que producto esté definido
+                    if (producto) {
+                        // Llenar los elementos del modal con la información del producto
+                        $('#modal-NombreProducto').text(producto.NombreProd);
+                        $('#modal-categoria').text('Categoría: ' + producto.Categoria); 
+                        $('#modal-precio').text('$' + producto.PrecioProd);
+                        $('#modal-stock').text('Stock: ' + producto.Cant_Existencia + ' Artículos'); // Ajusta el nombre de la propiedad según tu JSON
+                        $('#modal-descripcion').text(producto.Descripcion);
+                        $('#modal-imagen').attr('src', 'ruta_de_tu_imagen/' + producto.Foto); // Ajusta el nombre de la propiedad según tu JSON
+
+                        // Mostrar el modal
+                        $('#exampleModal').modal('show');
+                    } else {
+                        console.error('El objeto producto es undefined o null.');
+                    }
                     console.log(detallesProducto);
                 } else {
                     console.error('Error en la solicitud: ' + response.message);
