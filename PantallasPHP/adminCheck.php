@@ -148,7 +148,7 @@
                 <div class="modal-body">
                     <div class="row">
                       <div class="col">
-                        <img src="../Imagenes/agua.png" style="max-width: 200px; min-width: 200px;">
+                        <img id="modal-ImagenProducto" src="" style="max-width: 200px; min-width: 200px;">
                       </div>
                       <div class="col">
                         <h2 id="modal-NombreProducto">Botella de Agua</h2>
@@ -160,7 +160,7 @@
                     <div class="row">
                       <hr>
                         <h5>Descripción</h5>
-                        <p>Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
+                        <p id="modal-DescripcionProducto">Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
                     </div>
                 </div>
                 <div class="modal-footer">

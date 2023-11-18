@@ -23,11 +23,13 @@ $(document).ready(function() {
                     // Verificar que producto esté definido
                     if (producto) {
                         // Llenar los elementos del modal con la información del producto
+                        $('#modal-ImagenProducto').attr('src', producto.Foto);
+                        
                         $('#modal-NombreProducto').text(producto.NombreProd);
-                        $('#modal-categoria').text('Categoría: ' + producto.Categoria); 
-                        $('#modal-precio').text('$' + producto.PrecioProd);
-                        $('#modal-stock').text('Stock: ' + producto.Cant_Existencia + ' Artículos'); // Ajusta el nombre de la propiedad según tu JSON
-                        $('#modal-descripcion').text(producto.Descripcion);
+                        $('#modal-CategoriaProducto').text('Categoría: ' + producto.name); 
+                        $('#modal-PrecioProducto').text('$' + producto.Precio);
+                        $('#modal-ExistenciaProducto').text('Stock: ' + producto.Cant_Existencia + ' Artículos'); // Ajusta el nombre de la propiedad según tu JSON
+                        $('#modal-DescripcionProducto').text(producto.Descripcion);
                         $('#modal-imagen').attr('src', 'ruta_de_tu_imagen/' + producto.Foto); // Ajusta el nombre de la propiedad según tu JSON
 
                         // Mostrar el modal
