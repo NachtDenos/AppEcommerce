@@ -38,6 +38,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/adminCheck.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../ProcJS/adminCheck.js"></script>
 </head>
 <body>
     <div>
@@ -92,7 +93,7 @@
                                 $imagenSrc = 'data:' . $tipoContenido . ';base64,' . $fotoBase64;
                                 */
                                   echo '<div class="col alingFlex row-right-product">';
-                                    echo '<div class="card text-center estilo-card" style="width: 15rem" value="' . $producto['Id_Productos'] .'">';
+                                    echo '<div class="card text-center estilo-card" style="width: 15rem" data-idproducto="'. $producto['Id_Productos'] . '" value="' . $producto['Id_Productos'] .'">';
                                     echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '" class="card-img-top" style="height: 10rem;">';
                                         echo '<div class="card-body">';
                                          echo '<a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">';
@@ -100,7 +101,7 @@
                                            //echo '<h2>' . $producto['Id_Productos'] . '</h2>';
                                   // Agrega aquí otras etiquetas HTML con los datos necesarios
                                             echo '<p class="card-text">'. '$' . $producto['Precio'] . '</p>';
-                                         echo '</a>';
+                                            echo '<input type="submit" class="btn btn-modal autorizar-producto" value="Autorizar">';
                                         echo '</div>';
                                     echo '</div>';
                                   echo '</div>';

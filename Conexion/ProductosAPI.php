@@ -372,6 +372,26 @@ if(isset($_GET['action']))
             $Obj = new ProductosAPI();
             $Obj->BajaProducto($IdProductoFinal);
             break;
+        case 'Detalles':
+                $IdProductoFinal = $_POST['idProducto'];
+                $Obj = new ProductosAPI();
+                $detallesProducto = $Obj->ObtenerProductosId($IdProductoFinal);
+                $html = '<p> Hola </p>';
+                
+                if ($detallesProducto) {
+                    // Si se obtuvieron detalles del producto, crea el HTML correspondiente
+                    // Puedes personalizar esta sección para mostrar la información real del producto
+                    $html = '<div>Detalles del producto:</div>';
+                    foreach ($detallesProducto as $detalle) {
+                        $html .= '<p>' . $detalle['NombreProd'] . ': ' . $detalle['NombreProd'] . '</p>';
+                    }
+                    echo json_encode(['html' => $html]);
+                } else {
+                    // Si no se obtuvieron detalles, imprime un mensaje de error
+                    echo json_encode(['html' => 'Error al obtener detalles del producto']);
+                }
+        break;
+            
 
     }
 
