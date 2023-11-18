@@ -80,7 +80,7 @@ $fotoProducto = $ProductoJSON[0]['Foto'];
     </div>
     <br> <br> <br> <br> <br>
     <div class="container prod-ventana">
-        <form id="FormEditProducto" action="../Conexion/ProductosAPI.php?action=Update" method="post" enctype="multipart/form-data">
+        <form id="FormEditProducto" action="../Conexion/ProductosAPI.php" method="post" enctype="multipart/form-data">
             <h1>Editar Producto</h1>
             <div class="container">
                 <div class="row">
@@ -153,7 +153,10 @@ $fotoProducto = $ProductoJSON[0]['Foto'];
                             
                             
 -->                         
-                            <input class="btn btn-form" type="submit" name="ModProdButton" value="Editar Producto">
+                            <input class="btn btn-form" type="submit" name="ModProdButton" value="Editar Producto" formmethod="post" formaction="../Conexion/ProductosAPI.php?action=Update">
+                                    <br>
+                                    <br>
+                            <input class="btn btn-form" type="submit" name="DelProdButton" value="Borrar Producto" formmethod="post" formaction="../Conexion/ProductosAPI.php?action=Delete">
                         </div>
                     </div>
                 </div>

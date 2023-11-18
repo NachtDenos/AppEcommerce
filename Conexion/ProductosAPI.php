@@ -295,6 +295,36 @@ class ProductosAPI extends DB
 
     }
 
+    function BajaProducto($IdProductoBaja)
+    {
+        $conn = $this->connectDB();
+        //  $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, Visibilidad = ? where Correo = ?";
+        $sql = "Call BajaProductos(:IdProducto);";
+        $stament = $conn->prepare($sql);
+        //Se ejecutan los parametros en el orden establecido en la DB
+        $stament->bindParam(':IdProducto', $IdProductoBaja, PDO::PARAM_STR);
+        //$stament->bindParam(':RolNuevo', $Rol, PDO::PARAM_STR);
+        if($stament->execute())
+        {
+            echo "Working Code";
+            //echo $stament;
+           
+            header("Location: ../PantallasPHP/perfil.php");
+            return true;
+        }
+        else
+        {
+            
+            header("Location: ../PantallasPHP/editProducto.php");
+            echo "Error al modificar usuario: " . $stmt.error;
+            return false;
+        }
+
+		$conn->closeConnection();
+
+
+    }
+
 
 
 }
@@ -335,6 +365,12 @@ if(isset($_GET['action']))
             $Obj = new ProductosAPI();
             $Obj->ModificarProducto($IdProductoFinal, $NombreProducto, $DesProducto, $TipoProd, $PrecioProd, $ExistenciaProd, $CateProd);
             //ModificarProducto($IdProductoEdit, $NombreProductoEdit, $DescripcionProductoEdit, $TipoProdEdit, $PrecioProdEdit, $InventarioProdEdit, $CategoriaEdit)
+            break;
+        case 'Delete':
+            echo 'Baja Productos';
+            $IdProductoFinal = $_POST['IdProductoEdit'];
+            $Obj = new ProductosAPI();
+            $Obj->BajaProducto($IdProductoFinal);
             break;
 
     }
