@@ -72,7 +72,7 @@ $JSONProductos = $ObjProd->ObtenerProductosUsuario($IdUsuarioLogeado);
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                  <img src="data:image/jpeg;base64, <?php echo $imagenBlob; ?>" alt="img-avatar">
+                  <img src="data:image/jpeg;base64," alt="img-avatar">
                    <!-- <img src="Imagenes/iconBlack.png" alt="img-avatar"> -->
                 </div>
             </div>
