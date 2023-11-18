@@ -1,31 +1,24 @@
-$(document).ready(function () {
-    // En cuanto se cargue el documento
-    $('.autorizar-producto').click(function (e) {
-        e.preventDefault();
+$(document).ready(function() {
+    // Agrega un manejador de eventos a todos los elementos con la clase autorizar-producto
+    $('.autorizar-producto').on('click', function (event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
 
-        // Cambia 'card' a '.card' para seleccionar por clase
-        var idProducto = $(this).closest('.card').data('idproducto');
-        console.log('ID del producto:', idProducto);
-
+        // Obtén el productId del botón clicado
+        var productId = $(this).data('product-id');
+        console.log('ID del producto:', productId);
+        // Realiza la llamada AJAX al archivo PHP para autorizar el producto
         $.ajax({
-            url: '../Conexion/ProductosAPI.php?action=Detalles',
-            type: 'POST',
-            data: { idProducto: idProducto },
-            dataType: 'json',
+            url: '../Conexion/ProductosAPI.php?action=Detalles', // Ajusta la ruta según tu estructura de archivos
+            method: 'POST',
+            data: { idProducto: productId },
             success: function (data) {
-                console.log('Respuesta del servidor:', response);
-
-                // Verifica si la propiedad 'html' está presente en la respuesta
-                if (response && response.html) {
-                    $('#exampleModal .modal-body').html(response.html);
-                    $('#exampleModal').modal('show');
-                } else {
-                    console.error('La propiedad "html" no está presente en la respuesta.');
-                }
+                // Manejar la respuesta del servidor, por ejemplo, actualizar la interfaz
+                console.log(data);
+                // Cerrar el modal si es necesario
+                $('#exampleModal').modal('hide');
             },
             error: function (error) {
                 console.error('Error en la solicitud AJAX:', error);
-                console.error('Error al obtener detalles del producto', error);
             }
         });
     });

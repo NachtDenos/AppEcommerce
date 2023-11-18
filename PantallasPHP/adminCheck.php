@@ -93,7 +93,7 @@
                                 $imagenSrc = 'data:' . $tipoContenido . ';base64,' . $fotoBase64;
                                 */
                                   echo '<div class="col alingFlex row-right-product">';
-                                    echo '<div class="card text-center estilo-card" style="width: 15rem" data-idproducto="'. $producto['Id_Productos'] . '" value="' . $producto['Id_Productos'] .'">';
+                                    echo '<div class="card text-center estilo-card" style="width: 15rem" data-product-id="'. $producto['Id_Productos'] . '" value="' . $producto['Id_Productos'] .'">';
                                     echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '" class="card-img-top" style="height: 10rem;">';
                                         echo '<div class="card-body">';
                                          echo '<a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">';
@@ -101,7 +101,7 @@
                                            //echo '<h2>' . $producto['Id_Productos'] . '</h2>';
                                   // Agrega aquí otras etiquetas HTML con los datos necesarios
                                             echo '<p class="card-text">'. '$' . $producto['Precio'] . '</p>';
-                                            echo '<input type="submit" class="btn btn-modal autorizar-producto" value="Autorizar">';
+                                            echo '<input type="submit" class="btn btn-modal autorizar-producto" value="Autorizar" data-product-id="' . $producto['Id_Productos'] . '">';
                                         echo '</div>';
                                     echo '</div>';
                                   echo '</div>';
