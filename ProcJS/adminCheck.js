@@ -6,19 +6,27 @@ $(document).ready(function() {
         // Obtén el productId del botón clicado
         var productId = $(this).data('product-id');
         console.log('ID del producto:', productId);
+
         // Realiza la llamada AJAX al archivo PHP para autorizar el producto
+        //var jsonData = JSON.parse(data);
         $.ajax({
-            url: '../Conexion/ProductosAPI.php?action=Detalles', // Ajusta la ruta según tu estructura de archivos
-            method: 'POST',
+            type: 'POST',
+            url: '../Conexion/DetallesProducto.php',
             data: { idProducto: productId },
-            success: function (data) {
-                // Manejar la respuesta del servidor, por ejemplo, actualizar la interfaz
-                console.log(data);
-                // Cerrar el modal si es necesario
-                $('#exampleModal').modal('hide');
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    // Accede directamente a los datos
+                    var detallesProducto = response.data;
+        
+                    // Ahora puedes trabajar con detallesProducto sin la envoltura "Detalles"
+                    console.log(detallesProducto);
+                } else {
+                    console.error('Error en la solicitud: ' + response.message);
+                }
             },
-            error: function (error) {
-                console.error('Error en la solicitud AJAX:', error);
+            error: function (xhr, status, error) {
+                console.error('Error en la solicitud AJAX: ' + status + ' ' + error);
             }
         });
     });
