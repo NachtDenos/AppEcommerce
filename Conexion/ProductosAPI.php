@@ -322,6 +322,38 @@ class ProductosAPI extends DB
 
     }
 
+    function AutorizarProducto($IdProductoEdit, $CorreoPuñetas)
+    {
+        $conn = $this->connectDB();
+        //  $sql = "UPDATE usuarios SET Nombre = ?, Contraseña = ?, Usuario = ?, Sexo = ?, Visibilidad = ? where Correo = ?";
+        $sql = "Call AutorizarProductos(:IdProducto, :CorreoAdmin);";
+        $stament = $conn->prepare($sql);
+        //Se ejecutan los parametros en el orden establecido en la DB
+        $stament->bindParam(':IdProducto', $IdProductoEdit, PDO::PARAM_STR);
+        $stament->bindParam(':CorreoAdmin', $CorreoPuñetas, PDO::PARAM_STR);
+        //$stament->bindParam(':RolNuevo', $Rol, PDO::PARAM_STR);
+        if($stament->execute())
+        {
+            echo "Working Code";
+            //echo $stament;
+           
+            header("Location: ../PantallasPHP/perfil.php");
+            return true;
+        }
+        else
+        {
+            
+            header("Location: ../PantallasPHP/editProducto.php");
+            echo "Error al modificar usuario: " . $stmt.error;
+            return false;
+        }
+
+		$conn->closeConnection();
+
+
+    }
+
+
 
 
 }
@@ -385,6 +417,13 @@ if(isset($_GET['action']))
         
             header('Content-Type: application/json'); // Establece el encabezado para indicar que la respuesta es de tipo JSON
             echo json_encode($response);
+        break;
+        case 'Autorizar':
+            $IdProductoFinal = $_POST['idProducto'];
+            $CorreoAdmin = $_POST['CorreoAdmin'];
+            echo($IdProductoFinal);
+            //$Obj = new ProductosAPI();
+            //$detallesProducto = $Obj->AutorizarProducto($IdProductoFinal, $CorreoAdmin);
         break;
 
     }

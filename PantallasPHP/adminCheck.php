@@ -136,40 +136,41 @@
         </div>
     </footer>
     
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-modal">
-          <form>
-              <div class="modal-header">
-                  <h2 id="exampleModalLabel">Autorizar producto</h2>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                      <div class="col">
-                        <img id="modal-ImagenProducto" src="" style="max-width: 200px; min-width: 200px;">
-                      </div>
-                      <div class="col">
-                        <h2 id="modal-NombreProducto">Botella de Agua</h2>
-                        <p  id="modal-CategoriaProducto">Categoría: Botellas</p>
-                        <h5 id="modal-PrecioProducto">$200.00</h5>
-                        <p  id="modal-ExistenciaProducto">Stock: 9 Articulos</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <hr>
-                        <h5>Descripción</h5>
-                        <p id="modal-DescripcionProducto">Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                  <input class="btn btn-modal" type="submit" value="Rechazar">
-                  <input class="btn btn-modal" type="submit" value="Autorizar">
-                </div>
-          </form>
+   <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content fondo-modal">
+      <form id="FormAutorizar" action="../Conexion/ProductosAPI.php" method="post">
+        <div class="modal-header">
+          <h2 id="exampleModalLabel">Autorizar producto</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <img id="modal-ImagenProducto" src="" style="max-width: 200px; min-width: 200px;">
+            </div>
+            <div class="col">
+              <h2 id="modal-NombreProducto">Botella de Agua</h2>
+              <p id="modal-CategoriaProducto">Categoría: Botellas</p>
+              <h5 id="modal-PrecioProducto">$200.00</h5>
+              <p id="modal-ExistenciaProducto">Stock: 9 Articulos</p>
+              <p id="modal-CorreoAdmin">Correo: <?php echo $usuario['Mail']; ?></p>
+            </div>
+          </div>
+          <div class="row">
+            <hr>
+            <h5>Descripción</h5>
+            <p id="modal-DescripcionProducto">Es un agua muy cara pero también muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input class="btn btn-modal" type="submit" name="rechazar" value="Rechazar">
+          <input class="btn btn-modal" type="submit" name="autorizar" value="Autorizar">
+        </div>
+      </form>
     </div>
+  </div>
+</div>
 </body>
 </html>

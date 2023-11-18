@@ -23,14 +23,14 @@ $(document).ready(function() {
                     // Verificar que producto esté definido
                     if (producto) {
                         // Llenar los elementos del modal con la información del producto
-                        $('#modal-ImagenProducto').attr('src', producto.Foto);
+                       // $('#modal-ImagenProducto').attr('src', producto.Foto);
                         
                         $('#modal-NombreProducto').text(producto.NombreProd);
                         $('#modal-CategoriaProducto').text('Categoría: ' + producto.name); 
                         $('#modal-PrecioProducto').text('$' + producto.Precio);
                         $('#modal-ExistenciaProducto').text('Stock: ' + producto.Cant_Existencia + ' Artículos'); // Ajusta el nombre de la propiedad según tu JSON
                         $('#modal-DescripcionProducto').text(producto.Descripcion);
-                        $('#modal-imagen').attr('src', 'ruta_de_tu_imagen/' + producto.Foto); // Ajusta el nombre de la propiedad según tu JSON
+                        //$('#modal-imagen').attr('src', 'ruta_de_tu_imagen/' + producto.Foto); // Ajusta el nombre de la propiedad según tu JSON
 
                         // Mostrar el modal
                         $('#exampleModal').modal('show');
@@ -48,3 +48,32 @@ $(document).ready(function() {
         });
     });
 });
+
+
+/*
+function autorizarProducto(productId, correoAutorizar){
+    $.ajax({
+        type: 'POST',
+        url:'../Conexion/ProductosAPI.php?action=Autorizar',
+        data: { IdProducto: productId,
+                CorreoAdmin: correoAutorizar
+            },
+        success: function(response)
+        {
+            console.log(response);
+        },
+        error: function(error){
+            console.error('Error en la solicitud AJAX', error);
+        }
+    });
+
+} 
+
+$('.Btn-Autorizar').click(function(){
+    var productId = $(this).data('product-id');
+    console.log(productId);
+    var CorreoAdmin = $(this).data('modal-CorreoAdmin')
+
+    autorizarProducto(productId, CorreoAdmin);
+})
+*/
