@@ -71,7 +71,7 @@ if ($imagenBlob) {
     <div>
         <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Recomendados</h1>
     </div>
-    <div class="container margen d-flex row-right-product">
+    <div class="container margen d-flex row-right-product" id="CardContenedor">
         <div class="row">
             <div class="col alingFlex">
                 <div class="card text-center estilo-card" style="width: 15rem">

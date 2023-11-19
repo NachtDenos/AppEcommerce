@@ -18,6 +18,10 @@ function ObtenerProductos()
         success: function(data)
         {
             console.log(data);
+
+            resultados= JSON.parse(data);
+
+            $('#CardContenedor').empty();
         }
 
     });
