@@ -1,6 +1,32 @@
 <?php
-$DatosProd = print_r($_GET, true);
-echo $DatosProd;
+
+session_start();
+
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+}
+else
+{
+ header("Location: login.php");
+ exit();
+}
+
+
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+ // Convierte los datos BLOB a una representación base64
+ $imagenBase64 = base64_encode($imagenBlob);
+} else {
+ // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+ $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
+}
+
+
+
+//$DatosProd = print_r($_GET, true);
+$DatosProd =$_GET['datos'];
+echo $DatosProd; //Sirve para imprimir la cadena final
 
 if (!empty($_GET['datos'])) {
     // Decodifica la cadena JSON en un arreglo asociativo de PHP
@@ -12,9 +38,14 @@ if (!empty($_GET['datos'])) {
     // Accede a la propiedad 'NombreProd' del arreglo
     if (isset($datos[0]['NombreProd'])) {
         $nombreProducto = $datos[0]['NombreProd'];
-
+        $nombrePersona = $datos[0]['Nombre'];
+        $DescripcionProducto = $datos[0]['Descripcion'];
+        $ExistenciaProducto = $datos[0]['Cant_Existencia'];
+        $CategoriaProd = $datos[0]['name'];
+        $precioProd = $datos[0]['Precio'];
         // Imprime el nombre del producto
-        echo $nombreProducto;
+        //echo $nombreProducto;
+        //echo $nombrePersona;
     } else {
         echo "La clave 'NombreProd' no está presente en el array interno.";
     }
@@ -82,14 +113,14 @@ if (!empty($_GET['datos'])) {
                 </div>
             </div>
             <div class="col" >
-                <h1>Botella de Agua</h1>
-                <p>Categoría: Botellas</p>
+                <h1><?php echo($nombreProducto); ?></h1>
+                <p>Categoría: <?php echo ($CategoriaProd); ?></p>
                 <p>Puntuación: 6/10</p>
                 <hr>
-                <h3>$200.00</h3>
+                <h3>$<?php echo ($precioProd); ?></h3>
                 <hr>
                 <h2>Descripción</h2>
-                <p>Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
+                <p><?php echo ($DescripcionProducto); ?></p>
             </div>
             <div class="col">
                 <form class="formato-form">
@@ -100,9 +131,9 @@ if (!empty($_GET['datos'])) {
                     </div>
                     <div>
                         <p>Entrega GRATIS</p>
-                        <h4>Disponible: 9 Articulos</h4>
+                        <h4>Disponible: <?php echo ($ExistenciaProducto); ?> productos</h4>
                             <br>
-                        <p>Vendidor por: Paco Jimenez</p>
+                        <p>Vendidor por: <?php echo ($nombrePersona); ?></p>
                         <p>Toda compra queda sujeta a los terminos y condiciones en caso de extravio o algun percance.</p>
                         
                     </div>
