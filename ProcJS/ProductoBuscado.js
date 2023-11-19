@@ -39,7 +39,7 @@ function BuscarProductos()
                   for (var i = 0; i < resultados.length; i++) {
             // Accede a cada resultado usando resultados[i]
             // Haz algo con cada resultado, por ejemplo, crea y agrega elementos al DOM
-                     console.log(resultados[i]);
+                   console.log(resultados[i]);
             }
                 // Resto del código...
             } catch (error) {

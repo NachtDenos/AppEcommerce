@@ -407,31 +407,29 @@ class ProductosAPI extends DB
         
     }
 
-    
     function BusquedaSimple($TextoBusqueda)
-{
-    $conn = $this->connectDB();
-    $sql = "CALL BusquedaSimple(:TextoBusqueda);";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':TextoBusqueda', $TextoBusqueda, PDO::PARAM_STR);
-
-    if ($stmt->execute()) {
-        // Inicializa un arreglo para almacenar los resultados
-        $data = array();
-
-        // Recorre los resultados y agrega cada fila al arreglo
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $data[] = $row;
+    {
+        $conn = $this->connectDB();
+        $sql = "CALL BusquedaSimple(:TextoBusqueda);";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':TextoBusqueda',$TextoBusqueda, PDO::PARAM_STR);
+    
+        if ($stmt->execute()) {
+            // Inicializa un arreglo para almacenar los resultados
+            $data = array();
+    
+            // Recorre los resultados y agrega cada fila al arreglo
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+    
+            return $data;
+        } else {
+            // Si la llamada al stored procedure falla, imprime un mensaje de error o maneja la situación de otra manera
+            echo "Error en la llamada al stored procedure: " . print_r($stmt->errorInfo(), true);
+            return array();
         }
-
-        return $data;
-    } else {
-        // Si la llamada al stored procedure falla, imprime un mensaje de error o maneja la situación de otra manera
-        echo "Error en la llamada al stored procedure";
-        return array();
     }
-}
-
 
 
 }
