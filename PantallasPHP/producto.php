@@ -1,7 +1,6 @@
 <?php
-$DatosProd = print_r($_GET);
-  
-// Resto del código...
+$DatosProd = print_r($_GET, true);
+echo $DatosProd;
 
 if (!empty($_GET['datos'])) {
     // Decodifica la cadena JSON en un arreglo asociativo de PHP
@@ -9,14 +8,18 @@ if (!empty($_GET['datos'])) {
 
     // Imprime el contenido del arreglo en la consola del navegador
     echo "<script>console.log(" . json_encode($datos) . ");</script>";
+    
+    // Accede a la propiedad 'NombreProd' del arreglo
+    if (isset($datos[0]['NombreProd'])) {
+        $nombreProducto = $datos[0]['NombreProd'];
 
-    // Ahora, puedes acceder a los datos como un arreglo en PHP
-    $primerElemento = $datos[0]; // Por ejemplo, accede al primer elemento del arreglo
-
-    $productoElegido = $datos;
-
-    print_r($productoElegido);
-    // ... Resto del código con $primerElemento u otros procesamientos ...
+        // Imprime el nombre del producto
+        echo $nombreProducto;
+    } else {
+        echo "La clave 'NombreProd' no está presente en el array interno.";
+    }
+} else {
+    echo "La clave 'datos' no está presente en la URL.";
 }
 ?>
 
