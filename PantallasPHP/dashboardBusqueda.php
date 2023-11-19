@@ -82,7 +82,7 @@ if (isset($_GET['busqueda'])) {
     </div>
     <br> <br> <br> <br>
     <div>
-        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Recomendados</h1>
+        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Resultados</h1>
     </div>
     <div class="container margen d-flex row-right-product" id="CardContenedor">
         <div class="row">
@@ -204,62 +204,8 @@ if (isset($_GET['busqueda'])) {
         </div>
     </div>
     <hr>
-    <div>
-        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Populares</h1>
-    </div>
-    <div class="container margen d-flex row-right-product">
-        <div class="row">
-            <div class="col alingFlex">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div>
-        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Más baratos</h1>
-    </div>
-    <div class="container margen d-flex row-right-product">
-        <div class="row">
-            <div class="col alingFlex">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div>
-        <h1><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Antes vistos</h1>
-    </div>
-    <div class="container margen d-flex row-right-product">
-        <div class="row">
-            <div class="col alingFlex">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="producto.php" class="product-name">
-                        <h5 class="card-title">Botella de agua.</h5>
-                        <p class="card-text">$200.00</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+
     <hr>
     <footer class="text-white">
         <div class="text-center p-2" style="background-color: #252323">

@@ -34,13 +34,51 @@ function BuscarProductos()
             try {
                 resultados = JSON.parse(data);
                 $('#CardContenedor').empty();
+                
+            const promesas = [];
 
-                // Itera sobre cada resultado
-                  for (var i = 0; i < resultados.length; i++) {
-            // Accede a cada resultado usando resultados[i]
-            // Haz algo con cada resultado, por ejemplo, crea y agrega elementos al DOM
-                   console.log(resultados[i]);
-            }
+            resultados.forEach(element => {
+                const promesa = new Promise((resolve, reject) => {
+                    $.get("../Conexion/BusquedaAPI.php?action=0", function(data2){
+                        resolve({element, data2});
+                    }).fail(function (error) {
+                        reject(error);
+                    });
+                });
+
+                promesas.push(promesa);
+            });
+            
+            Promise.all(promesas)
+                .then(resultadosCompletos => {
+                    resultadosCompletos.forEach(({ element, data2 }) => {
+                        if(element.Precio != 0){
+                            $('#CardContenedor').append(`<div class="row">
+                                <div class="col alingFlex">
+                                    <div class="card text-center estilo-card" style="width: 15rem" id="Producto" data-IdProd=" ${element.Id_Productos}" ">
+                                        <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                                        <div class="card-body">
+                                            <a id="ComprarProducto" href="#" class="product-name">
+                                             <h5 class="card-title">${element.NombreProd}</h5>
+                                             <p class="card-text">$${element.Precio}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`);
+                        }
+                    });
+                }).catch(error => {
+                    // Manejar errores de las solicitudes
+                    console.error('Hubo un problema con una o más solicitudes GET:', error);
+                });
+
+
+
+
+
+
+
                 // Resto del código...
             } catch (error) {
                 console.log('No se pudo parsear como JSON:', error);
