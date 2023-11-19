@@ -151,11 +151,12 @@
               <img id="modal-ImagenProducto" src="" style="max-width: 200px; min-width: 200px;">
             </div>
             <div class="col">
+            <h2 id="modal-idProducto">Botella de Agua</h2>
               <h2 id="modal-NombreProducto">Botella de Agua</h2>
               <p id="modal-CategoriaProducto">Categoría: Botellas</p>
               <h5 id="modal-PrecioProducto">$200.00</h5>
               <p id="modal-ExistenciaProducto">Stock: 9 Articulos</p>
-              <p id="modal-CorreoAdmin">Correo: <?php echo $usuario['Mail']; ?></p>
+              <p id="modal-CorreoAdmin" data-Correo="<?php echo $usuario['Mail']; ?>">Correo: <?php echo $usuario['Mail']; ?></p>
             </div>
           </div>
           <div class="row">
@@ -166,7 +167,7 @@
         </div>
         <div class="modal-footer">
           <input class="btn btn-modal" type="submit" name="rechazar" value="Rechazar">
-          <input class="btn btn-modal" type="submit" name="autorizar" value="Autorizar">
+          <input class="btn btn-modal" type="submit" name="autorizar" id="Btn-Autorizar"  value="Autorizar">
         </div>
       </form>
     </div>

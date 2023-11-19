@@ -420,8 +420,8 @@ if(isset($_GET['action']))
         break;
         case 'Autorizar':
             $IdProductoFinal = $_POST['idProducto'];
-            $CorreoAdmin = $_POST['CorreoAdmin'];
-            echo($IdProductoFinal);
+            $CorreoAdmin = $_SESSION['Mail'];
+            echo "Hola";
             //$Obj = new ProductosAPI();
             //$detallesProducto = $Obj->AutorizarProducto($IdProductoFinal, $CorreoAdmin);
         break;
