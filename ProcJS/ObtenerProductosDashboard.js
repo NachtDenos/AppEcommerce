@@ -1,6 +1,23 @@
 $(document).ready(function(){
     ObtenerProductos();
     botonComprar();
+
+    $(document).ready(function () {
+        // Manejar el evento de envío del formulario
+        $('#formBusqueda').submit(function (event) {
+            // Evitar que el formulario se envíe de forma predeterminada
+            event.preventDefault();
+    
+            // Obtener el valor del campo de búsqueda
+            var busqueda = $('#ContenedorSearch').val();
+    
+            // Realizar cualquier manipulación adicional antes de enviar el formulario, si es necesario
+            console.log('Búsqueda:', busqueda);
+    
+            // Redirigir a la otra página con el valor como parámetro
+            window.location.href = 'dashboardBusqueda.php?busqueda=' + encodeURIComponent(busqueda);
+        });
+    });
 })
 
 

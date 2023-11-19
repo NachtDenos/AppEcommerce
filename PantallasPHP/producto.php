@@ -26,7 +26,7 @@ if ($imagenBlob) {
 
 //$DatosProd = print_r($_GET, true);
 $DatosProd =$_GET['datos'];
-echo $DatosProd; //Sirve para imprimir la cadena final
+//echo $DatosProd; //Sirve para imprimir la cadena final
 
 if (!empty($_GET['datos'])) {
     // Decodifica la cadena JSON en un arreglo asociativo de PHP

@@ -21,6 +21,19 @@ if ($imagenBlob) {
   $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
 }
 
+if (isset($_GET['busqueda'])) {
+  // Obtener el valor de búsqueda
+  $busqueda = $_GET['busqueda'];
+
+  // Realizar cualquier manipulación adicional con el valor de búsqueda
+
+  // Imprimir el valor de búsqueda para verificar
+  echo 'Búsqueda: ' . htmlspecialchars($busqueda);
+} else {
+  // Si no se proporcionó el parámetro de búsqueda, manejarlo en consecuencia
+  echo 'No se proporcionó ningún valor de búsqueda.';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +46,7 @@ if ($imagenBlob) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../Estilos/dashboard.css">
-    <script src="../ProcJS/ObtenerProductosDashboard.js"></script>
+    <script src="../ProcJS/ProductoBuscado.js"></script>
 </head>
 <body>
     <div>
@@ -43,10 +56,10 @@ if ($imagenBlob) {
                 </div>
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
-                  <form id="formBusqueda" class="d-flex" role="search" action="dashboardBusqueda.php" method="get">
-                        <input id="ContenedorSearch" name="Buscador" class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" data-TextoSearch="">
-                        <button class="btn btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
-                    </form>
+                    <form class="d-flex" role="search">
+                        <input id="ContenedorSearch" class="form-control me-2" type="search" placeholder="<?php echo ($busqueda);  ?>" aria-label="Search" data-texto-search=" <?php echo ($busqueda); ?>">
+                        <button class="btn  btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                      </form>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
