@@ -89,7 +89,10 @@ function PasarDatos(){
         success: function(data)
         {
             console.log(data);
+            var responseData = JSON.parse(data);
+            console.log(responseData);
             console.log('Edson Naco');
+            window.location.href = "../PantallasPHP/producto.php?datos=" + encodeURIComponent(JSON.stringify(responseData));
         }
 
     })
@@ -102,6 +105,7 @@ function botonComprar()
 {
 
     $('#CardContenedor').on('click', '.estilo-card', PasarDatos);
+    
 
 }
 

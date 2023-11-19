@@ -25,8 +25,13 @@ function ObtenerProd()
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 0:
+            $resultado = ObtenerProd();
             
-            echo json_encode(ObtenerProd());
+           
+
+            echo json_encode($resultado);
+            //header("Location: ../PantallasPHP/producto.php");
+            exit;
             break;
         default:
             // Manejar otras acciones si es necesario

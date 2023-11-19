@@ -1,3 +1,26 @@
+<?php
+$DatosProd = print_r($_GET);
+  
+// Resto del código...
+
+if (!empty($_GET['datos'])) {
+    // Decodifica la cadena JSON en un arreglo asociativo de PHP
+    $datos = json_decode($_GET['datos'], true);
+
+    // Imprime el contenido del arreglo en la consola del navegador
+    echo "<script>console.log(" . json_encode($datos) . ");</script>";
+
+    // Ahora, puedes acceder a los datos como un arreglo en PHP
+    $primerElemento = $datos[0]; // Por ejemplo, accede al primer elemento del arreglo
+
+    $productoElegido = $datos;
+
+    print_r($productoElegido);
+    // ... Resto del código con $primerElemento u otros procesamientos ...
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
