@@ -22,14 +22,27 @@ function BuscarProductos()
         success: function(data)
         {
             data = data.trim();
-            if (data.charAt(0) === 'e') {
-                data = data.substring(1);  // Eliminar el caracter 'e' al principio
+            
+            // Intenta encontrar la posición del primer '{'
+            var startIndex = data.indexOf('{');
+
+            // Si se encuentra '{', toma el substring a partir de esa posición
+            if (startIndex !== -1) {
+                data = data.substring(startIndex);
             }
             console.log(data);
+            
 
             resultados= JSON.parse(data);
 
             $('#CardContenedor').empty();
+
+                        // Itera sobre cada resultado
+                for (var i = 0; i < resultados.length; i++) {
+                    // Accede a cada resultado usando resultados[i]
+                    // Haz algo con cada resultado, por ejemplo, crea y agrega elementos al DOM
+                    console.log(resultados[i]);
+                }
 
         },
     error: function (xhr, status, error) {
