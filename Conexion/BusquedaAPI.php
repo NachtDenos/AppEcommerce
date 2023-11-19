@@ -33,7 +33,7 @@ if (isset($_POST['action'])) {
             $Objprod = new ProductosAPI();
             echo ($TextoBusqueda);
             $resultados= $Objprod->BusquedaSimple($TextoBusqueda);
-            echo json_encode($resultados, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            echo json_encode($resultados);
             break;
         default:
             // Manejar otras acciones si es necesario

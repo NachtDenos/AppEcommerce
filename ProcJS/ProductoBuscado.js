@@ -24,25 +24,28 @@ function BuscarProductos()
             data = data.trim();
             
             // Intenta encontrar la posición del primer '{'
-            var startIndex = data.indexOf('{');
+            var startIndex = data.indexOf('[{');
 
             // Si se encuentra '{', toma el substring a partir de esa posición
             if (startIndex !== -1) {
                 data = data.substring(startIndex);
             }
             console.log(data);
-            
+            try {
+                resultados = JSON.parse(data);
+                $('#CardContenedor').empty();
 
-            resultados= JSON.parse(data);
+                // Itera sobre cada resultado
+                  for (var i = 0; i < resultados.length; i++) {
+            // Accede a cada resultado usando resultados[i]
+            // Haz algo con cada resultado, por ejemplo, crea y agrega elementos al DOM
+                     console.log(resultados[i]);
+            }
+                // Resto del código...
+            } catch (error) {
+                console.log('No se pudo parsear como JSON:', error);
+            }
 
-            $('#CardContenedor').empty();
-
-                        // Itera sobre cada resultado
-                for (var i = 0; i < resultados.length; i++) {
-                    // Accede a cada resultado usando resultados[i]
-                    // Haz algo con cada resultado, por ejemplo, crea y agrega elementos al DOM
-                    console.log(resultados[i]);
-                }
 
         },
     error: function (xhr, status, error) {
