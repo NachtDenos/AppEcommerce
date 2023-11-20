@@ -12,7 +12,7 @@ else
 }
 include_once 'ConexionPDP.php';
 
-class ListasAPI extends DB
+class CarritoAPI extends DB
 {
     function AltaListas($NombreLista, $DescLista, $PrivLista, $CorreoU)
     {
@@ -112,13 +112,13 @@ class ListasAPI extends DB
         
     }
 
-    function ObtenerProductosLista($IdLista)
+    function ObtenerProductosCarrito($IdUsuario)
     {
         //$User = $usuario['User'];
         $conn = $this->connectDB();
-        $sql = "Call ObtenerProductosDeLista(:listaID);"; //Obtiene los productos del usuario que los creo, para editar usamos que al darle click pase los datos de la pestaña 
+        $sql = "Call ObtenerProductosDeCarrito(:usuarioID);"; //Obtiene los productos del usuario que los creo, para editar usamos que al darle click pase los datos de la pestaña 
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':listaID', $IdLista, PDO::PARAM_STR);
+        $stmt->bindParam(':usuarioID', $IdUsuario, PDO::PARAM_STR);
        
         if ($stmt->execute()) {
             // Inicializa un arreglo para almacenar los resultados
