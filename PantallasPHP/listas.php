@@ -1,3 +1,30 @@
+<?php
+include_once '../Conexion/ListasAPI.php';
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+ $Username = $usuario['User'];
+}
+else
+{
+ header("Location: ../Pantallas/login.php");
+ exit();
+}
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+  // Convierte los datos BLOB a una representación base64
+  $imagenBase64 = base64_encode($imagenBlob);
+} else {
+  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/iconBlack.png'));
+}
+
+$ObjLista = new ListasAPI();
+$IdUsuarioLogeado = $usuario['id'];
+//$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
+$JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +63,7 @@
                   </div>
                 <div class="col alingFlex">
                   <a href="carrito.php"><button type="button" class="btn btn-dark"><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></button></a> 
-                  <a class="navbar-brand" href="perfil.php"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <a class="navbar-brand" href="perfil.php"><img src=" data:image/jpeg;base64,  <?php echo $imagenBase64; ?>" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>
@@ -50,6 +77,40 @@
     </div>
     <div class="container margen d-flex row-right-product">
         <div class="row">
+        <?php
+              if ($JSONListas !== false) {
+                  // Itera sobre los productos y construye la estructura HTML deseada
+                  foreach ($JSONListas as $lista) {
+                    $imageBlob = $lista['foto'];
+                    $image = base64_encode($imageBlob);
+                    $imageExt = $lista['foto'];
+                    /*
+                    $fotoBase64 = base64_encode($producto['Foto']);
+                    $tipoContenido = 'image/jpeg'; // Ajusta según el tipo de imagen almacenada
+                    $imagenSrc = 'data:' . $tipoContenido . ';base64,' . $fotoBase64;
+                    */
+                    echo '<div class="col alingFlex row-right-product">';
+                        echo '<div class="card text-center estilo-card" style="width: 15rem" value="' . $lista['listaID'] .'">';
+                    echo '<form id="FormBajaLista" action="../Conexion/ListasAPI.php?action=delete" method="post" enctype="multipart/form-data">';
+                            echo '<input type="hidden" name="listaID" value="' . $lista['listaID'] . '">';
+                            echo '<input class="btn text-end btn-delete-lista" type="submit" value="X">';
+                    echo '</form>';  
+                            echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/lista.png') . '" class="card-img-top" style="height: 10rem;">';
+                            echo '<div class="card-body">';
+                              echo '<a href="miLista.php?id='. $lista['listaID']. '" class="product-name">';
+                                echo '<h5 class="card-title card-title-product">' . $lista['nombre'] . '</h5>';
+                                echo '<p class="card-text card-title-product">'. $lista['descripcion'] . '</p>';
+                              echo '</a>';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                  }
+              } else {
+                  // Maneja el caso en que la obtención de datos falla
+                  echo "Error en la obtención de listas";
+              }
+            ?>
+            <!--
             <div class="col alingFlex row-right-product">
                 <div class="card text-center estilo-card" style="width: 15rem">
                     <input class="btn text-end btn-delete-lista" type="submit" value="X">
@@ -62,79 +123,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <input class="btn text-end btn-delete-lista" type="submit" value="X">
-                    <img src="../Imagenes/lista.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="miLista.php" class="product-name">
-                        <h5 class="card-title card-title-product">Lista 1.</h5>
-                        <p class="card-text card-title-product">Es mi primer lista, que emoción.</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <input class="btn text-end btn-delete-lista" type="submit" value="X">
-                    <img src="../Imagenes/lista.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="miLista.php" class="product-name">
-                        <h5 class="card-title card-title-product">Lista 1.</h5>
-                        <p class="card-text card-title-product">Es mi primer lista, que emoción.</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <input class="btn text-end btn-delete-lista" type="submit" value="X">
-                    <img src="../Imagenes/lista.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="miLista.php" class="product-name">
-                        <h5 class="card-title card-title-product">Lista 1.</h5>
-                        <p class="card-text card-title-product">Es mi primer lista, que emoción.</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <input class="btn text-end btn-delete-lista" type="submit" value="X">
-                    <img src="../Imagenes/lista.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="miLista.php" class="product-name">
-                        <h5 class="card-title card-title-product">Lista 1.</h5>
-                        <p class="card-text card-title-product">Es mi primer lista, que emoción.</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <input class="btn text-end btn-delete-lista" type="submit" value="X">
-                    <img src="../Imagenes/lista.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="miLista.php" class="product-name">
-                        <h5 class="card-title card-title-product">Lista 1.</h5>
-                        <p class="card-text card-title-product">Es mi primer lista, que emoción.</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col alingFlex row-right-product">
-                <div class="card text-center estilo-card" style="width: 15rem">
-                    <input class="btn text-end btn-delete-lista" type="submit" value="X">
-                    <img src="../Imagenes/lista.png" class="card-img-top" style="height: 10rem;">
-                    <div class="card-body">
-                      <a href="miLista.php" class="product-name">
-                        <h5 class="card-title card-title-product">Lista 1.</h5>
-                        <p class="card-text card-title-product">Es mi primer lista, que emoción.</p>
-                      </a>
-                    </div>
-                </div>
-            </div>
-            
+            -->
         </div>
     </div>
     <hr>
@@ -150,7 +139,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-modal">
-          <form>
+          <form action="../Conexion/ListasAPI.php?action=insert" method="post" enctype="multipart/form-data">
               <div class="modal-header">
                   <h2 id="exampleModalLabel">Crear Lista</h2>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -158,13 +147,13 @@
                 <div class="modal-body">
                     <div class="contenido-form">
                         <label for="nameL">Nombre de la lista</label>
-                        <input class="input-modal" type="text" name="nameL" placeholder="Lista" id="nameL">
+                        <input class="input-modal" type="text" name="nameL" placeholder="Lista" id="nameL" required>
                         
                         <label for="descL">Descripción</label>
-                        <input class="input-modal" type="text" name="descL" placeholder="Descripción" id="descL">
+                        <input class="input-modal" type="text" name="descL" placeholder="Descripción" id="descL" required>
                         
                         <label for="privL">Privacidad</label>
-                        <select id="privL" name="privL">
+                        <select id="privL" name="privL" required>
                             <option value="" disabled selected>Selecciona la privacidad de la lista</option>
                             <option value="pub">Publica</option>
                             <option value="priv">Privada</option>
@@ -172,7 +161,7 @@
     
                         <div class="imageinput">
                             <label for="imagenL">Selecciona una imagen para la lista: (Opcional)</label>
-                            <input class="input-modal" type="file" id="imagenL" name="imagenL" accept="image/*">
+                            <input class="input-modal" type="file" id="imagenL" name="imagenL" accept="image/*" required>
                         </div>
     
                     </div>
