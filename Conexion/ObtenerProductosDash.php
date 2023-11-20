@@ -9,12 +9,8 @@ function ObtenerProd()
 
     if ($res) {
         // Verifica si $res es un arreglo antes de llamar a fetchAll
-        if (is_array($res)) {
             return $res;
-        } else {
-            // Si no es un arreglo, podría ser un mensaje de error u otra cosa
-            return array('error' => 'Error en la obtención de productos');
-        }
+       
     } else {
         // Manejo de error si ObtenerProductosAprovados() devuelve false
         return array('error' => 'Error en la obtención de productos');

@@ -362,12 +362,7 @@ class ProductosAPI extends DB
     
         if ($stmt->execute()) {
             // Inicializa un arreglo para almacenar los resultados
-            $data = array();
-        
-            // Recorre los resultados y agrega cada fila al arreglo
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $data[] = $row;
-            }
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         
             // Imprime el JSON resultante

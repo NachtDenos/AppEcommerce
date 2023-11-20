@@ -29,7 +29,7 @@ function ObtenerProductos()
     }
 
     $.ajax({
-        url: '../Conexion/ObtenerProductosDash.php',
+        url: "../Conexion/ObtenerProductosDash.php",
         method: 'POST',
         async: true,
         data: jsonDatos,
@@ -37,7 +37,7 @@ function ObtenerProductos()
         {
             console.log(data);
 
-            resultados= JSON.parse(data);
+            resultados = JSON.parse(data);
 
             $('#CardContenedor').empty();
 
