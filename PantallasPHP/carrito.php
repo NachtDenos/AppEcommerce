@@ -1,3 +1,29 @@
+<?php
+include_once '../Conexion/CarritoAPI.php';
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+ $Username = $usuario['User'];
+}
+else
+{
+ header("Location: ../Pantallas/login.php");
+ exit();
+}
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+  // Convierte los datos BLOB a una representación base64
+  $imagenBase64 = base64_encode($imagenBlob);
+} else {
+  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/iconBlack.png'));
+}
+
+$ObjCarrito = new CarritoAPI();
+$IdUsuarioLogeado = $usuario['id'];
+//$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
+$JSONListas = $ObjCarrito->ObtenerProductosCarrito($IdUsuarioLogeado);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
