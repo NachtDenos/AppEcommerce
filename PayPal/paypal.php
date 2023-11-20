@@ -19,7 +19,7 @@ $orderNumber = rand();
 
 <body>
 <div class="container">
-    <h2>Demo Paypal Express Checkout Demo con PHP</h2>  
+    <h2>CheckOut con PayPal</h2>  
     <br>
     <table class="table">
         <tr>

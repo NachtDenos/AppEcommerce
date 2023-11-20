@@ -45,6 +45,31 @@ function GenerarVentaProducto($Nombre, $IdComprador, $Cant, $Precio, $TarjetaNum
     }
     $conn->closeConnection();
 }
+
+function DatosPayPalInsert($PaymentId, $PayerId)
+{
+        
+    $conn = $this->connectDB();
+
+    $sql = "Call IngresarDatosPayPal(:IdComprador, :IdCompra);";
+    $statement = $conn->prepare($sql);
+
+    $statement->bindParam(':IdComprador', $Nombre, PDO::PARAM_STR);
+    $statement->bindParam(':IdCompra', $IdComprador, PDO::PARAM_STR);
+    if($statement->execute())
+    {
+        echo "Working Code";
+
+        header("Location: ../PantallasPHP/dashboard.php");
+
+    }
+    else
+    {
+        header("Location: ../PantallasPHP/pago.php");
+    }
+    $conn->closeConnection();
+}
+
 }
 
 

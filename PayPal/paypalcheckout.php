@@ -1,8 +1,6 @@
 <?php 
 
-
-
-
+include_once '../Conexion/VentasAPI.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +17,7 @@
 </div>
 <div id="paypal-button"></div>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 paypal.Button.render({
   env: '<?php echo PayPalENV; ?>',
@@ -43,13 +42,28 @@ paypal.Button.render({
     return actions.payment.execute()
       .then(function () {
        // console.log(
-        //
+        //s
         //echo ($productId);
         //);
         window.location = "<?php echo PayPalBaseUrl ?>orderDetails.php?paymentID="+data.paymentID+"&payerID="+data.payerID+"&token="+data.paymentToken+"&pid=<?php echo $productId; ?>";
       });
   }
 }, '#paypal-button');
+
+
+function InsertPaypal(var PaymentId, var PayerId)
+{
+  var = {
+    "IdPaypal" : PaymentId,
+    "PayPalPayerId" : PayerId
+  }
+
+  $.ajax({
+      type: 'POST'
+      url: '../Conexion/VentasAPI.php'
+  })
+}
+
 </script>
 
 </body>

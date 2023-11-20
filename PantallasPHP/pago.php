@@ -4,6 +4,7 @@ $Nombre =  isset($_GET['nombreProd']) ? $_GET['nombreProd']: null;
 $precio =  isset($_GET['precio']) ? $_GET['precio']: null;
 $cant =  isset($_GET['cantidad']) ? $_GET['cantidad']: null;
 $idProd = isset($_GET['idProd']) ? $_GET['idProd']: null;
+$Total = $cant * $precio;
 if($ProductoVarios == "false")
 {
 
@@ -137,7 +138,7 @@ else
                                         echo " <input type=\"number\" name=\"CantidadCard\" placeholder=\"$cant\" value=\"$cant\" id=\"CantidadCard\" class=\"input-form\"> ";
 
                                         echo " <label for=\"precioProdCard\">Precio producto</label> ";
-                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"$precio\" value=\"$precio\" id=\"precioProdCard\" class=\"input-form\"> ";
+                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"$Total\" value=\"$Total\" id=\"precioProdCard\" class=\"input-form\"> ";
                                     
                                         echo '<input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">';
                                         echo '<br>';
@@ -268,7 +269,7 @@ else
     <script>
     function kevin()
     {
-    window.location.href="../PayPal/paypal.php?nombreProd=<?php echo urlencode($Nombre); ?>&precio=<?php echo urlencode($precio); ?>&idProducto=<?php echo urlencode($idProd); ?>&cantidad="+ $("#CantidadCard").val()+"";
+    window.location.href="../PayPal/paypal.php?nombreProd=<?php echo urlencode($Nombre); ?>&precio=<?php echo urlencode($Total); ?>&idProducto=<?php echo urlencode($idProd); ?>&cantidad="+ $("#CantidadCard").val()+"";
     }
 </script>
 
