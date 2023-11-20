@@ -58,7 +58,6 @@ $IdUsuarioLogeado = $usuario['id'];
 //$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
 $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
 
-
 ?>
 
 
@@ -130,8 +129,12 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                 <p><?php echo ($DescripcionProducto); ?></p>
             </div>
             <div class="col">
-                <form class="formato-form">
+                <form class="formato-form" action="../Conexion/CarritoAPI.php?action=agregarCarrito" method="post" enctype="multipart/form-data" onsubmit="return validarCantidad()">
                     <h1>Compra</h1>
+                    <?php
+                        echo '<input type="hidden" name="idProducto" value="' . $idProd . '">';
+                        echo '<input type="hidden" name="idUsuario" value="' . $IdUsuarioLogeado . '">';
+                    ?>
                     <div class="contenido-form">
                         <label for="cantPro">Cantidad</label>
                         <input type="number" name="cantPro" placeholder="Cantidad" id="cantPro">
@@ -145,10 +148,10 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                         
                     </div>
                     <div class="other-register">
-                        <button class="btn btn-compra" type="submit" formaction="pago.php">
+                        <button class="btn btn-compra" type="button" formaction="pago.php">
                             Comprar
                         </button>
-                        <button class="btn btn-compra" type="submit" formaction="carrito.php">
+                        <button class="btn btn-compra" type="submit">
                             Añadir al carrito
                         </button>
                         <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3">
@@ -297,5 +300,15 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
         </div>
       </div>
     </div>
+    <script>
+    function validarCantidad() {
+        var cantidad = document.getElementById("cantPro").value;
+        if (cantidad <= 0) {
+            alert("La cantidad debe ser mayor que cero.");
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
