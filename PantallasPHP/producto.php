@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+include_once '../Conexion/ListasAPI.php';
 if(isset($_SESSION['usuario']))
 {
  $usuario = $_SESSION['usuario'];
@@ -37,6 +37,7 @@ if (!empty($_GET['datos'])) {
     
     // Accede a la propiedad 'NombreProd' del arreglo
     if (isset($datos[0]['NombreProd'])) {
+        $idProd = $datos[0]['Id_Productos'];
         $nombreProducto = $datos[0]['NombreProd'];
         $nombrePersona = $datos[0]['Nombre'];
         $DescripcionProducto = $datos[0]['Descripcion'];
@@ -53,7 +54,14 @@ if (!empty($_GET['datos'])) {
 } else {
     echo "La clave 'datos' no está presente en la URL.";
 }
+<<<<<<< HEAD
 
+=======
+$ObjLista = new ListasAPI();
+$IdUsuarioLogeado = $usuario['id'];
+//$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
+$JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
+>>>>>>> origin/RamaEdson2
 
 
 ?>
@@ -266,23 +274,30 @@ if (!empty($_GET['datos'])) {
     <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content formato-form">
-          <form class="contenido-form">
+          <form class="contenido-form" id="FormAddLista" action="../Conexion/ListasAPI.php?action=AgregarLista" method="post" enctype="multipart/form-data">
               <div class="modal-header">
                   <h2 id="exampleModal3Label">Agregar a lista</h2>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                         <div class="row contenido-form">
+                            <?php
+                            echo '<input type="hidden" name="idProducto" value="' . $idProd . '">';
+                            ?>
                             <label for="listaSeleccionada">Selecciona una lista:</label>
                             <select class="input-form" name="listaSeleccionada" id="listaSeleccionada">
-                                <option value="lista1">Lista 1</option>
-                                <option value="lista2">Lista 2</option>
-                                <option value="lista3">Lista 3</option>
+                            <?php
+                                foreach ($JSONListas as $lista) {
+                                $nombreLista = $lista['nombre']; // Asegúrate de utilizar el nombre del campo correcto
+                                $valorLista = $lista['listaID'];
+                                echo "<option value=\"$valorLista\">$nombreLista</option>";
+                                }
+                            ?>
                             </select>
                         </div>
                 </div>
                 <div class="modal-footer">
-                   <input class="btn btn-compra" type="submit" value="Confirmar">
+                   <input class="btn btn-compra" type="submit" name="AgregarAListaBtn" value="Confirmar">
                 </div>
           </form>
         </div>
