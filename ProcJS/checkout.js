@@ -10,12 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
             var cantidadCardValue = document.getElementById('cantProducto').value;
             var precioProdCardValue = document.getElementById('PrecioProd').textContent;
 
-
             var jsonDatos = {
                 "name": nameCardValue,
                 "cantidad": cantidadCardValue,
                 "precio": precioProdCardValue,
-                "MuchosProductos" : false
+                "MuchosProductos": false
             };
 
             // Determina la acción según el botón presionado
@@ -25,25 +24,28 @@ document.addEventListener('DOMContentLoaded', function() {
             switch (action) {
                 case 'comprar':
                     // Acciones específicas para el botón "Comprar"
-                    fetch('pago.php', {
+                    fetch('pago.php?action=false', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(jsonDatos)
                     })
-                    .then(response => {
-                        // Manejar la respuesta si es necesario
-                        console.log(response);
+                    .then(response => response.json())
+                    .then(data => {
+                        // Manejar la respuesta JSON
+                        console.log(data);
+                        
                         // Puedes redirigir a otra página si es necesario
-                        // window.location.href = 'otra_pagina.php';
-                    }).catch(error => {
+                        window.location.href = 'pago.php?action=false';
+                    })
+                    .catch(error => {
                         console.error('Error:', error);
                     });
                     break;
                 default:
                     console.error('Acción no reconocida.');
-            }
+            }       
         });
     } else {
         console.error('El formulario no se encontró en el DOM.');

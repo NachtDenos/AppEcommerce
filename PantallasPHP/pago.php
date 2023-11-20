@@ -1,6 +1,5 @@
 <?php
 $ProductoVarios = isset($_GET['action']) ? $_GET['action'] : null;
-
 if($ProductoVarios == false)
 {
     echo "Solo es un producto";
