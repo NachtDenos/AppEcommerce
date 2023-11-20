@@ -22,7 +22,16 @@ if ($imagenBlob) {
 $ObjCarrito = new CarritoAPI();
 $IdUsuarioLogeado = $usuario['id'];
 //$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
-$JSONListas = $ObjCarrito->ObtenerProductosCarrito($IdUsuarioLogeado);
+$JSONCarrito = $ObjCarrito->ObtenerProductosCarrito($IdUsuarioLogeado);
+
+
+$sumaTotal = 0;
+if ($JSONCarrito !== false) {
+    foreach ($JSONCarrito as $prod) {
+        $sumaTotal += $prod['PrecioProd'] * $prod['Cantidad'];
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,63 +82,48 @@ $JSONListas = $ObjCarrito->ObtenerProductosCarrito($IdUsuarioLogeado);
             <div class="col-9">
                 <table class="table table-hover table-rounded">
                     <tbody>
-                      <tr>
-                        <td class="imagen-celda"><img class="imagen-carrito" src="../Imagenes/agua.png"></td>
-                        <td>
-                            <div>
-                                <div>
-                                    <h3>Botella de Agua</h3>
-                                    <h6>Vendido por: Paco Jimenez</h6>
-                                    <h6>$200.00</h6>
-                                    <p>Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
-                                    <p class="letra-peque">Disponible: 9 Articulos</p>
-                                </div>
-                                <div>
-                                    <input type="number" name="cantPro" placeholder="Cantidad" id="cantPro">
-                                    <input class="btn btn-compra" type="submit" value="Actualizar cantidad">
-                                    <input class="btn btn-compra" type="submit" value="Eliminar">
-                                </div>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="imagen-celda"><img class="imagen-carrito" src="../Imagenes/agua.png"></td>
-                        <td>
-                            <div>
-                                <div>
-                                    <h3>Botella de Agua</h3>
-                                    <h6>Vendido por: Paco Jimenez</h6>
-                                    <h6>$200.00</h6>
-                                    <p>Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
-                                    <p class="letra-peque">Disponible: 9 Articulos</p>
-                                </div>
-                                <div>
-                                    <input type="number" name="cantPro" placeholder="Cantidad" id="cantPro">
-                                    <input class="btn btn-compra" type="submit" value="Actualizar cantidad">
-                                    <input class="btn btn-compra" type="submit" value="Eliminar">
-                                </div>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="imagen-celda"><img class="imagen-carrito" src="../Imagenes/agua.png"></td>
-                        <td>
-                            <div>
-                                <div>
-                                    <h3>Botella de Agua</h3>
-                                    <h6>Vendido por: Paco Jimenez</h6>
-                                    <h6>$200.00</h6>
-                                    <p>Es un agua muy cara pero tambien muy refrescante, ayuda mucho a la piel porque te hace no comer comida chatarra ya que te deja sin dinero.</p>
-                                    <p class="letra-peque">Disponible: 9 Articulos</p>
-                                </div>
-                                <div>
-                                    <input type="number" name="cantPro" placeholder="Cantidad" id="cantPro">
-                                    <input class="btn btn-compra" type="submit" value="Actualizar cantidad">
-                                    <input class="btn btn-compra" type="submit" value="Eliminar">
-                                </div>
-                            </div>
-                        </td>
-                      </tr>
+                    <?php
+                        if ($JSONCarrito !== false) {
+                            // Itera sobre los productos y construye la estructura HTML deseada
+                            foreach ($JSONCarrito as $prod) {
+                                $imageBlob = $prod['Foto'];
+                                $image = base64_encode($imageBlob);
+                                $imageExt = $prod['Foto'];
+
+                                echo '<tr>';
+                                    echo '<td class="imagen-celda"><img class="imagen-carrito" src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '"></td>';
+                                    echo '<td>';
+                                        echo '<div>';
+                                            echo '<div>';
+                                                echo '<h3>' . $prod['NombreProducto'] . '</h3>';
+                                                echo '<h6>Vendido por: ' . $prod['Vendedor'] . '</h6>';
+                                                echo '<h6>$' . $prod['PrecioProd'] . '</h6>';
+                                                echo '<p>' . $prod['Descripcion'] . '</p>';
+                                                echo '<p class="letra-peque">Disponible: 9 Articulos</p>';
+                                            echo '</div>';
+                                            echo '<div>';
+                                            echo '<form id="FormActCantidad" action="../Conexion/CarritoAPI.php?action=ActCantidad" method="post" enctype="multipart/form-data">';
+                                                echo '<input type="hidden" name="idProducto" value="' . $prod['IDproducto'] . '">';
+                                                echo '<input type="hidden" name="idUsuario" value="' . $IdUsuarioLogeado . '">';    
+                                                echo '<input type="number" name="cantPro" placeholder="Cantidad" id="cantPro" value="' . $prod['Cantidad'] . '">';
+                                                echo '<input class="btn btn-compra" type="submit" value="Actualizar cantidad">';
+                                            echo '</form>';
+                                            echo '<form id="FormBajaCarrito" action="../Conexion/CarritoAPI.php?action=eliminarProductoCarrito" method="post" enctype="multipart/form-data">';
+                                                echo '<input type="hidden" name="idProducto" value="' . $prod['IDproducto'] . '">';
+                                                echo '<input type="hidden" name="idUsuario" value="' . $IdUsuarioLogeado . '">';
+                                                echo '<input class="btn btn-compra" type="submit" value="Eliminar">';
+                                            echo '</form>';
+                                            echo '</div>';
+                                        echo '</div>';
+                                    echo '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            // Maneja el caso en que la obtención de datos falla
+                            echo "Error en la obtención de listas";
+                        }
+                    ?>
+                      
                     </tbody>
                   </table>
             </div>
@@ -140,8 +134,8 @@ $JSONListas = $ObjCarrito->ObtenerProductosCarrito($IdUsuarioLogeado);
                         <p>Tu pedido es elegible con envío GRATIS. Comprueba los productos incluidos en el carrito.
                             Selecciona esta opción al tramitar el pedido.</p>
                             <br>
-                        <h2>Subtotal: (3 Productos):</h2>
-                        <h3>$600.00</h3>
+                        <h2>Subtotal: (<?php echo count($JSONCarrito); ?> Productos):</h2>
+                        <h3>$<?php echo number_format($sumaTotal, 2); ?></h3>
                         
                     </div>
                     <input class="btn btn-compra" type="submit" value="Proceder al Pago">

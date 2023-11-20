@@ -44,7 +44,6 @@ if (!empty($_GET['datos'])) {
         $ExistenciaProducto = $datos[0]['Cant_Existencia'];
         $CategoriaProd = $datos[0]['name'];
         $precioProd = $datos[0]['Precio'];
-        
         // Imprime el nombre del producto
         //echo $nombreProducto;
         //echo $nombrePersona;
@@ -54,15 +53,10 @@ if (!empty($_GET['datos'])) {
 } else {
     echo "La clave 'datos' no está presente en la URL.";
 }
-<<<<<<< HEAD
-
-=======
 $ObjLista = new ListasAPI();
 $IdUsuarioLogeado = $usuario['id'];
 //$JSONProductos = $ObjProd->ObtenerProductosUsuario($usuario['User']);
 $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
->>>>>>> origin/RamaEdson2
-
 
 ?>
 
@@ -76,7 +70,6 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/producto.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div>
@@ -126,38 +119,42 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                 </div>
             </div>
             <div class="col" >
-                <h1 id="nameProd"><?php echo($nombreProducto);  ?></h1>
+                <h1><?php echo($nombreProducto); ?></h1>
                 <p>Categoría: <?php echo ($CategoriaProd); ?></p>
                 <p>Puntuación: 6/10</p>
                 <hr>
-                <h3 id="PrecioProd">$<?php echo ($precioProd); ?></h3>
+                <h3>$<?php echo ($precioProd); ?></h3>
                 <hr>
                 <h2>Descripción</h2>
                 <p><?php echo ($DescripcionProducto); ?></p>
             </div>
             <div class="col">
-                <form class="formato-form" id="formPago">
+                <form class="formato-form" action="../Conexion/CarritoAPI.php?action=agregarCarrito" method="post" enctype="multipart/form-data" onsubmit="return validarCantidad()">
                     <h1>Compra</h1>
+                    <?php
+                        echo '<input type="hidden" name="idProducto" value="' . $idProd . '">';
+                        echo '<input type="hidden" name="idUsuario" value="' . $IdUsuarioLogeado . '">';
+                    ?>
                     <div class="contenido-form">
-                        <label for="cantPro" name="CantidadComprar">Cantidad</label>
-                        <input type="number" name="cantPro" placeholder="Cantidad" id="cantProducto">
+                        <label for="cantPro">Cantidad</label>
+                        <input type="number" name="cantPro" placeholder="Cantidad" id="cantPro">
                     </div>
                     <div>
                         <p>Entrega GRATIS</p>
-                        <h4 id="canProd">Disponible: <?php echo ($ExistenciaProducto); ?> productos</h4>
+                        <h4>Disponible: <?php echo ($ExistenciaProducto); ?> productos</h4>
                             <br>
-                        <p id="nameUserSeller">Vendidor por: <?php echo ($nombrePersona); ?></p>
+                        <p>Vendidor por: <?php echo ($nombrePersona); ?></p>
                         <p>Toda compra queda sujeta a los terminos y condiciones en caso de extravio o algun percance.</p>
                         
                     </div>
                     <div class="other-register">
-                        <button class="btn btn-compra" type="button" data-action="comprar" onclick="kevin()">
+                        <button class="btn btn-compra" type="button" formaction="pago.php">
                             Comprar
                         </button>
-                        <button class="btn btn-compra" type="submit" data-action="carrito">
+                        <button class="btn btn-compra" type="submit">
                             Añadir al carrito
                         </button>
-                        <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-action="lista">
+                        <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3">
                             Añadir a lista
                         </button>
                     </div>
@@ -303,13 +300,15 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
         </div>
       </div>
     </div>
-</body>
-
-
-<script>
-    function kevin()
-    {
-    window.location.href="pago.php?action=false&nombreProd=<?php echo urlencode($nombreProducto); ?>&precio=<?php echo urlencode($precioProd); ?>&cantidad="+ $("#cantProducto").val()+"";
+    <script>
+    function validarCantidad() {
+        var cantidad = document.getElementById("cantPro").value;
+        if (cantidad <= 0) {
+            alert("La cantidad debe ser mayor que cero.");
+            return false;
+        }
+        return true;
     }
 </script>
+</body>
 </html>
