@@ -1,6 +1,5 @@
 <?php 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+
 session_start();
 if(isset($_SESSION['usuario']))
 {
@@ -209,6 +208,30 @@ class ListasAPI extends DB
 
 
     }
+
+
+    function AgregarProdListas($ListaSelect, $IdProd)
+    {
+        $conn = $this->connectDB();
+        //Los params deben llamarse igual que en el SP, al menos me ha tocado asi si no truena por no encontrar
+        $sql = "Call AgregarProdListas(:listaID, :IdProd);";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':listaID', $ListaSelect, PDO::PARAM_STR);
+        $stmt->bindParam(':IdProd', $IdProd, PDO::PARAM_STR);
+
+        if($stmt->execute())
+			{
+				echo "Working Code";
+				header("Location: ../PantallasPHP/listas.php");
+			}
+			else
+			{
+				header("Location: ../PantallasPHP/listas.php");
+				echo "Error al dar de alta";
+			}
+            $conn->closeConnection();
+
+    }
     
 
 }
@@ -248,6 +271,13 @@ if(isset($_GET['action']))
             $IdListaBaja = $_POST['listaID'];
             $Obj = new ListasAPI();
             $Obj->BajaLista($IdListaBaja);
+            break;
+        case 'AgregarLista':
+            echo 'Agregamos Productos a Lista';
+            $ListaSelect = $_POST['listaSeleccionada'];
+            $IdProd = $_POST['idProducto'];
+            $Obj = new ListasAPI();
+            $Obj->AgregarProdListas($ListaSelect, $IdProd);
             break;
 
     }
