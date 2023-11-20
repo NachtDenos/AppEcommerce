@@ -121,6 +121,7 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                 </div>
             </div>
             <div class="col" >
+                <input type="hidden" id="idProd" value="<?php echo($idProd);  ?>" >
                 <h1 id="nameProd"><?php echo($nombreProducto);  ?></h1>
                 <p>Categoría: <?php echo ($CategoriaProd); ?></p>
                 <p>Puntuación: 6/10</p>
@@ -304,7 +305,7 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
 <script>
     function kevin()
     {
-    window.location.href="pago.php?action=false&nombreProd=<?php echo urlencode($nombreProducto); ?>&precio=<?php echo urlencode($precioProd); ?>&cantidad="+ $("#cantProducto").val()+"";
+    window.location.href="pago.php?action=false&nombreProd=<?php echo urlencode($nombreProducto); ?>&precio=<?php echo urlencode($precioProd); ?>&idProd=<?php echo urlencode($idProd); ?>&cantidad="+ $("#cantProducto").val()+"";
     }
 </script>
 </html>
