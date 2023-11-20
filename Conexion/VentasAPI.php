@@ -104,6 +104,30 @@ if(isset($_GET['action']))
             $categoriaObj = new VentasAPI();
             $categoriaObj->GenerarVentaProducto($NombreProd, $idU, $cantidadProducto, $precioProducto, $numetoTarjeta);
             break;
+        case 'comprarpaypal':
+            echo '<br>';
+            echo 'Venta Producto';
+            echo '<br>';
+            $IdPayPal = $_POST['IdPaypal'];
+            echo ($NombreProd);
+            echo '<br>';
+            $PayerId = $_POST['PayPalPayerId'];
+            echo ($cantidadProducto);
+            echo '<br>';
+            $IdProd = $_POST['ProductId'];
+            echo ($precioProducto);
+            echo '<br>';
+            $idU = $usuario['id'];
+            echo ($idU);
+            echo '<br>';
+            $Total = $_POST['PrecioTotal'];
+            echo ($numetoTarjeta);
+            echo '<br>';
+    
+            $categoriaObj = new VentasAPI();
+            $categoriaObj->DatosPayPalInsert($IdPayPal, $PayerId);
+            //$categoriaObj->GenerarVentaProducto($NombreProd, $idU, $cantidadProducto, $precioProducto, $numetoTarjeta);
+        break;
     
 
     }

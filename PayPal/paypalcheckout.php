@@ -1,6 +1,10 @@
 <?php 
 
 include_once '../Conexion/VentasAPI.php';
+
+$usuario = $_SESSION['usuario'];
+
+$id = $usuario['id'];
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +23,7 @@ include_once '../Conexion/VentasAPI.php';
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
+
 paypal.Button.render({
   env: '<?php echo PayPalENV; ?>',
   client: {
@@ -45,29 +50,40 @@ paypal.Button.render({
         //s
         //echo ($productId);
         //);
+                var jsondatos = {
+            "IdPaypal" : data.paymentID,
+            "PayPalPayerId" : data.payerID,
+            "ProductId" : <?php echo ($productId); ?>,
+            "PrecioTotal" : <?php echo ($productPrice); ?>
+          }
+
+          $.ajax({
+              type: 'POST',
+              url: '../Conexion/VentasAPI.php?action=comprarpaypal',
+              data: jsondatos,
+              success: function (response)
+              {
+                console.log(response);
+                window.location.href = "../PantallasPHP/dashboard.php";
+              },
+              error: function (xhr, status, error)
+              {
+                console.log('Error:', error);
+              }
+          })
+
+
+        //InsertPaypal(data.paymentID, data.paymentToken);
         window.location = "<?php echo PayPalBaseUrl ?>orderDetails.php?paymentID="+data.paymentID+"&payerID="+data.payerID+"&token="+data.paymentToken+"&pid=<?php echo $productId; ?>";
       });
   }
 }, '#paypal-button');
 
 
-function InsertPaypal(var PaymentId, var PayerId)
-{
-  var jsondatos = {
-    "IdPaypal" : PaymentId,
-    "PayPalPayerId" : PayerId
-  }
 
-  $.ajax({
-      type: 'POST'
-      url: '../Conexion/VentasAPI.php',
-      data: jsondatos,
-      success: function (response)
-      {
-        console.log(response);
-      }
-  })
-}
+</script>
+
+<script>
 
 </script>
 
