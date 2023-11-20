@@ -11,12 +11,7 @@ class DetallesProductoAPI extends DB
         $stmt->bindParam(':IdProducto', $IdAtraer, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            $data = array();
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $data[] = $row;
-            }
-
+            $data = $stmt->fetch(PDO::FETCH_ASSOC); 
             return $data;
         } else {
             echo "Error en la llamada al stored procedure";
@@ -44,7 +39,7 @@ if (isset($_POST['idProducto'])) {
         ];
     }
 
-    header('Content-Type: application/json');
+    //header('Content-Type: application/json');
     echo json_encode($response);
 } else {
     echo json_encode(['success' => false, 'message' => 'ID de producto no proporcionado']);

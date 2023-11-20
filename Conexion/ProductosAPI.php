@@ -97,7 +97,7 @@ class ProductosAPI extends DB
         // Tiene que ver para recibir el video
         if (isset($_FILES["videoProd"])) {
 			$vid = file_get_contents($_FILES["videoProd"]["tmp_name"]);
-			$vidBlob = base64_encode($vid);
+			$vidBlob = $vid;
 			// Resto del código para procesar la imagen.
 		} else {
 			echo $vid;
@@ -109,7 +109,7 @@ class ProductosAPI extends DB
         //Fotos, copiar y pegar, cambiar valores
         if (isset($_FILES["imagenProd1"])) {
 			$imagen = file_get_contents($_FILES["imagenProd1"]["tmp_name"]);
-			$imagenBlob = base64_encode($imagen);
+			$imagenBlob = $imagen;
 			// Resto del código para procesar la imagen.
 		} else {
 			echo $imagen;
@@ -119,7 +119,7 @@ class ProductosAPI extends DB
         //Fotos, copiar y pegar, cambiar valores
         if (isset($_FILES["imagenProd2"])) {
 			$imagen2 = file_get_contents($_FILES["imagenProd2"]["tmp_name"]);
-			$imagenBlob2 = base64_encode($imagen2);
+			$imagenBlob2 = $imagen2;
 			// Resto del código para procesar la imagen.
 		} else {
 			echo $imagen2;
@@ -129,7 +129,7 @@ class ProductosAPI extends DB
         //Fotos, copiar y pegar, cambiar valores
         if (isset($_FILES["imagenProd3"])) {
 			$imagen3 = file_get_contents($_FILES["imagenProd3"]["tmp_name"]);
-			$imagenBlob3 = base64_encode($imagen3);
+			$imagenBlob3 = $imagen3;
 			// Resto del código para procesar la imagen.
 		} else {
 			echo $imagen3;
@@ -424,6 +424,26 @@ class ProductosAPI extends DB
         echo "Error en la llamada al stored procedure: " . print_r($stmt->errorInfo(), true);
         return array();
     }
+
+    function SacarImagenes($idProducto)
+    {
+        $conn = $this->connectDB();
+        $sql = "CALL GetImgs(:IdProducto);";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':IdProducto', $idProducto, PDO::PARAM_STR);
+    
+        if ($stmt->execute()) {
+            // Recoge todas las filas en un array
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $data;
+        } else {
+            // Si la llamada al stored procedure falla, imprime un mensaje de error o maneja la situación de otra manera
+            echo "Error en la llamada al stored procedure: " . print_r($stmt->errorInfo(), true);
+            return array();
+        }
+    }
+
 }
 
 

@@ -11,7 +11,7 @@ function BuscarProductos()
     console.log(textoSearch);
     var jsonDatos={
         "action": 0,
-        "TextoSearch": textoSearch
+        "TextoSearch": textoSearch.trim()
     }
 
     $.ajax({
@@ -27,12 +27,13 @@ function BuscarProductos()
             var startIndex = data.indexOf('[{');
 
             // Si se encuentra '{', toma el substring a partir de esa posición
-            if (startIndex !== -1) {
+          /*  if (startIndex !== -1) {
                 data = data.substring(startIndex);
             }
+            */
             console.log(data);
             try {
-                resultados = JSON.parse(data);
+                resultados = JSON.parse(data); //Asi parsea para que sea json, sin importar si es array
                 $('#CardContenedor').empty();
                 
             const promesas = [];
@@ -56,7 +57,7 @@ function BuscarProductos()
                             $('#CardContenedor').append(`<div class="row">
                                 <div class="col alingFlex">
                                     <div class="card text-center estilo-card" style="width: 15rem" id="Producto" data-IdProd=" ${element.Id_Productos}" ">
-                                        <img src="../Imagenes/agua.png" class="card-img-top" style="height: 10rem;">
+                                        <img src="../Conexion/BusquedaAPI.php?showImgs=${element.IdProducto}" class="card-img-top" style="height: 10rem;">
                                         <div class="card-body">
                                             <a id="ComprarProducto" href="#" class="product-name">
                                              <h5 class="card-title">${element.NombreProd}</h5>

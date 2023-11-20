@@ -84,9 +84,6 @@
                           if ($JSONProductos !== false) {
                               // Itera sobre los productos y construye la estructura HTML deseada
                               foreach ($JSONProductos as $producto) {
-                                $imageBlob = $producto['Foto'];
-                                $image = base64_encode($imageBlob);
-                                $imageExt = $producto['Foto'];
                                 /*
                                 $fotoBase64 = base64_encode($producto['Foto']);
                                 $tipoContenido = 'image/jpeg'; // Ajusta según el tipo de imagen almacenada
@@ -94,7 +91,6 @@
                                 */
                                   echo '<div class="col alingFlex row-right-product">';
                                     echo '<div class="card text-center estilo-card" style="width: 15rem" data-product-id="'. $producto['Id_Productos'] . '" value="' . $producto['Id_Productos'] .'">';
-                                    echo '<img src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '" class="card-img-top" style="height: 10rem;">';
                                         echo '<div class="card-body">';
                                          echo '<a href="#" class="product-name" data-bs-toggle="modal" data-bs-target="#exampleModal">';
                                           echo '<h5 class="card-title">' . $producto['NombreProd'] . '</h5>';

@@ -12,14 +12,15 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: '../Conexion/DetallesProducto.php',
-            data: { idProducto: productId },
-            dataType: 'json',
+            data: { "idProducto": productId },
             success: function (response) {
-                if (response.success) {
+                console.log(response);
+                jsoncito = JSON.parse(response);
+                if (jsoncito.success) {
                     // Accede directamente a los datos
-                    var detallesProducto = response.data;
+                    var detallesProducto = jsoncito.data;
                     
-                    var producto = response.data[0];
+                    var producto = detallesProducto;
                     // Verificar que producto esté definido
                     if (producto) {
                         // Llenar los elementos del modal con la información del producto
@@ -44,7 +45,7 @@ $(document).ready(function() {
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error en la solicitud AJAX: ' + status + ' ' + error);
+                console.error(error);
             }
         });
     });
