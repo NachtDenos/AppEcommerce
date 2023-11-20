@@ -43,6 +43,7 @@ if (!empty($_GET['datos'])) {
         $ExistenciaProducto = $datos[0]['Cant_Existencia'];
         $CategoriaProd = $datos[0]['name'];
         $precioProd = $datos[0]['Precio'];
+        
         // Imprime el nombre del producto
         //echo $nombreProducto;
         //echo $nombrePersona;
@@ -52,6 +53,8 @@ if (!empty($_GET['datos'])) {
 } else {
     echo "La clave 'datos' no está presente en la URL.";
 }
+
+
 ?>
 
 
@@ -138,7 +141,7 @@ if (!empty($_GET['datos'])) {
                         
                     </div>
                     <div class="other-register">
-                        <button class="btn btn-compra" type="submit" data-action="comprar">
+                        <button class="btn btn-compra" type="submit" data-action="comprar" formaction="pago.php?action=false&nombreProd= <?php echo urlencode($nombreProducto); ?>&precio= <?php echo urlencode($precioProd); ?>">
                             Comprar
                         </button>
                         <button class="btn btn-compra" type="submit" data-action="carrito">
@@ -284,5 +287,4 @@ if (!empty($_GET['datos'])) {
       </div>
     </div>
 </body>
-<script src="../ProcJS/checkout.js"></script>
 </html>
