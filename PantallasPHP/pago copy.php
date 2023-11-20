@@ -1,18 +1,3 @@
-<?php
-$ProductoVarios = isset($_GET['action']) ? $_GET['action'] : null;
-
-if($ProductoVarios == false)
-{
-    echo "Solo es un producto";
-}
-else
-{
-    echo "Mas de un producto";
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,24 +104,8 @@ else
     
                                 <label for="codeCard">Código de Seguridad</label>
                                 <input type="number" name="codeCard" placeholder="Código" id="codeCard" class="input-form">
-                                <?php 
-                                    if ($ProductoVarios == false) {
-                                        echo "<h1 style=\"text-align: center;\">Datos producto</h1>";
-
-                                        echo " <label for=\"prodCard\">Nombre producto</label> " ;
-                                        echo " <input type=\"text\" name=\"prodCard\" placeholder=\"Agua\" id=\"prodCard\" class=\"input-form\"> ";
-
-                                        echo " <label for=\"CantidadCard\">Cantidad producto</label> ";
-                                        echo " <input type=\"number\" name=\"CantidadCard\" placeholder=\"10\" id=\"CantidadCard\" class=\"input-form\"> ";
-
-                                        echo " <label for=\"precioProdCard\">Cantidad producto</label> ";
-                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"200\" id=\"precioProdCard\" class=\"input-form\"> ";
-                                    }
-                                    else
-                                    {
-                                        echo "<h1 style=\"text-align: center;\">Datos productos</h1>";
-                                    }
-                                ?>
+                                
+                                <h1 style="text-align: center;">Datos producto</h1>
                                 <input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                                 
                             </div>

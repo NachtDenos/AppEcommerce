@@ -113,38 +113,38 @@ if (!empty($_GET['datos'])) {
                 </div>
             </div>
             <div class="col" >
-                <h1><?php echo($nombreProducto); ?></h1>
+                <h1 id="nameProd"><?php echo($nombreProducto);  ?></h1>
                 <p>Categoría: <?php echo ($CategoriaProd); ?></p>
                 <p>Puntuación: 6/10</p>
                 <hr>
-                <h3>$<?php echo ($precioProd); ?></h3>
+                <h3 id="PrecioProd">$<?php echo ($precioProd); ?></h3>
                 <hr>
                 <h2>Descripción</h2>
                 <p><?php echo ($DescripcionProducto); ?></p>
             </div>
             <div class="col">
-                <form class="formato-form">
+                <form class="formato-form" id="formPago">
                     <h1>Compra</h1>
                     <div class="contenido-form">
                         <label for="cantPro">Cantidad</label>
-                        <input type="number" name="cantPro" placeholder="Cantidad" id="cantPro">
+                        <input type="number" name="cantPro" placeholder="Cantidad" id="cantProducto">
                     </div>
                     <div>
                         <p>Entrega GRATIS</p>
-                        <h4>Disponible: <?php echo ($ExistenciaProducto); ?> productos</h4>
+                        <h4 id="canProd">Disponible: <?php echo ($ExistenciaProducto); ?> productos</h4>
                             <br>
-                        <p>Vendidor por: <?php echo ($nombrePersona); ?></p>
+                        <p id="nameUserSeller">Vendidor por: <?php echo ($nombrePersona); ?></p>
                         <p>Toda compra queda sujeta a los terminos y condiciones en caso de extravio o algun percance.</p>
                         
                     </div>
                     <div class="other-register">
-                        <button class="btn btn-compra" type="submit" formaction="pago.php">
+                        <button class="btn btn-compra" type="submit" data-action="comprar">
                             Comprar
                         </button>
-                        <button class="btn btn-compra" type="submit" formaction="carrito.php">
+                        <button class="btn btn-compra" type="submit" data-action="carrito">
                             Añadir al carrito
                         </button>
-                        <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                        <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-action="lista">
                             Añadir a lista
                         </button>
                     </div>
@@ -284,4 +284,5 @@ if (!empty($_GET['datos'])) {
       </div>
     </div>
 </body>
+<script src="../ProcJS/checkout.js"></script>
 </html>
