@@ -131,9 +131,14 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                 <h2>Descripción</h2>
                 <p><?php echo ($DescripcionProducto); ?></p>
             </div>
+
             <div class="col">
-                <form class="formato-form" id="formPago">
+                <form class="formato-form" action="../Conexion/CarritoAPI.php?action=agregarCarrito" method="post" enctype="multipart/form-data" onsubmit="return validarCantidad()">
                     <h1>Compra</h1>
+                    <?php
+                        echo '<input type="hidden" name="idProducto" value="' . $idProd . '">';
+                        echo '<input type="hidden" name="idUsuario" value="' . $IdUsuarioLogeado . '">';
+                    ?>
                     <div class="contenido-form">
                         <label for="cantPro" name="CantidadComprar">Cantidad</label>
                         <input type="number" name="cantPro" placeholder="Cantidad" id="cantProducto">
@@ -150,7 +155,7 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                         <button class="btn btn-compra" type="button" data-action="comprar" onclick="kevin()">
                             Comprar
                         </button>
-                        <button class="btn btn-compra" type="submit" data-action="carrito">
+                        <button class="btn btn-compra" type="submit" >
                             Añadir al carrito
                         </button>
                         <button class="btn btn-compra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3" data-action="lista">
@@ -165,6 +170,7 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                     </div>
                 </form>
             </div>
+        
         </div>
         <div class="row">
             <div class="col">
@@ -307,5 +313,15 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
     {
     window.location.href="pago.php?action=false&nombreProd=<?php echo urlencode($nombreProducto); ?>&precio=<?php echo urlencode($precioProd); ?>&idProd=<?php echo urlencode($idProd); ?>&cantidad="+ $("#cantProducto").val()+"";
     }
+
+    function validarCantidad() {
+        var cantidad = document.getElementById("cantPro").value;
+        if (cantidad <= 0) {
+            alert("La cantidad debe ser mayor que cero.");
+            return false;
+        }
+        return true;
+    }
+</script>
 </script>
 </html>

@@ -54,8 +54,8 @@ function DatosPayPalInsert($PaymentId, $PayerId)
     $sql = "Call IngresarDatosPayPal(:IdComprador, :IdCompra);";
     $statement = $conn->prepare($sql);
 
-    $statement->bindParam(':IdComprador', $Nombre, PDO::PARAM_STR);
-    $statement->bindParam(':IdCompra', $IdComprador, PDO::PARAM_STR);
+    $statement->bindParam(':IdComprador', $PaymentId, PDO::PARAM_STR);
+    $statement->bindParam(':IdCompra', $PayerId, PDO::PARAM_STR);
     if($statement->execute())
     {
         echo "Working Code";

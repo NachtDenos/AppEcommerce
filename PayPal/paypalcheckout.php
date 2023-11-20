@@ -53,14 +53,19 @@ paypal.Button.render({
 
 function InsertPaypal(var PaymentId, var PayerId)
 {
-  var = {
+  var jsondatos = {
     "IdPaypal" : PaymentId,
     "PayPalPayerId" : PayerId
   }
 
   $.ajax({
       type: 'POST'
-      url: '../Conexion/VentasAPI.php'
+      url: '../Conexion/VentasAPI.php',
+      data: jsondatos,
+      success: function (response)
+      {
+        console.log(response);
+      }
   })
 }
 
