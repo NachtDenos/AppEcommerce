@@ -19,18 +19,19 @@ include_once 'ConexionPDP.php';
 class VentasAPI extends DB
 {   
 
-function GenerarVentaProducto($Nombre, $IdComprador, $Cant, $Precio)
+function GenerarVentaProducto($Nombre, $IdComprador, $Cant, $Precio, $TarjetaNumero)
 {
         
     $conn = $this->connectDB();
 
-    $sql = "Call VentaProducto(:NombreProducto, :IdComprador, :CantidadComprar, :Precio);";
+    $sql = "Call VentaProducto(:NombreProducto, :IdComprador, :CantidadComprar, :Precio, :NumeroTarjeta);";
     $statement = $conn->prepare($sql);
 
     $statement->bindParam(':NombreProducto', $Nombre, PDO::PARAM_STR);
     $statement->bindParam(':IdComprador', $IdComprador, PDO::PARAM_STR);
     $statement->bindParam(':CantidadComprar', $Cant, PDO::PARAM_STR);
     $statement->bindParam(':Precio', $Precio, PDO::PARAM_STR);
+    $statement->bindParam(':NumeroTarjeta', $TarjetaNumero, PDO::PARAM_STR);
     if($statement->execute())
     {
         echo "Working Code";
@@ -70,8 +71,13 @@ if(isset($_GET['action']))
             echo '<br>';
             $idU = $usuario['id'];
             echo ($idU);
+            echo '<br>';
+            $numetoTarjeta = $_POST['numCard'];
+            echo ($numetoTarjeta);
+            echo '<br>';
+
             $categoriaObj = new VentasAPI();
-            $categoriaObj->GenerarVentaProducto($NombreProd, $idU, $cantidadProducto, $precioProducto);
+            $categoriaObj->GenerarVentaProducto($NombreProd, $idU, $cantidadProducto, $precioProducto, $numetoTarjeta);
             break;
     
 
