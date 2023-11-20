@@ -51,3 +51,4 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('El formulario no se encontró en el DOM.');
     }
 });
+

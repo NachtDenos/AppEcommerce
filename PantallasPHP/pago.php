@@ -1,13 +1,19 @@
 <?php
 $ProductoVarios = isset($_GET['action']) ? $_GET['action'] : null;
-if($ProductoVarios == false)
+$Nombre =  isset($_GET['nombreProd']) ? $_GET['nombreProd']: null;
+$precio =  isset($_GET['precio']) ? $_GET['precio']: null;
+$cant =  isset($_GET['cantidad']) ? $_GET['cantidad']: null;
+if($ProductoVarios == "false")
 {
-    echo "Solo es un producto";
+
 }
 else
 {
     echo "Mas de un producto";
 }
+
+
+
 
 ?>
 
@@ -57,13 +63,13 @@ else
     <br> <br> <br> <br> <br> <br> <br>
     <div class="centrar-metodo">
         <div class="container prod-ventana">
-           
+           <form action="../Conexion/VentasAPI.php?action=comprar" method="post" enctype="multipart/form-data">
                 <h1>Método de Pago</h1>
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="contenido-form">
-    
+
                                 <label for="typeCard">Tipo de Tarjeta</label>
                                 <select id="typeCard" name="typeCard" class="input-form">
                                     <option value="" disabled selected>Seleccione una opción</option>
@@ -119,30 +125,32 @@ else
                                 <label for="codeCard">Código de Seguridad</label>
                                 <input type="number" name="codeCard" placeholder="Código" id="codeCard" class="input-form">
                                 <?php 
-                                    if ($ProductoVarios == false) {
+                                    if ($ProductoVarios == "false") {
                                         echo "<h1 style=\"text-align: center;\">Datos producto</h1>";
 
                                         echo " <label for=\"prodCard\">Nombre producto</label> " ;
-                                        echo " <input type=\"text\" name=\"prodCard\" placeholder=\"Agua\" id=\"prodCard\" class=\"input-form\"> ";
+                                        echo "<input type=\"text\" name=\"prodCard\" placeholder=\"$Nombre\" value=\"$Nombre\" id=\"prodCard\" class=\"input-form\">";
 
                                         echo " <label for=\"CantidadCard\">Cantidad producto</label> ";
-                                        echo " <input type=\"number\" name=\"CantidadCard\" placeholder=\"10\" id=\"CantidadCard\" class=\"input-form\"> ";
+                                        echo " <input type=\"number\" name=\"CantidadCard\" placeholder=\"$cant\" value=\"$cant\" id=\"CantidadCard\" class=\"input-form\"> ";
 
-                                        echo " <label for=\"precioProdCard\">Cantidad producto</label> ";
-                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"200\" id=\"precioProdCard\" class=\"input-form\"> ";
+                                        echo " <label for=\"precioProdCard\">Precio producto</label> ";
+                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"$precio\" value=\"$precio\" id=\"precioProdCard\" class=\"input-form\"> ";
+                                    
+                                        echo '<input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">';
                                     }
                                     else
                                     {
                                         echo "<h1 style=\"text-align: center;\">Datos productos</h1>";
                                     }
                                 ?>
-                                <input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                <!--<input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2"> -->
                                 
                             </div>
                         </div>
                     </div>
                 </div>
-            
+            </form>
         </div>
     </div>
     

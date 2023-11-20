@@ -55,6 +55,7 @@ if (!empty($_GET['datos'])) {
 }
 
 
+
 ?>
 
 
@@ -67,6 +68,7 @@ if (!empty($_GET['datos'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/producto.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div>
@@ -129,7 +131,7 @@ if (!empty($_GET['datos'])) {
                 <form class="formato-form" id="formPago">
                     <h1>Compra</h1>
                     <div class="contenido-form">
-                        <label for="cantPro">Cantidad</label>
+                        <label for="cantPro" name="CantidadComprar">Cantidad</label>
                         <input type="number" name="cantPro" placeholder="Cantidad" id="cantProducto">
                     </div>
                     <div>
@@ -141,7 +143,7 @@ if (!empty($_GET['datos'])) {
                         
                     </div>
                     <div class="other-register">
-                        <button class="btn btn-compra" type="submit" data-action="comprar" formaction="pago.php?action=false&nombreProd= <?php echo urlencode($nombreProducto); ?>&precio= <?php echo urlencode($precioProd); ?>">
+                        <button class="btn btn-compra" type="button" data-action="comprar" onclick="kevin()">
                             Comprar
                         </button>
                         <button class="btn btn-compra" type="submit" data-action="carrito">
@@ -287,4 +289,12 @@ if (!empty($_GET['datos'])) {
       </div>
     </div>
 </body>
+
+
+<script>
+    function kevin()
+    {
+    window.location.href="pago.php?action=false&nombreProd=<?php echo urlencode($nombreProducto); ?>&precio=<?php echo urlencode($precioProd); ?>&cantidad="+ $("#cantProducto").val()+"";
+    }
+</script>
 </html>
