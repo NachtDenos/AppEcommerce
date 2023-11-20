@@ -97,7 +97,7 @@ $fotoLista = $ListaJSON[0]['foto'];
                                 $imageExt = $prod['Foto'];
                                 
                                 echo '<tr>';
-                                    echo '<td class="imagen-celda"><img class="imagen-carrito" src="' . ($imageBlob ? 'data:image/'.$imageExt.';base64,'.$image : '../Imagenes/agua.png') . '"></td>';
+                                    echo '<td class="imagen-celda"><img class="imagen-carrito" src="../Imagenes/lista.png"></td>';
                                     echo '<td>';
                                     echo '<form id="FormCarritoLista" action="../Conexion/ListasAPI.php?action=agregarCarrito" method="post" enctype="multipart/form-data">';
                                         echo '<div>';

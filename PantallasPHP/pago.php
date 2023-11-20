@@ -3,6 +3,8 @@ $ProductoVarios = isset($_GET['action']) ? $_GET['action'] : null;
 $Nombre =  isset($_GET['nombreProd']) ? $_GET['nombreProd']: null;
 $precio =  isset($_GET['precio']) ? $_GET['precio']: null;
 $cant =  isset($_GET['cantidad']) ? $_GET['cantidad']: null;
+$idProd = isset($_GET['idProd']) ? $_GET['idProd']: null;
+$Total = $cant * $precio;
 if($ProductoVarios == "false")
 {
 
@@ -27,6 +29,7 @@ else
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/newProducto.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div>
@@ -135,9 +138,11 @@ else
                                         echo " <input type=\"number\" name=\"CantidadCard\" placeholder=\"$cant\" value=\"$cant\" id=\"CantidadCard\" class=\"input-form\"> ";
 
                                         echo " <label for=\"precioProdCard\">Precio producto</label> ";
-                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"$precio\" value=\"$precio\" id=\"precioProdCard\" class=\"input-form\"> ";
+                                        echo " <input type=\"text\" name=\"precioProdCard\" placeholder=\"$Total\" value=\"$Total\" id=\"precioProdCard\" class=\"input-form\"> ";
                                     
                                         echo '<input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">';
+                                        echo '<br>';
+                                        echo '<a> <input class="btn btn-form" type="button" value="Pagar con PayPal" data-bs-toggle="" data-bs-target="#exampleModal2" onClick="kevin()"> </a>';
                                     }
                                     else
                                     {
@@ -261,6 +266,12 @@ else
         </div>
     </div>
 
+    <script>
+    function kevin()
+    {
+    window.location.href="../PayPal/paypal.php?nombreProd=<?php echo urlencode($Nombre); ?>&precio=<?php echo urlencode($Total); ?>&idProducto=<?php echo urlencode($idProd); ?>&cantidad="+ $("#CantidadCard").val()+"";
+    }
+</script>
 
 </body>
 </html>
