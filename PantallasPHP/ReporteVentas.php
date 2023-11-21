@@ -1,3 +1,12 @@
+<?php
+include_once '../Conexion/ReportesAPI.php';
+
+$IdUsuarioLogeado = $usuario['id'];
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +16,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/carrito.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../ProcJS/Reporte.js"></script>
 </head>
 <body>
     <div>
@@ -45,26 +55,29 @@
     <h1 class="marginlef"><a><img src="../Imagenes/carritoBlack.png" width="45px"></a>Reporte de Ventas</h1>
     <p class="marginlef">Filtro:</p>
     <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <input type="date" name="fechaIniFil" placeholder="Fecha Inicial" id="fechaIniFil">
-                <input type="date" name="fechaFinalFil" placeholder="Fecha Final" id="fechaFinalFil">
+        <form>
+            <div class="row">
+                <div class="col text-center">
+                    <input type="text" name="IdUsuarioLogeado" value="<?php echo ($IdUsuarioLogeado); ?>">
+                    <input type="text" name="fechaIniFil" placeholder="YYYY-MM-DD" id="fechaIniFil" value="2023-11-20">
+                    <input type="text" name="fechaFinalFil" placeholder="YYYY-MM-DD" id="fechaFinalFil" value="2023-11-21">
+                </div>
+                <div class="col text-center">
+                    <input type="text" name="cateMisProd" placeholder="Categoría" id="cateMisProd">
+                </div>
             </div>
-            <div class="col text-center">
-                <input type="text" name="cateMisProd" placeholder="Categoría" id="cateMisProd">
+            <div class="row">
+                <div class="col text-center">
+                    <input class="btn btn-compra" type="button" value="Buscar" onClick="ReporteFechas()">
+                </div>
+                <div class="col text-center">
+                    <input class="btn btn-compra" type="submit" value="Buscar">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <input class="btn btn-compra" type="submit" value="Buscar">
-            </div>
-            <div class="col text-center">
-                <input class="btn btn-compra" type="submit" value="Buscar">
-            </div>
-        </div>
+        </form>
     </div>
     <div class="cont">
-        <div class="row">
+        <div class="row" id="SeccionReporte">
             <div class="col">
                 <h2>Mis Ventas</h2>
                 <table class="table table-hover table-rounded">
@@ -166,4 +179,10 @@
             <p>LMAD | UANL</p>
         </div>
     </footer>
-  </body>
+
+    <script>
+
+    </script>
+
+
+</body>
