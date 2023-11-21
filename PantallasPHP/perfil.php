@@ -81,6 +81,10 @@ $JSONProductos = $ObjProd->ObtenerProductosUsuario($IdUsuarioLogeado);
             <div class="perfil-usuario-bio">
                 <h1 class="titulo"> <?php echo $usuario['Nombre']; ?>
                   <a class="navbar-brand" href="ModificarPerfil.php"><img src="../Imagenes/Edit.png" alt="logo" width="25px" class="rounded-circle"></a>
+                  <br>
+                  <form action="cerrarSesion.php" method="post">
+                    <a class="navbar-brand"><button>Cerrar Sesion</button></a>
+                  </form>
                 </h1>
                 <div class="row" style="width: 100%;">
                     <div class="col">

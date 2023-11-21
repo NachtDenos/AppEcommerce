@@ -58,12 +58,12 @@ $IdUsuarioLogeado = $usuario['id'];
         <form>
             <div class="row">
                 <div class="col text-center">
-                    <input type="text" name="IdUsuarioLogeado" value="<?php echo ($IdUsuarioLogeado); ?>">
+                    <input type="hidden" name="IdUsuarioLogeado" value="<?php echo ($IdUsuarioLogeado); ?>">
                     <input type="text" name="fechaIniFil" placeholder="YYYY-MM-DD" id="fechaIniFil" value="2023-11-20">
                     <input type="text" name="fechaFinalFil" placeholder="YYYY-MM-DD" id="fechaFinalFil" value="2023-11-21">
                 </div>
                 <div class="col text-center">
-                    <input type="text" name="cateMisProd" placeholder="Categoría" id="cateMisProd">
+                    <input type="hidden" name="cateMisProd" placeholder="Categoría" id="cateMisProd">
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@ $IdUsuarioLogeado = $usuario['id'];
                     <input class="btn btn-compra" type="button" value="Buscar" onClick="ReporteFechas()">
                 </div>
                 <div class="col text-center">
-                    <input class="btn btn-compra" type="submit" value="Buscar">
+                    <input class="btn btn-compra" type="hidden" value="Buscar">
                 </div>
             </div>
         </form>
@@ -122,54 +122,7 @@ $IdUsuarioLogeado = $usuario['id'];
         </div>
         <hr>
         <br>
-        <div class="row">
-            <div class="col">
-                <h2>Resumen</h2>
-                <table class="table table-hover table-rounded">
-                    <thead>
-                        <tr>
-                          <th><h4>Fecha</h4></th>
-                          <th><h4>Categoría</h4></th>
-                          <th><h4>Ventas</h4></th>
-                        </tr>
-                      </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                            <p><b>Septiembre 2023</b></p>
-                        </td>
-                        <td>
-                            <div>
-                                <div>
-                                    <h5>Botellas</h5>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p><b>Ventas:</b> 3</p>
-                            <p><b>Ganancias:</b> $600</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                            <p><b>Agosto 2023</b></p>
-                        </td>
-                        <td>
-                            <div>
-                                <div>
-                                    <h5>Botellas</h5>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p><b>Ventas:</b> 3</p>
-                            <p><b>Ganancias:</b> $600</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-            </div>
-        </div>
+        
     </div>
     <br>
     <footer class="text-white">
