@@ -33,7 +33,6 @@ function ObtenerProd($param)
    
     if ($res) {
         // Verifica si $res es un arreglo antes de llamar a fetchAll
-       
         return $res;
         
     } else {
@@ -49,7 +48,7 @@ function ObtenerProd($param)
 
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
-        case 0:
+        case "0":
             $TextoBusqueda = $_POST['TextoSearch'];
             /*
             $Objprod = new ProductosAPI();

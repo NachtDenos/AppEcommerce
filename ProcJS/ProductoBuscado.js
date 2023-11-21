@@ -10,17 +10,15 @@ function BuscarProductos()
     //var textoSearch = $('#ContenedorSearch').data('texto-search');
     var textoSearch = $('#ContenedorSearch').val();
     console.log(textoSearch);
-    textoSearch = textoSearch.trim();
-    console.log(textoSearch);
     var jsonDatos={
-        "action": 0,
+        "action": "0",
         "TextoSearch": textoSearch.trim()
     }
 
     $.ajax({
         url: '../Conexion/BusquedaAPI.php',
         method: 'POST',
-        async: true,
+        async: false,
         data: jsonDatos,
         success: function(data)
         {
