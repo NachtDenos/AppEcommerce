@@ -5,6 +5,7 @@ $currency = "MXN";
 $productPrice = isset($_GET['precio']) ? $_GET['precio']: null;
 $productId = isset($_GET['idProducto']) ? $_GET['idProducto']: null;
 $orderNumber = rand();
+$Quantity = isset($_GET['cantidad']) ? $_GET['cantidad']: null;
 ?>
 <html>
 <head>

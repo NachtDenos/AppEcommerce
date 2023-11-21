@@ -54,7 +54,8 @@ paypal.Button.render({
             "IdPaypal" : data.paymentID,
             "PayPalPayerId" : data.payerID,
             "ProductId" : <?php echo ($productId); ?>,
-            "PrecioTotal" : <?php echo ($productPrice); ?>
+            "PrecioTotal" : <?php echo ($productPrice); ?>,
+            "CantidadProd" : <?php echo ($Quantity); ?>
           }
 
           $.ajax({

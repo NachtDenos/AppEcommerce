@@ -70,6 +70,32 @@ function DatosPayPalInsert($PaymentId, $PayerId)
     $conn->closeConnection();
 }
 
+function GenerarVentaPayPal($NombreProducto, $IdComprador, $CantidadComprar, $Precio)
+{
+        
+    $conn = $this->connectDB();
+
+    $sql = "Call GenerarVentaSinPaypal(:IdProducto, :IdComprador, :CantidadComprar, :Precio);";
+    $statement = $conn->prepare($sql);
+
+    $statement->bindParam(':IdProducto', $NombreProducto, PDO::PARAM_STR);
+    $statement->bindParam(':IdComprador', $IdComprador, PDO::PARAM_STR);
+    $statement->bindParam(':CantidadComprar', $CantidadComprar, PDO::PARAM_STR);
+    $statement->bindParam(':Precio', $Precio, PDO::PARAM_STR);
+    if($statement->execute())
+    {
+        echo "Working Code";
+
+        header("Location: ../PantallasPHP/dashboard.php");
+
+    }
+    else
+    {
+        header("Location: ../PantallasPHP/pago.php");
+    }
+    $conn->closeConnection();
+}
+
 }
 
 
@@ -109,24 +135,31 @@ if(isset($_GET['action']))
             echo 'Venta Producto';
             echo '<br>';
             $IdPayPal = $_POST['IdPaypal'];
-            echo ($NombreProd);
+            echo ($IdPayPal);
             echo '<br>';
             $PayerId = $_POST['PayPalPayerId'];
-            echo ($cantidadProducto);
+            echo ($PayerId);
             echo '<br>';
             $IdProd = $_POST['ProductId'];
-            echo ($precioProducto);
+            echo ($IdProd);
             echo '<br>';
             $idU = $usuario['id'];
             echo ($idU);
             echo '<br>';
             $Total = $_POST['PrecioTotal'];
-            echo ($numetoTarjeta);
+            echo ($Total);
+            echo '<br>';
+            //$NombreProd = $_POST['NombreProducto'];
+            //echo ($NombreProd);
+            echo '<br>';
+            $cantProductoCompra = $_POST['CantidadProd'];
+            echo ($cantProductoCompra);
             echo '<br>';
     
             $categoriaObj = new VentasAPI();
             $categoriaObj->DatosPayPalInsert($IdPayPal, $PayerId);
-            //$categoriaObj->GenerarVentaProducto($NombreProd, $idU, $cantidadProducto, $precioProducto, $numetoTarjeta);
+            $categoriaObj->GenerarVentaPayPal($IdProd, $idU, $cantProductoCompra, $Total);
+
         break;
     
 
