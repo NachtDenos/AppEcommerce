@@ -1,3 +1,29 @@
+<?php
+// Verificar si se enviaron datos mediante el método POST
+include_once '../Conexion/VentasApiCarrito.php';
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+ $Username = $usuario['User'];
+}
+else
+{
+ header("Location: ../Pantallas/login.php");
+ exit();
+}
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+  // Convierte los datos BLOB a una representación base64
+  $imagenBase64 = base64_encode($imagenBlob);
+} else {
+  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/iconBlack.png'));
+}
+
+$IdUsuarioLogeado = $usuario['id'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,26 +74,28 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class="contenido-form">
-    
+                            <form class="contenido-form" action="../Conexion/VentasAPICarrito.php?action=comprar" method="post" enctype="multipart/form-data">
+
                                 <label for="typeCard">Tipo de Tarjeta</label>
-                                <select id="typeCard" name="typeCard" class="input-form">
+                                <select id="typeCard" name="typeCard" class="input-form" required>
                                     <option value="" disabled selected>Seleccione una opción</option>
                                     <option value="master">MasterCard</option>
                                     <option value="visa">Visa</option>
                                     <option value="carnet">Carnet</option>
                                 </select>
-    
+                                <?php
+                                echo '<input type="hidden" name="idUsuario" value="' . $IdUsuarioLogeado . '">';
+                                ?>
                                 <label for="numCard">Número de la tarjeta</label>
-                                <input type="number" name="numCard" placeholder="Tarjeta" id="numCard" class="input-form">
+                                <input type="number" name="numCard" placeholder="Tarjeta" id="numCard" class="input-form" required>
                                 
                                 <label for="nameCard">Nombre de la tarjeta</label>
-                                <input type="text" name="nameCard" placeholder="Nombre" id="nameCard" class="input-form">
+                                <input type="text" name="nameCard" placeholder="Nombre" id="nameCard" class="input-form" required>
 
                                 <label for="selectMes">Expiración</label>
                                 <div class="row">
                                     <div class="col">
-                                        <select name="mes" id="selectMes" class="input-form">
+                                        <select name="mes" id="selectMes" class="input-form" required>
                                             <option disabled selected>Mes</option>
                                             <option >01</option>
                                             <option >02</option>
@@ -84,7 +112,7 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <select name="year" id="selectYear" class="input-form">
+                                        <select name="year" id="selectYear" class="input-form" required>
                                             <option disabled selected>Año</option>
                                             <option >2023</option>
                                             <option >2024</option>
@@ -103,12 +131,15 @@
                                 </div>
     
                                 <label for="codeCard">Código de Seguridad</label>
-                                <input type="number" name="codeCard" placeholder="Código" id="codeCard" class="input-form">
+
                                 
-                                <h1 style="text-align: center;">Datos producto</h1>
-                                <input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+
+                                <input type="number" name="codeCard" placeholder="Código" id="codeCard" class="input-form" required>
                                 
-                            </div>
+                                
+                                <input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal">
+                                
+                            </form>
                         </div>
                     </div>
                 </div>

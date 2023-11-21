@@ -126,8 +126,19 @@ if ($JSONCarrito !== false) {
                   </table>
             </div>
             <div class="col-3">
-                <form class="formato-form" action="pago.php">
+                <form class="formato-form" action="pago copy.php" method="post">
                     <h1>Compra</h1>
+                    <?php
+                        if ($JSONCarrito !== false) {
+                            foreach ($JSONCarrito as $prod) {
+                                echo '<input type="hidden" name="idProducto[]" value="' . $prod['IDproducto'] . '">';
+                                echo '<input type="hidden" name="idUsuario[]" value="' . $IdUsuarioLogeado . '">';
+                                echo '<input type="hidden" name="cantPro[]" value="' . $prod['Cantidad'] . '">';
+                            }
+                        }      
+                    ?>
+                    <input type="hidden" name="subtotal" value="<?php echo $sumaTotal; ?>">
+                    <input type="hidden" name="cantidadProductos" value="<?php echo count($JSONCarrito); ?>">
                     <div>
                         <p>Tu pedido es elegible con envío GRATIS. Comprueba los productos incluidos en el carrito.
                             Selecciona esta opción al tramitar el pedido.</p>
