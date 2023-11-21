@@ -22,26 +22,10 @@ class BusquedaAPI extends DB
             return array();
         }
     }
-    /*
-    //El problema si marca error de caracteres es la funcion public construct o el constructor por default
-    function BusquedaSimple()
-{
-    $kevin = $this->connectDB();
-    $query = "Call BusquedaSimple();";
-    $stmt = $kevin->prepare($query);
-    $stmt->execute();
-
-    $productos = array(); // Crear un array para almacenar las categorías
-
-    while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $productos[] = $result; // Agregar cada categoría al array
-    }
-
-    return $productos;
+    
 
 }
-*/
-}
+
 function ObtenerProd($param)
 {
     $consulta = new ProductosAPI();
@@ -72,7 +56,8 @@ if (isset($_POST['action'])) {
             echo ($TextoBusqueda);
             $resultados= $Objprod->BusquedaSimple($TextoBusqueda);
             */
-            echo json_encode(ObtenerProd($TextoBusqueda));
+            $resultados = ObtenerProd($TextoBusqueda);
+            echo json_encode($resultados);
             break;
         default:
             // Manejar otras acciones si es necesario

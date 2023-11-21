@@ -126,6 +126,10 @@ function botonComprar()
 
 }
 
+function kevin()
+    {
+    window.location.href="../PantallasPHP/dashboardBusquedaAvanzada.php?precio="+ $("#precioModal").val()+"&nombreProd="+ $("#searchA").val()+"";
+    }
 
 
 

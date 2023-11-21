@@ -7,7 +7,10 @@ $(document).ready(function(){
 
 function BuscarProductos()
 {
-    var textoSearch = $('#ContenedorSearch').data('texto-search');
+    //var textoSearch = $('#ContenedorSearch').data('texto-search');
+    var textoSearch = $('#ContenedorSearch').val();
+    console.log(textoSearch);
+    textoSearch = textoSearch.trim();
     console.log(textoSearch);
     var jsonDatos={
         "action": 0,

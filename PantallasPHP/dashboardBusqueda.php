@@ -57,7 +57,7 @@ if (isset($_GET['busqueda'])) {
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
-                        <input id="ContenedorSearch" class="form-control me-2" type="search" placeholder="<?php echo ($busqueda);  ?>" aria-label="Search" data-texto-search=" <?php echo ($busqueda); ?>">
+                        <input id="ContenedorSearch" class="form-control me-2" type="search" placeholder="<?php echo ($busqueda);  ?>" aria-label="Search" data-texto-search=" <?php echo ($busqueda); ?>" value="<?php echo ($busqueda); ?>">
                         <button class="btn  btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
                       </form>
                 </div>
