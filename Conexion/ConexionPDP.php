@@ -9,7 +9,7 @@
     private $conn;
     public function __construct()
     {
-      $this->host = '127.0.0.1:3307'; //Localhost::3306 // 4306 EDSON |   3307  Isaac
+      $this->host = '127.0.0.1:4306'; //Localhost::3306 // 4306 EDSON |   3307  Isaac
       $this->db = 'pia_pwci'; //Base de datos
       $this->user = 'root'; //root
       $this->password = '';
