@@ -44,6 +44,7 @@ if (!empty($_GET['datos'])) {
         $ExistenciaProducto = $datos[0]['Cant_Existencia'];
         $CategoriaProd = $datos[0]['name'];
         $precioProd = $datos[0]['Precio'];
+        $IdUsuarioVendedor = $datos[0]['UsuarioVendedor'];
         // Imprime el nombre del producto
         //echo $nombreProducto;
         //echo $nombrePersona;
@@ -164,7 +165,7 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
                     </div>
                     <br>
                     <div>
-                        <button class="btn btn-compra" type="submit" formaction="mensajes.php">
+                        <button class="btn btn-compra" type="button" onclick="chat()">
                             Cotizar
                         </button>
                     </div>
@@ -323,5 +324,23 @@ $JSONListas = $ObjLista->ObtenerListasUsuario($IdUsuarioLogeado);
         return true;
     }
 </script>
+<script>
+function chat()
+    {
+    $.ajax({
+        type: 'POST',
+        url: '../Conexion/chatAPI.php',
+        data: { "idVendedor": <?php echo ($IdUsuarioVendedor); ?>,
+                "action": "0"},
+        success: function(response)
+        {
+            console.log(response);
+            window.location.href="mensajes.php"
+        },
+        error: function (xhr, status, error) {
+                console.error(error);
+        }
+    })
+    }
 </script>
 </html>

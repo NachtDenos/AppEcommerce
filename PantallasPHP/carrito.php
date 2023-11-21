@@ -148,7 +148,7 @@ if ($JSONCarrito !== false) {
                         
                     </div>
                     <input class="btn btn-compra" type="submit" value="Proceder al Pago">
-                </form>
+                    </form>
             </div>
         </div>
         <div>

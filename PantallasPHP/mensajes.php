@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+$vendedor = $_SESSION['Vendor'];
+
+//echo ($vendedor);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Estilos/mensajes.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
 <body>
     <div>
@@ -14,7 +24,7 @@
                 <div class="col alingImage">
                     <a class="navbar-brand" href="dashboard.php"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
@@ -47,7 +57,7 @@
                 <div class="ancho-texto">
                     <div class="msg-row">
                         <div class="msg-text">
-                            <h3 class="msg-text-titulo">Edson Arguello</h3>
+                            <h3 class="msg-text-titulo"><?php echo ($_SESSION['Vendor']['Nombre']); ?> </h3>
                             <p>Hola como estas</p>
                         </div>
                         <img src="../Imagenes/iconBlack.png" class="msg-img">
@@ -73,12 +83,6 @@
                 <ul>
                     <li><a href="#">Aylin Galindo</a></li>
                     <hr>
-                    <li><a href="#">Michelle Saenz</a></li>
-                    <hr>
-                    <li><a href="#">Isaac Espinoza</a></li>
-                    <hr>
-                    <li><a href="#">Kevin Sanchez</a></li>
-                    <hr>
                 </ul>
             </div>
         </div>
@@ -99,50 +103,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-modal">
-          <form>
-              <div class="modal-header">
-                  <h2 id="exampleModalLabel">Busqueda Avanzada</h2>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="contenido-form">
-                        <input class="input-modal" type="text" name="searchA" placeholder="Buscar" id="searchA">
-                        
-                      <h4>Filtros:</h4>
-
-                        <label for="precioModal">Precio</label>
-                        <select id="precioModal" name="precioModal">
-                            <option value="">Ninguno</option>
-                            <option value="maxPre">Mayor Precio</option>
-                            <option value="minPre">Menor Precio</option>
-                        </select>
-
-                        <label for="califModal">Calificación</label>
-                        <select id="califModal" name="califModal">
-                            <option value="">Ninguno</option>
-                            <option value="maxCalif">Mejor Calificación</option>
-                            <option value="minCalif">Menor Calificación</option>
-                        </select>
-
-                        <label for="vendModal">Vendidos</label>
-                        <select id="vendModal" name="vendModal">
-                            <option value="">Ninguno</option>
-                            <option value="maxVend">Más Vendidos</option>
-                            <option value="minVend">Menos Vendidos</option>
-                        </select>
     
-                    </div>
-                </div>
-                <div class="modal-footer">
-                  <input class="btn btn-modal" type="submit" value="Buscar">
-                </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
 
 

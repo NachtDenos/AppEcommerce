@@ -34,7 +34,7 @@ class VentasAPICarrito extends DB
             echo "Working Code";
             header("Location: ../PantallasPHP/dashboard.php");
         } else {
-            header("Location: ../PantallasPHP/pago.php");
+            header("Location: ../PantallasPHP/pago copy.php");
         }
         $conn->closeConnection();
     }
@@ -50,7 +50,8 @@ if (isset($_GET['action'])) {
         case 'comprar':
             $IdUsuario = $_POST['idUsuario'];
             $numetoTarjeta = $_POST['numCard'];
-
+            echo ($IdUsuario);
+            echo ($numetoTarjeta);
 
             $categoriaObj = new VentasAPICarrito();
             $categoriaObj->GenerarVentaProducto($IdUsuario, $numetoTarjeta);
