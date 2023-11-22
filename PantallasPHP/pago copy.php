@@ -138,7 +138,8 @@ $IdUsuarioLogeado = $usuario['id'];
                                 
                                 
                                 <input class="btn btn-form" type="submit" value="Realizar compra" data-bs-toggle="modal">
-                                
+                                <input class="btn btn-form" type="button" value="Paypal" onClick="kevin()">
+
                             </form>
                         </div>
                     </div>
@@ -253,7 +254,13 @@ $IdUsuarioLogeado = $usuario['id'];
           </div>
         </div>
     </div>
-
+<script>
+function kevin()
+    {
+    window.location.href="../PayPal/paypal copy.php";
+    }
+</script>
+</script>
 
 </body>
 </html>

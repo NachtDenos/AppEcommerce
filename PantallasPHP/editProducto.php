@@ -1,18 +1,8 @@
 <?php 
-/*
-session_start();
 
- 
-if(isset($_SESSION['usuario']))
-{
- $usuario = $_SESSION['usuario'];
-}
-else
-{
- header("Location: ../PantallasPHP/login.php");
- exit();
-}
-*/
+
+
+
 require_once '../Conexion/CategoriasAPI.php';
 include_once '../Conexion/ProductosAPI.php';
 $productId = $_GET['id'];
@@ -32,7 +22,23 @@ $nombreVendedor = $ProductoJSON[0]['Nombre'];
 $categoriaNombre = $ProductoJSON[0]['name'];
 $fotoProducto = $ProductoJSON[0]['Foto'];
 //echo $nombreProducto 
-
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+}
+else
+{
+ header("Location: ../PantallasPHP/login.php");
+ exit();
+}
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+  // Convierte los datos BLOB a una representación base64
+  $imagenBase64 = base64_encode($imagenBlob);
+} else {
+  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
+}   
 ?>
 
 
@@ -74,7 +80,7 @@ $fotoProducto = $ProductoJSON[0]['Foto'];
                   </div>
                 <div class="col alingFlex">
                   <a href="carrito.php"><button type="button" class="btn btn-dark"><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></button></a>
-                  <a class="navbar-brand" href="perfil.php"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <a class="navbar-brand" href="perfil.php"><img src=" data:image/jpeg;base64,  <?php echo ($imagenBase64); ?>" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>

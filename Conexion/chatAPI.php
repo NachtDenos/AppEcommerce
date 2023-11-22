@@ -84,7 +84,7 @@ if (isset($_POST['action'])) {
            // $kevin = $this->connectDB();
             $IdVendedor = $_POST['idVendedor'];
             $idU = $usuario['id'];
-        
+            
             
             $categoriaObj = new ChatAPI();
             $categoriaObj->ChatSP(0, $IdVendedor, $idU, $IdVendedor, $idU, null);

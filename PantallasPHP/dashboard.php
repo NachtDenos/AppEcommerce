@@ -56,8 +56,9 @@ if ($imagenBlob) {
                       <li><a class="dropdown-item" href="listas.php">Mis Listas</a></li>
                       <li><a class="dropdown-item" href="newProducto.php">Ventas</a></li>
                       <li><a class="dropdown-item" href="ReporteVentas.php">Consulta de Ventas</a></li>
-                      <li><a class="dropdown-item" href="PedidosRealizados.php">Pedidos</a></li>
-                      <li><a class="dropdown-item" href="productosActuales.php">Stock</a></li>
+                      <!--<li><a class="dropdown-item" href="PedidosRealizados.php">Pedidos</a></li>-->
+                      <!--<li><a class="dropdown-item" href="productosActuales.php">Stock</a></li>-->
+                      
                       <li><a class="dropdown-item" href="adminCheck.php">Aceptar Productos</a></li>
                       <li><a class="dropdown-item" href="Pedidos.php">Mis Pedidos</a></li>
                     </ul>

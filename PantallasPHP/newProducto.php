@@ -17,7 +17,24 @@ include_once '../Conexion/CategoriasAPI.php';
 
 $CatObj = new CategoriasAPI();
 $categorias = $CatObj->ObtenerCategorias2();
-
+if(isset($_SESSION['usuario']))
+{
+ $usuario = $_SESSION['usuario'];
+ $Username = $usuario['User'];
+}
+else
+{
+ header("Location: ../Pantallas/login.php");
+ exit();
+}
+$imagenBlob = $usuario['Img'];
+if ($imagenBlob) {
+  // Convierte los datos BLOB a una representación base64
+  $imagenBase64 = base64_encode($imagenBlob);
+} else {
+  // Si no se encontró la imagen, puedes proporcionar una imagen por defecto.
+  $imagenBase64 = base64_encode(file_get_contents('../Imagenes/agua.png'));
+}
 
 ?>
 
@@ -60,7 +77,7 @@ $categorias = $CatObj->ObtenerCategorias2();
                   </div>
                 <div class="col alingFlex">
                   <a href="carrito.php"><button type="button" class="btn btn-dark"><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></button></a>
-                  <a class="navbar-brand" href="perfil.php"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <a class="navbar-brand" href="perfil.php"><img src=" data:image/jpeg;base64,  <?php echo ($imagenBase64); ?>" alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>

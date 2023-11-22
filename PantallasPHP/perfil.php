@@ -63,7 +63,7 @@ $JSONProductos = $ObjProd->ObtenerProductosUsuario($IdUsuarioLogeado);
                   </div>
                 <div class="col alingFlex">
                   <a href="carrito.php"><button type="button" class="btn btn-dark"><img src="../Imagenes/carrito.png" alt="logo" width="40px" class="rounded-circle"></button></a>  
-                  <a class="navbar-brand" href="perfil.php"><img src="../Imagenes/iconBlack.png" alt="logo" width="70px" class="rounded-circle"></a>
+                  <a class="navbar-brand" href="perfil.php"><img src=" data:image/jpeg;base64,  <?php echo ($imagenBase64); ?>"  alt="logo" width="70px" class="rounded-circle"></a>
                 </div> 
         </nav>
     </div>
@@ -72,7 +72,7 @@ $JSONProductos = $ObjProd->ObtenerProductosUsuario($IdUsuarioLogeado);
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                  <img src="data:image/jpeg;base64," alt="img-avatar">
+                  <img src=" data:image/jpeg;base64,  <?php echo ($imagenBase64); ?>" alt="img-avatar">
                    <!-- <img src="Imagenes/iconBlack.png" alt="img-avatar"> -->
                 </div>
             </div>

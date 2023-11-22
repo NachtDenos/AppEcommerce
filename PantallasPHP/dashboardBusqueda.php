@@ -54,11 +54,11 @@ if (isset($_GET['busqueda'])) {
                 <div class="col alingImage">
                     <a class="navbar-brand" href="dashboard.php"><img src="../Imagenes/ElNegociosLogo.png" alt="logo" width="70px" class="rounded-circle"></a>
                 </div>
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><a><img src="../Imagenes/filtro.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                
                 <div class="col alingFlex">
                     <form class="d-flex" role="search">
                         <input id="ContenedorSearch" class="form-control me-2" type="search" placeholder="<?php echo ($busqueda);  ?>" aria-label="Search" data-texto-search=" <?php echo ($busqueda); ?>" value="<?php echo ($busqueda); ?>">
-                        <button class="btn  btn-dark" type="submit"><a><img src="../Imagenes/lupa.png" alt="logo" width="23px" class="rounded-circle"></a></button>
+                  
                       </form>
                 </div>
                 <div class="dropdown">
